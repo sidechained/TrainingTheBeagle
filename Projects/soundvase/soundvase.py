@@ -1,20 +1,24 @@
-import csv
-import socket, errno
-import OSC
-from OSC import OSCClient, OSCMessage
-import random, time, threading
-from threading import Timer
-import os
-import Adafruit_BBIO.ADC as ADC
+# Soundvase project - python script
+# - AIM: poll the value of a sensor and send as OSC to sclang e.g. '/shift 52'
 
-sendAddress = '127.0.0.1', 57120
-sensingPollRate = 0.05 # 0.05 = 20ms
+# import csv
+# import socket, errno
+# import OSC
+from OSC import OSCClient, OSCMessage
+# import time, threading
+from threading import Timer
+# import os
+import Adafruit_BBIO.ADC as ADC 
+
+inPin = "P9_40" # connect potentiometer to this pin
+sendAddress = '127.0.0.1', 57120 # address to send to SuperCollider
+sensingPollRate = 0.05 # rate at which values will be read (0.05 = 20ms)
 
 def init_sensing_loop():
 	Timer(sensingPollRate, sense_and_send_values).start()
 
 def sense_and_send_values():
-	sensedValue = ADC.read("P9_40")
+	sensedValue = ADC.read(inPin)
 	msg = OSC.OSCMessage()
 	msg.setAddress('/shift')
 	msg.append(sensedValue)
@@ -24,13 +28,13 @@ def sense_and_send_values():
 	except:
 		print "waiting for supercollider to become available"
 		pass
-	init_sensing_loop() # recursive call, keeps timer goingR
+	init_sensing_loop() # recursive call, keeps timer going
 
 # main:
-ADC.setup("P9_33")
+ADC.setup(inPin)
 client = OSCClient()
 client.connect( sendAddress )
-init_sensing_loop()
+init_sensing_loop() # init call to start the sensing loop
 
 try: 
      while True: 
