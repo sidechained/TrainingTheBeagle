@@ -14,18 +14,22 @@
 
 ** Hardware
 
-- beaglebone black
-- thumbdrive-style usb sound card
-- mic with 3.5mm jack output
-- speaker (e.g. doss asimom)
+- a beaglebone black
+- a thumbdrive-style usb sound card
+- a mic with 3.5mm jack output
+- a speaker (e.g. doss asimom)
 - a sensor/potentiometer (e.g. dial or slider)
 
 ** Software
 
-- beaglebone running debian linux
-- python OSC library
-- adafruit BBIO library
-- jackd/alsa
+- debian linux (running on the beaglebone)
+- python
+- supercollider
+- jackd/alsa (link)
+- python OSC library (link)
+- adafruit BBIO library (link)
+
+- NOTE TO SELF: ADD LINK TO TUTORIAL HERE ON HOW TO GET ALL THIS UP AND RUNNING
 
 * Setup
 
@@ -39,19 +43,18 @@ soundvaseBoot		- runs the soundvaseStartup file automatically when the beaglebon
 - the first three files will live in the /home/debian/soundvase folder on the beaglebone
 - soundvaseBoot will go in /Volumes/rootfs/etc/init.d
 
-** Copying the files onto the beaglebone
+** Copying the Files onto the Beaglebone
 
-- open terminal, navigate to an appropriate folder to download the sound vase software into
+- open terminal and navigate to an appropriate folder to download the sound vase software into
 $ cd ~/home/grahambooth/documents/
 - clone the project from github
 $ git clone https://github.com/sidechained/TrainingTheBeagle
 - move into the projects folder where the soundvase project can be found
-$ cd TrainingTheBeagle/projects
-- copy the soundvase folder into the home folder of the beaglebone
-- [your_username] is … (will this always be debian?) and [x.x.x.x] is the IP of your beaglebone
-$ scp soundvase [your_username]@[x.x.x.x] /home/debian/
+$ cd TrainingTheBeagle/Projects
+- copy the soundvase folder into the home folder of the beaglebone (replace [your_ip] with the IP of your beaglebone)
+$ scp -r soundvase debian@[your_ip]:/home/debian/
 - log into the beaglebone and check the software is in the right place
-$ ssh debian@192.168.x.x
+$ ssh debian@[your_ip]
 $ cd /soundvase
 $ ls
 - if you see the above list of four files, you are ready to start testing
@@ -66,18 +69,29 @@ $ ls
 - 1. connect the USB sound card to the beaglebone
 - 2. connect the mic to the sound card's input
 - 3. connect the sound card's output to the speaker
-- repower the beaglebone, and log back in
-$ ssh debian@192.168.x.x
+- repower the beaglebone, then log back in
+$ ssh debian@[your_ip]
 
 **** Software Setup
 
-- in order to successfully, jack must be running
+- in order to successfully generate audio, jack must be running
 $ jackd -dalsa -dhw:1,0 -p512 -n3 -s &
-- Q: & needed in this case?
-- once this line is run, the LED should come on on the USB sound card
+- NOTE: & runs jackd concurrently in a separate process, allowing other terminal commands to subsequently be run (without it the command line would not reappear)
+- the LED should begin to flash on the USB sound card
+- perform a quick audio test
+$ sclang
+- in the sclang command prompt, enter the following lines one by one (don't enter the sc3> part):
+sc3> s.boot
+sc3> {SinOsc.ar}.play
+- a 440Hz sine wave should play
+- now exit sclang:
+sc3> 0.exit
+- go into the project folder, if not already there
+$ cd /home/debian/soundvase
 - now run the .scd file
 $ sclang soundvase.scd
-- you should now able to tap the mic and hear its output being routed to the speaker with little or no change
+- you should now able to tap the mic and hear its output being routed to the speaker with noticeable pitch shifting being applied
+- press CTRL+C a few times to exit sclang
 
 *** 2. Testing the .py file
 
@@ -90,8 +104,9 @@ $ sclang soundvase.scd
 
 **** Software Setup
 
+- go into the project folder, if not already there
+$ cd /home/debian/soundvase
 - run the python script
-- Q: no sudo here?!
 $ python soundvase.py
 - check the values of your sensor as printed on screen
 - exit using CTRL+C
