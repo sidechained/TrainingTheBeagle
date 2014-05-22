@@ -1,13 +1,9 @@
 # Soundvase project - python script
 # - AIM: poll the value of a sensor and send as OSC to sclang e.g. '/shift 52'
 
-# import csv
-# import socket, errno
 import OSC
 from OSC import OSCClient, OSCMessage
-# import time, threading
 from threading import Timer
-# import os
 import Adafruit_BBIO.ADC as ADC 
 
 inPin = "P9_40" # connect potentiometer to this pin
