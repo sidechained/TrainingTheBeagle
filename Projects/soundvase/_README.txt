@@ -107,30 +107,33 @@ $ sclang soundvase.scd
 - go into the project folder, if not already there
 $ cd /home/debian/soundvase
 - run the python script
-$ python soundvase.py
+$ sudo python soundvase.py
 - check the values of your sensor as printed on screen
 - exit using CTRL+C
 
 *** 3. Testing the .scd and .py Files Together
 
-- follow stage 1. again to get supercollider up and running, but add an & to the final command
+- start jack again as in stage 1:
+$ jackd -dalsa -dhw:1,0 -p512 -n3 -s &
+- now run the .scd file, this time concurrently
 $ sclang soundvase.scd &
 - this will allow sclang to run it in the background so that you can continue to run the python script
 - at this point no OSC messages are being sent to SuperCollider to alter the pitch shifting parameter (which is running at its default value of 0.5)
 - now run the python script
-$ python soundvase.py
+$ sudo python soundvase.py
+- NOTE: sudo is needed here otherwise the Adafruit library cannot interface with the beagle pin inputs and outputs
 - interact with your sensor and the mic and you should be able to hear the sound changing
 
 *** 4. Testing the Startup File
 
 - now we are sure the .scd and .py files work well together, we can use a startup file to run them both automatically
 - run the soundvaseStartup file as follows:
-- NOTE: you may have to kill jack and sclang first (how?)
+- NOTE: you may have to kill jack and sclang first e.g. $ sudo pkill jackd; sudo pkill sclang
 - NOTE: if all else fails try rebooting to ensure there are no conflicting background processes
 $ sudo sh soundvaseStartup
 - Q: does this need sudo?
 - as previously, interact with your sensor and the mic and you should be able to hear the sound changing
-- once we are satisfied that this works, we can move onto to getting the beagle to run this script automatically on startup
+- once you are satisfied that this works, you can move onto to getting the beagle to run this script automatically on startup
 
 *** 4. Enabling Automatic Startup
 
@@ -142,7 +145,7 @@ $ sudo sh soundvaseStartup
 - make sure you are in the soundvase project folder
 $ cd ~/home/debian/soundvase
 - move the soundvaseBoot file into the debian startup folder
-$ mv soundvaseBoot ~/etc/init.d/
+$ sudo mv soundvaseBoot ~/etc/init.d/
 - initialise it as follows
 $ sudo /usr/sbin/update-rc.d soundvaseBoot defaults
 - Q: what message should come up

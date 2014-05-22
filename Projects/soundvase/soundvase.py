@@ -3,7 +3,7 @@
 
 # import csv
 # import socket, errno
-# import OSC
+import OSC
 from OSC import OSCClient, OSCMessage
 # import time, threading
 from threading import Timer
@@ -31,7 +31,7 @@ def sense_and_send_values():
 	init_sensing_loop() # recursive call, keeps timer going
 
 # main:
-ADC.setup(inPin)
+ADC.setup()
 client = OSCClient()
 client.connect( sendAddress )
 init_sensing_loop() # init call to start the sensing loop
