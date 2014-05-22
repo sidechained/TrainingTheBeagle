@@ -134,6 +134,9 @@ $ sudo sh soundvaseStartup
 
 *** 4. Enabling Automatic Startup
 
+- NOTE TO SELF: is there anyway to symlink to the soundvaseBoot file in order to keep all the code together in one folder?
+- NOTE TO SELF: also look at Fredrik's method for this on the supercollider wiki
+
 - to enable automatic start we need to move the soundvaseBoot file into the startup folder
 - NOTE: see separate tutorial for more on how the soundvaseBoot file works and is created
 - make sure you are in the soundvase project folder
@@ -149,7 +152,4 @@ $ sudo /usr/sbin/update-rc.d soundvaseBoot defaults
 *** 5. Disabling Automatic Startup
 
 - to disable the startup script, use the following command:
-
-- NOTE TO SELF: is there anyway to symlink to the soundvaseBoot file in order to keep all the code together in one folder?
-- NOTE TO SELF: also look at Fredrik's method for this on the supercollider wiki
-
+$ sudo /usr/sbin/update-rc.d soundvaseBoot remove
