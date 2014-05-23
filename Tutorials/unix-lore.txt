@@ -2,18 +2,54 @@
 
 - a quick primer of most of the things you need to know about unix/terminal to get started with the Beaglebone Black
 
-1. Some basics
+0. Links to useful sites:
+
+- http://www.debian.org/doc/manuals/debian-reference/ch-tutorial.de.html
+
+1. Syntax
+
+- username/password for beagleboard is debian/debian
 
 ~	= home directory
 $	= used to mark start of the command prompt
-..	= 
+|	= (pipe) 
+/	= (backslash)
 
-2. A list of useful terminal commands
+2. Keyboard Shortcuts
+
+CTRL+C	terminate the running process
+CTRL+A	go to start of the command line
+CTRL+K	clear the buffer (cannot scroll back)
+
+
+Einige bedeutende Tastenkombinationen für die Linux-Konsole sind ("Plus", "Minus" beziehen sich auf den numerischen Ziffernblock):
+     Alt-F1 bis F6:       Wechsel auf anderes Pseudo-Terminal
+     Strg-Alt-F1 bis F6:  Wechsel auf anderes Pseudo-Terminal
+                          (aus X-Windows, DOSEMU, etc.)
+     Alt-F7:              Wechsel zu X-Windows
+     Strg-Alt-Minus:      Ändern der Auflösung in X-Windows
+     Strg-Alt-Plus:       Ändern der Auflösung in X-Windows (umgekehrte Reihenfolge)
+     Strg-Alt-Rücktaste:  Beenden des X11-Server-Programms
+     Alt-X, Alt-C, Alt-V: In üblichen Windows/Mac-Tastenkombinationen
+                          zum Ausschneiden, Kopieren und Einfügen wird
+                          die Strg-Taste durch Alt in einigen
+                          Programmen wie Netscape Composer ersetzt.
+
+../.. 	wechselt ins niedrigste Verzeichnis
+
+3. A list of useful terminal commands
+
+* cd
+
+- move around
+- go up to parent directory:
+$ cd ..
 
 * ls
 
 - use -a flag to display hidden files (i.e. those preceded with a .)
 - use -l to display items in a list
+- ls -d ?!
 
 * mkdir
 
@@ -53,50 +89,86 @@ $ scp -r soundvase debian@192.168.2.14:/home/debian
 
 * sudo
 
-- superuser is often required 
-- there are also cases where it should not be used e.g. running sclang
+- superuser privileges are often require to perform certain tasks
+- e.g. to allow python to access the beaglebone pins through the adafruit bbio library
+- simply preface the command with sudo e.g:
+$ sudo python sense.py
+- then enter the password for your beaglebone
+- NOTE: there are also cases where sudo should not be used e.g. running sclang, where superuser is not in the audio group, but the standard user is
 
-means it will 
+* reboot
+
+- reboot the beagle board from the command line:
+$ sudo /sbin/reboot
+
+* shutdown
+
+- shutdown the beagle board from the command line:
+$ sudo /sbin/shutdown now
+
+* pkill
+
+- kill process by name e.g:
+$ pkill python
+
+* 
 
 * chmod
-
 - change file permissions
+- example?
 
-* some commands from Jonas
+* nano
+- simple 
 
-[23/05/2014 02:52:32] Jonas Hummel: // Commands in Terminal... 
-/(taken from: http://www.debian.org/doc/manuals/debian-reference/ch-tutorial.de.html)
+* pico
+- see nano
+
+* vi
+- 
+
+
 
 http://www.tldp.org/HOWTO/Tips-HOWTO.html
 
-Wichtige Unix Commands:
-check out: 
-     ls, ls -al, ls -d, pwd, cd, cd ~Benutzer, cd -, 
-     cat /etc/passwd, less, bg, fg, kill, killall, 
-     uname -a, type Kommandoname, sync, netstat,
-     ping, traceroute, top, vi, ps aux, tar, zcat, 
-     grep, ifconfig, diskutil
+* pwd
 
+- displays the current path e.g
+$ pwd
+/home/debian/soundvase
+
+* cat
+
+- print the contents of a file to the screen e.g.
+$ cat /etc/passwd
+- or 
+$ cat id_rsa.pub
+
+* history
+
+* grep
+- perform regular expression search on the 
+
+
+* others:
+
+less
+bg
+fg
+kill
+killall
+uname -a
+type Kommandoname
+sync
+netstat
+ping
+traceroute
+top
+vi
+ps aux
+tar
+zcat
+ifconfig
+diskutil
 and prepend: "whatis"
 
 
-4.2.8 Wichtige Tastaturkommandos
-Einige bedeutende Tastenkombinationen für die Linux-Konsole sind ("Plus", "Minus" beziehen sich auf den numerischen Ziffernblock):
-     Alt-F1 bis F6:       Wechsel auf anderes Pseudo-Terminal
-     Strg-Alt-F1 bis F6:  Wechsel auf anderes Pseudo-Terminal
-                          (aus X-Windows, DOSEMU, etc.)
-     Alt-F7:              Wechsel zu X-Windows
-     Strg-Alt-Minus:      Ändern der Auflösung in X-Windows
-     Strg-Alt-Plus:       Ändern der Auflösung in X-Windows (umgekehrte
-                          Reihenfolge)
-     Strg-Alt-Rücktaste:  Beenden des X11-Server-Programms
-     Alt-X, Alt-C, Alt-V: In üblichen Windows/Mac-Tastenkombinationen
-                          zum Ausschneiden, Kopieren und Einfügen wird
-                          die Strg-Taste durch Alt in einigen
-                          Programmen wie Netscape Composer ersetzt.
-
-WEITERE KOMMANDOS
-Strg-A 	springt an den Anfang der Kommandozeile
-../.. 	wechselt ins niedrigste Verzeichnis
-[23/05/2014 02:52:39] Jonas Hummel: oh but thats german I realize
-[23/05/2014 02:52:39] Jonas Hummel: haha
