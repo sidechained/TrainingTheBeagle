@@ -1,5 +1,7 @@
 * Glossary of Unix Lore
 
+- GRAHAM'S OBNOXIOUS MESSAGE IS HERE IN YOUR FACE!!!!!!!
+
 - a quick primer of most of the things you need to know about unix/terminal to get started with the Beaglebone Black
 
 0. Links to useful sites:
