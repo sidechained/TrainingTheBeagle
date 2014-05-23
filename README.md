@@ -1,5 +1,7 @@
 * Training The Beagle
 
+BEAGLEBEAGLEBEAGLE
+
 A project about learning how to use the Beaglebone Black, by Jonas Hummel and Graham Booth
 
 ** Topic List
