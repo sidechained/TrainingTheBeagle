@@ -21,21 +21,8 @@ CTRL+C	terminate the running process
 CTRL+A	go to start of the command line
 CTRL+K	clear the buffer (cannot scroll back)
 
-
-Einige bedeutende Tastenkombinationen für die Linux-Konsole sind ("Plus", "Minus" beziehen sich auf den numerischen Ziffernblock):
-     Alt-F1 bis F6:       Wechsel auf anderes Pseudo-Terminal
-     Strg-Alt-F1 bis F6:  Wechsel auf anderes Pseudo-Terminal
-                          (aus X-Windows, DOSEMU, etc.)
-     Alt-F7:              Wechsel zu X-Windows
-     Strg-Alt-Minus:      Ändern der Auflösung in X-Windows
-     Strg-Alt-Plus:       Ändern der Auflösung in X-Windows (umgekehrte Reihenfolge)
-     Strg-Alt-Rücktaste:  Beenden des X11-Server-Programms
-     Alt-X, Alt-C, Alt-V: In üblichen Windows/Mac-Tastenkombinationen
-                          zum Ausschneiden, Kopieren und Einfügen wird
-                          die Strg-Taste durch Alt in einigen
-                          Programmen wie Netscape Composer ersetzt.
-
-../.. 	wechselt ins niedrigste Verzeichnis
+../.. 	Change to lowest directory
+type letter + TAB = will complete your entry with what Foldernames exist
 
 3. A list of useful terminal commands
 
