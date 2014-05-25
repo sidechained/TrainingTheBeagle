@@ -1,0 +1,55 @@
+TUTORIAL: Power and Batteries
+
+- this document deals with the four methods of powering the beaglebone, these being: external PSU, power over USB, power over ethernet and battery power
+
+* 1. Using an External Power Supply
+- beaglebone uses a 5v 2A
+- advisable as provides enough amps
+
+* 2. Power Over USB
+- is possible but not advisable as USB doesn't typically provide enough amps to reliably read and write to the SD card reader
+
+* 3. Power Over Ethernet
+- in some projects which use ethernet anyway, PoE would help in reducing cabling/complexity
+- PoE is specified by IEEE 802.3-2005
+- basic explanation:
+"Power over Ethernet or PoE describes any of several standardized or ad-hoc systems which pass electrical power along with data on Ethernet cabling. This allows a single cable to provide both data connection and electrical power to devices such as wireless access points or IP cameras. Unlike standards such as Universal Serial Bus which also power devices over the data cables, PoE allows long cable lengths. Power may be carried on the same conductors as the data, or it may be carried on dedicated conductors in the same cable."
+- from: http://www.thegeekstuff.com/2009/01/overview-of-poe-power-over-ethernet-concepts-and-devices-list/
+- more details here: http://www.connect802.com/ethernet.htm
+- use with Arduino here: http://www.freetronics.com/pages/power-over-ethernet-for-arduino
+
+- There are two basic options for providing the power:
+
+** 1. PoE enabled switch
+- switch acts as a power source
+- costs at least £25
+
+** 2. Midspan
+- power injector is injected by a device inserted between the switch and the beagle
+- midspans seem to make no sense if a separate power adapter is needed for each one (is this the case?)
+- midspans cost?
+- a cheap but dodgy solution is to hack up and power an ethernet cable
+
+* 4. Battery Power
+
+** Overview
+
+- beaglebone uses the TPS65217C for power management
+- link to datasheet:
+- can be used to run from and to charge a battery
+- a common way to power the beaglebone is via a single cell lion or lipo battery (typically 3.7v)
+- this will power the beagle itself, but not the USB port
+- the problem is that the USB host port design assumes that 5V is being supplied to the board…
+- …but there is nothing there to generate 5V from the battery input
+- battery capes are available, may be useful to study their design e.g. : http://circuitco.com/support/index.php?title=BeagleBone_Battery
+- but does it provide power to the USB host port?
+- one thread suggests: "A good solution to this is to use an external battery pack designed for Smartphones. I use www.powerocks.com - These charge from a standard USB charger (5v) and also produce 5v output on USB sockets. So just plug the Beaglebone into the battery pack using the supplied USB cable. This will power the Beaglebone USB host socket enabling the WiFi dongle. However I do not know if the USB input on the Beaglebone limits current draw to 500mA - If so, you may need to make a special cable to feed the power into the dedicated power socket instead. WiFi dongles are quite power hungry."
+
+** Links and Guides
+- basic guide: http://pansenti.wordpress.com/2013/06/01/powering-a-beaglebone-black-with-a-single-cell-li-ion-or-lipo-battery-yes-it-can-be-done-but-there-are-issues/
+- follow up hack (not advisable): http://pansenti.wordpress.com/2013/06/01/battery-powered-beaglebone-black-and-the-usb-host-port-works-too/
+- discussion: https://groups.google.com/forum/#!topic/beagleboard/6hQ7voyk_Xw
+- beaglebone battery tutorial here: http://www.element14.com/community/community/knode/single-board_computers/next-gen_beaglebone/blog/tags/bbb
+- Fredrik's project (study for tips): https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--extra-power-consumption
+
+
