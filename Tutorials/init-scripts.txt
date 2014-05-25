@@ -5,6 +5,9 @@
 - if using Extensions, be sure to host them in '/usr/local/share/SuperCollider/Extensions' NOT '/home/debian/.local/share/SuperCollider/Extensions' (as this folder is not in the search path when sclang runs as an initScript)
 - PWM is problematic on startup
 
+- useful link 1: Making scripts run at boot time with Debian: http://www.debian-administration.org/articles/28
+- useful link 2: http://www.debianhelp.co.uk/initscripts.htm
+
 * Long Tutorial
 
 - the aim of this tutorial is to show how to run audio and sensing processes at startup on the beaglebone black

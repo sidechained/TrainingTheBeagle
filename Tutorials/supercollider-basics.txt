@@ -1,0 +1,19 @@
+TUTORIAL: SuperCollider Basics
+
+- this document covers the basics of using SuperCollider from the command line on a beaglebone black
+- presumes you are running Debian, with functioning soundcard, and SuperCollider and jackd/alsa are correctly installed
+- for a tutorial on how to install supercollider, see here: [TODO: link]
+
+* Extensions
+
+- custom classes can be used by placing .sc files in the SuperCollider extension folder(s)
+- there are two types of extension folder in SuperCollider, user extensions (user-specific) and system extensions (system-wide)
+- user extensions is found at: /home/debian/.local/share/SuperCollider/Extensions
+- system extensions is found at: /usr/local/share/SuperCollider/Extensions
+- this can also be queried from sclang itself, as follows:
+- firstly, start sclang from the command line:
+$ sclang
+- then from the sclang command prompt, type:
+Platform.userExtensionDir
+- or
+Platform.systemExtensionDir

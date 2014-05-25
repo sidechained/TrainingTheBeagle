@@ -1,0 +1,8 @@
+* TUTORIAL: Internet Access
+
+- TO BE WRITTEN
+- will deal with how to access the internet over ethernet from a beaglebone (to perform software updates etc)
+- this was a major problem in CW/RebDev
+- will document two approaches which I have tried:
+- 1. beagle -> wireless router via ethernet
+- 2. beagle -> wireless router via wifi dongle

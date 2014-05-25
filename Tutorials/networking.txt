@@ -1,0 +1,70 @@
+TUTORIAL: Networking
+
+- this document includes tutorials on basic networking and troubleshooting
+- may have to be split into separate docs later
+
+* 1. Tutorials
+
+** Giving the Beaglebone a Static IP
+
+- this section assumes by default that you are working with ethernet
+- guide here: http://elinux.org/RPi_Setting_up_a_static_IP_in_Debian
+- and here: http://www.howtogeek.com/howto/ubuntu/change-ubuntu-server-from-dhcp-to-a-static-ip-address/
+
+- on Debian, DHCP is enabled by default
+- using DHCP is often an issue
+- to change this we need to edit /etc/network/interfaces
+- firstly, log in
+$ ssh debian@192.168.1.3
+- now make a backup of the interfaces file (in case of emergency)
+$ sudo cp /etc/network/interfaces /etc/network/interfaces.bak
+- edit the original version
+$ sudo nano /etc/network/interfaces
+- replace the following...
+iface eth0 inet dhcp
+- with… (example for IP of 192.168.1.3)
+
+iface eth0 inet static
+       address 192.168.1.3
+       netmask 255.255.255.0
+       network 192.168.1.0
+       broadcast 192.168.1.255
+       gateway 192.168.1.1
+
+- restart networking
+$ sudo /etc/init.d/networking restart
+$ sudo /etc/init.d/networking reload
+
+** Working with DHCP
+
+- is there an easy way work with the beagle over DHCP and know what IP it has been allocated?
+- according to http://www.armhf.com/index.php/getting-started-with-ubuntu-img-file/ Wheezy runs a DHCP server by default
+- suggestion is: Try pinging it by name: "debian-armhf" for the debian images and "ubuntu-armhf" for the ubuntu images. It is setup for DHCP, so whatever your network handed out. You could mount partition 2 of the SD card and check the logs or edit the /etc/network/interfaces file to have a static IP address:
+
+** Working over USB
+
+** Using beaglebone.local
+
+- in what cases can this approach be used instead?
+- only when connected over USB?
+
+** Enabling a WIFI Dongle
+
+- this requires different settings in the /etc/interfaces file
+- NOTE FROM GRAHAM: i started experimenting with this, will find the docs and add here
+
+* 2. Troubleshooting
+
+- a list of common network problems and how to resolve them
+
+** How to make sure the ethernet adapter appears as eth0
+- in some cases, it is possible for the ethernet adapter to appear as eth1, not eth0 which can cause a lot of head bashing
+- e.g. this can happen when sharing a single SD card with multiple BeagleBones
+- for more info see http://eewiki.net/display/linuxonarm/BeagleBone+Black#BeagleBoneBlack-Networking
+
+- to always enable the Ethernet interface as eth0, do the following:
+$ sudo nano /etc/udev/rules.d/70-persistent-net.rules
+- add the following lines
+/etc/udev/rules.d/70-persistent-net.rules
+# BeagleBone: net device ()
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"

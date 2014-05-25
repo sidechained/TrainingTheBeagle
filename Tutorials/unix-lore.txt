@@ -1,12 +1,6 @@
 * Glossary of Unix Lore
 
-- GRAHAM'S OBNOXIOUS MESSAGE IS HERE IN YOUR FACE!!!!!!!
-
 - a quick primer of most of the things you need to know about unix/terminal to get started with the Beaglebone Black
-
-0. Links to useful sites:
-
-- http://www.debian.org/doc/manuals/debian-reference/ch-tutorial.de.html
 
 1. Syntax
 
@@ -17,16 +11,48 @@ $	= used to mark start of the command prompt
 |	= (pipe) 
 /	= (backslash)
 
-2. Keyboard Shortcuts
+2. 
+
+- this section involves running small programs (in /sbin typically)
+- not unix commands as such but 
+
+* reboot
+- reboot the beagle board from the command line:
+$ sudo /sbin/reboot
+$ sudo /sbin/shutdown -r now
+
+* shutdown
+- shutdown the beagle board from the command line:
+$ sudo /sbin/shutdown now
+
+* setting the correct time
+- NOTE:requires an internet connection
+$ /usr/sbin/ntpdate -b -s -u pool.ntp.org
+
+3. Keyboard Shortcuts
+
+- can be found here in German: http://www.debian.org/doc/manuals/debian-reference/ch-tutorial.de.html
 
 CTRL+C	terminate the running process
 CTRL+A	go to start of the command line
 CTRL+K	clear the buffer (cannot scroll back)
 
-../.. 	Change to lowest directory
-type letter + TAB = will complete your entry with what Foldernames exist
+Einige bedeutende Tastenkombinationen für die Linux-Konsole sind ("Plus", "Minus" beziehen sich auf den numerischen Ziffernblock):
+     Alt-F1 bis F6:       Wechsel auf anderes Pseudo-Terminal
+     Strg-Alt-F1 bis F6:  Wechsel auf anderes Pseudo-Terminal
+                          (aus X-Windows, DOSEMU, etc.)
+     Alt-F7:              Wechsel zu X-Windows
+     Strg-Alt-Minus:      Ändern der Auflösung in X-Windows
+     Strg-Alt-Plus:       Ändern der Auflösung in X-Windows (umgekehrte Reihenfolge)
+     Strg-Alt-Rücktaste:  Beenden des X11-Server-Programms
+     Alt-X, Alt-C, Alt-V: In üblichen Windows/Mac-Tastenkombinationen
+                          zum Ausschneiden, Kopieren und Einfügen wird
+                          die Strg-Taste durch Alt in einigen
+                          Programmen wie Netscape Composer ersetzt.
 
-3. A list of useful terminal commands
+../.. 	wechselt ins niedrigste Verzeichnis
+
+3. Useful Terminal Commands
 
 * cd
 
@@ -65,16 +91,27 @@ $ rm -R annoyingFolder
 * ssh
 
 - used to log into the beaglebone e.g.
-$ ssh debian@192.168.2.14
+$ ssh debian@192.168.1.1
 
 * scp
 
 - copy files over a secure connection (e.g. from laptop to beagle)
 - can be used for both files and folders
 - copying files:
-$ scp -r testfile.txt debian@192.168.2.14:/home/debian
+$ scp -r testfile.txt debian@192.168.1.1:/home/debian
 - copying folders:
-$ scp -r soundvase debian@192.168.2.14:/home/debian
+$ scp -r soundvase debian@192.168.1.1:/home/debian
+
+* sftp
+- copy files between the beagle and another device
+- basic usage:
+$ sftp debian@192.168.7.5
+- you will now be in sftp mode
+- there are two useful commands
+- put (from laptop to beaglebone) e.g.
+put aFileFromMyLaptop.txt
+- get (from beaglebone to laptop) e.g.
+get aFileFromMyBeagle.txt
 
 * sudo
 
@@ -85,39 +122,36 @@ $ sudo python sense.py
 - then enter the password for your beaglebone
 - NOTE: there are also cases where sudo should not be used e.g. running sclang, where superuser is not in the audio group, but the standard user is
 
-* reboot
-
-- reboot the beagle board from the command line:
-$ sudo /sbin/reboot
-
-* shutdown
-
-- shutdown the beagle board from the command line:
-$ sudo /sbin/shutdown now
-
 * pkill
 
 - kill process by name e.g:
 $ pkill python
 
-* 
+* lsoi?
 
 * chmod
 - change file permissions
 - example?
 
 * nano
-- simple 
+- simple text editor
+- interfaces is mostly self-explanatory, unlike vim
+$ nano myTextFile.txt
 
 * pico
 - see nano
+- is there any difference?
 
 * vi
-- 
-
-
-
-http://www.tldp.org/HOWTO/Tips-HOWTO.html
+- another more difficult to use text editor (IMO)
+- sometimes used by git for comments
+- basic usage:
+$ vi myTextFile.txt
+- I enters insert mode
+- ESC exits insert mode
+- then type :w to write the file
+- followed by :w to quit
+- more details here: http://www.tldp.org/HOWTO/Tips-HOWTO.html
 
 * pwd
 
@@ -136,7 +170,6 @@ $ cat id_rsa.pub
 
 * grep
 - perform regular expression search on the 
-
 
 * others:
 

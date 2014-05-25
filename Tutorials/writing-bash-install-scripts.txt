@@ -1,0 +1,4 @@
+TUTORIAL: Writing Bash Install Scripts
+
+- TO BE WRITTEN
+- go back over the scripts I wrote in Crewe for CW and understand how they work and could be adapted more generally

@@ -1,0 +1,131 @@
+TUTORIAL: Working with LEDS
+
+- NOTE: this is a straight copy and paste from the google doc (needs reworking)
+- NOTE: need to add the notes I took from working with SPI with the LED signboards here
+
+idea
+- build 6 ‘character boards’ - designed to display a single chinese character each
+- WS2811 seems best choice
+- Q: how to wire?
+from http://wiki.hacdc.org/index.php/WS2811_Arduino_Howto
+Power supply should provide +5v dc. Connect red and black line coming out of the power supply to the red and black wires on the light strip. Connect the blue line from the light strip, (which connects to the LED strip at the point labeled DIN), to pin 6 on your Arduino. Connect the black line from the LED strip to the Ground pin on your Arduino.
+- A: How to guide for Arduino:
+- Q: which type of pins to use on beagleboard?
+- A: some people use SPI, some PRU, some standard pinouts I think
+- Q: which code to use?
+- Q: how many leds per meter?
+- A: some have 144, some 60, some 30
+- Q: can strips be cut and layered into arrays?
+- A: yes, see video here: http://www.youtube.com/watch?v=jbNSa695bVo
+- A: (typically) Strips can be cut with scissors at every single LED...this means you can cut each half-meter strip into 15 independent pixels, or to the exact length required by your project.
+- A: just cut and solder black, red, blue cables to next part of strip
+
+
+- Q: how much power is need per strip
+
+
+- simply treat the array as one strip
+- how many rows and columns for each board
+- how many leds do we need to effectively draw a Chinese character?
+- according to this 16 x 16 is enough: http://www.elecfreaks.com/store/led-led-matrix-c-20_23.html
+- so for 6 single character signs we would need 1536 LEDs! (too expensive)
+- 16/144 = 0.1111 meter
+- 16/60 = 0.26 meter
+- 16/30 = 0.53 meter
+
+
+Arrays or Strips?
+- strips are easier, leds are more spaced out, better for audience
+- arrays we need to build the controller
+
+
+Strips Guide
+- An addressable RGB LED strip is a long flexible strand of LEDs each of which can be individually set to a certain color (hence: addressable).
+- The chips between the LEDs listen to commands from a controller.
+- This can be an Arduino or other microcontroller or a controller specifically designed for LED strips.
+- Some are splittable every two LEDs, others every three
+- comes down to choice between WS2811 and LPD8806
+
+
+WS2801
+- datasheet: http://www.adafruit.com/datasheets/WS2811.pdf
++ Smart controller with easy control scheme
++ 8 bits, 256 levels per channel, 16.7 million colors total
+- the WS2801 is a “3-Channel Constant Current LED Driver With Programmable PWM Outputs”.
+- allows you to adjust the brightness of every LED in 256 steps using PWM.
+- A WS2801 chip controls three channels, so you need one chip for every RGB LED.
+- The chip runs on 3.3-5.5V.
+- how does the 2801 differ from 2811
+- 2811 less expensive, but the dimming properties are the same on both chips. The WS2811 uses 3 wire as opposed to the 4 of the 2801.
+- £6 per meter here 60 LEDS per meter:
+http://item.taobao.com/item.htm?spm=a230r.1.14.24.H2mNid&id=21186335951&_u=jvhb21lbc84&initiative_new=1
+£15 per meter here 144 LEDS per meter:
+http://item.taobao.com/item.htm?spm=a230r.1.14.11.H2mNid&id=25128180237&_u=jvhb21lf703&initiative_new=1
+
+
+Example Projects
+- code for beagleboard here:
+http://forum.beaglefu.com/topic/80-beaglebone-black-drive-a-ws2811-led-strip-with-spi/
+- http://www.nycresistor.com/2013/07/27/ledscape/
+- https://github.com/osresearch/LEDscape
+- http://hackaday.com/2013/05/26/update-live-video-played-on-led-strip-display/
+- http://blog.boxysean.com/2012/08/12/first-steps-with-the-beaglebone-pru/
+- http://www.pjrc.com/teensy/td_libs_OctoWS2811.html
+- http://www.dorkbotpdx.org/files/mf2013_handout.pdf- http://wiki.hacdc.org/index.php/WS2811_Digital_RGB_LED#Arduino
+
+LPD8806
+- like the WS2801 but:
+- works from 2.7V up
+- has six channels allowing it to control two RGB LEDs.
+- The downside is that it only does 7 bit PWM, making 127 brightness levels per LED for up to 21 bit color (2 million colors).
+- There are no English datasheets available and the protocol description is not open.
+- Luckily the folks at Adafruit reverse engineered the protocol and released a LPD8806 Arduino library.
+- more info here: http://dev.moorescloud.com/2012/10/18/about-lpd8806-based-rgb-led-strips/
+- £4 - 6 per meter, see taobao link:
+http://item.taobao.com/item.htm?spm=a230r.1.14.26.eijEiy&id=25088000041&_u=jvhb21l07f9&initiative_new=1
+
+
+https://github.com/adafruit/Adafruit-Raspberry-Pi-Python-Code/blob/master/Adafruit_LEDpixels/Adafruit_LEDpixels.py
+
+
+Driving LED Arrays on BeagleBoard:
+http://derekmolloy.ie/driving-led-arrays-using-the-tlc5940/
+http://raspberryalphaomega.org.uk/2013/06/21/driving-a-led-array-from-a-beaglebone-black/
+http://www.adafruit.com/blog/2013/08/05/ledscape-when-you-need-to-control-kilometers-of-led-strips-on-your-beaglebone-black-beaglebone/
+http://beagleboard.org/blog/2013-05-21-beaglebone-black-was-huge-hit-at-maker/
+
+
+What Do LCD Pinouts Do?
+http://www.element14.com/community/community/knode/single-board_computers/next-gen_beaglebone/blog/2013/05/28/bbb--connecting-up-an-lcd
+
+
+Info on how the LEDs can be controlled: https://www.adafruit.com/blog/2012/07/18/updated-tutorial-12mm-led-pixels/
+
+
+How to control LED strips:
+http://nut-bolt.nl/2012/rgb-led-strips/
+- The strips come in various configurations. Some run on 12V, others on 5V.
+
+
+Products on Taobao that might work:
+1. Strips:
+LPD8806 (led strip) : https://solarbotics.com/download.php?file=1889‎
+tutorial : http://dev.moorescloud.com/2012/10/18/about-lpd8806-based-rgb-led-strips/
+WS2811 (led strip) : http://www.adafruit.com/datasheets/WS2811.pdf
+WS2801 : http://www.adafruit.com/datasheets/WS2801.pdf
+
+
+2. Arrays:
+Red: http://www.seeedstudio.com/depot/20mm-88-square-matrix-led-red-p-36.html
+Red/Green: http://www.seeedstudio.com/depot/60mm-square-88-led-matrix-bicolor-redgreen-p-35.html?cPath=34_77
+RGB: http://www.seeedstudio.com/depot/60mm-square-88-led-matrix-super-bright-rgb-p-113.html
+http://www.seeedstudio.com/depot/10-segment-led-gauge-bar-p-568.html
+
+
+SPI:
+- can be used to interface with LED or LCD panels, it seems
+http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus
+http://www.gigamegablog.com/2012/09/09/beaglebone-coding-101-spi-output/
+
+
+add SPI module to python

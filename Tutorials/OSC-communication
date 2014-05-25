@@ -1,0 +1,22 @@
+TUTORIAL: OSC Communication
+
+- this document deals (note: WILL deal) with OSC communication between SuperCollider and Python
+- use ultra minimal version of soundvase project as a 
+
+Installing OSC Library for Python
+- first, clone the following git repository
+$ git clone https://github.com/gardaud/pyOSC.git
+- then do:
+$ sudo python ./setup.py install
+
+
+* OSC Python libraries
+
+- currently using pyOSC, but there are others:
+- scosc, python OSC for supercollider: http://www.patrickkidd.com/
+SC 0.2, python client for SuperCollider http://pypi.python.org/pypi/SC/0.2
+
+* Links
+
+link: http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/OSC-first-timer-problem-td5211207.html
+
