@@ -1,4 +1,4 @@
-TUTORIAL: Installing Software on the Beaglebone Black
+TUTORIAL: Preparing an SD Card For Use with the Beaglebone Black
 
 \TODO/
 > complete Installing the Adafruit BBIO Library offline tutorial
