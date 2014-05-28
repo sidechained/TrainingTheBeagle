@@ -35,4 +35,13 @@ http://aquaticus.info/beaglebone-web-led
 - Pi Filler (copies images onto SD card): http://ivanx.com/raspberrypi/
 - OS images for Ubuntu and Debian: http://www.armhf.com/index.php/boards/beaglebone-black/
 
+* Interesting Projects
+
+Library for embedded real-time Digital Signal Processing / Digital Image Processing algorithms, XDAIS compliant.
+http://beagleboard.org/project/disptec/
+
+Satellite CCRMA Image
+Info here: https://ccrma.stanford.edu/~eberdahl/Satellite/
+- not available for BeagleBone Black as yet
+
 

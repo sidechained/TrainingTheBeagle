@@ -4,5 +4,14 @@
 - will deal with how to access the internet over ethernet from a beaglebone (to perform software updates etc)
 - this was a major problem in CW/RebDev
 - will document two approaches which I have tried:
-- 1. beagle -> wireless router via ethernet
-- 2. beagle -> wireless router via wifi dongle
+
+* beagle -> wireless router via ethernet
+
+* beagle -> wireless router via wifi dongle
+
+*** snippets from google doc:
+- FIXED: need to share laptop internet connection with BeagleBoard
+- 1. connect ethernet cable from macbook to BeagleBoard
+2. in System Preferences -> Sharing enable Internet Sharing (WIFI to Ethernet))
+
+-  now that mac has a manual IP, a) internet connection sharing doesn’t work and b) can’t ssh in using ethernet over USB. Workaround for now is to use the old /etc/network/interfaces file and plug USB keyboard if need to install things over the internet, then switch back to the new /etc/network/interfaces file to allow ssh access again (phew!)

@@ -1,11 +1,48 @@
-* TUTORIAL: Passwordless login on the Beaglebone Black
+* TUTORIAL: Logging in to the Beaglebone Black Using SSH
 
-- NOTE: this tutorial assumes you are running Debian Linux on the Beaglebone
+- NOTE: changed this document to a general discussion of ssh issues
 
-* Introduction
+- this document details how to remotely access your beaglebone from the command line using SSH
+- it currently covers basic login, and has a tutorial for passwordless login
+- you will need to know the IP of your beaglebone before starting, if unsure please see the 'networking' tutorial for details on how to set this up
+
+* SSH Basics
+
+- connect your beaglebone via ethernet
+- ping the beagle board to see if it exists
+$ ping 192.168.2.14
+- you should see:
+PING 192.168.2.14 (192.168.2.14): 56 data bytes
+64 bytes from 192.168.2.14: icmp_seq=0 ttl=64 time=0.702 ms
+64 bytes from 192.168.2.14: icmp_seq=1 ttl=64 time=0.543 ms
+64 bytes from 192.168.2.14: icmp_seq=2 ttl=64 time=0.543 ms
+- now, attempt to login
+$ ssh debian@192.168.2.14
+- enter password (by default: debian)
+- if successful, the debian login message should appear as follows:
+Linux debian-armhf 3.8.13-bone30 #1 SMP Thu Nov 14 02:59:07 UTC 2013 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Jan  1 00:01:02 2000 from 192.168.2.21
+- to exit, simply...
+$ exit
+
+Troubleshooting:
+
+\TODO/
+- man in the middle attack error
+- how to solve the 'connection refused' error
+- having wifi up and running can sometimes causes problems, if in doubt turn off wifi and reconnect the ethernet cable
+
+* TUTORIAL: Passwordless login
 
 - logging into the beaglebone the traditional way (i.e. $ ssh debian@192.168.x.x) requires a password, which can become tedious to enter
-- an alternative, passwordless approach involves generating a secure SSH public key on the device that connects to the beaglebone (the host)
+- a passwordless approach involves generating a secure SSH public key on the device that connects to the beaglebone (the host)
 - this key is then copied onto the beaglebone itself, the host becomes "trusted" and the password is no longer needed to gain access
 
 * Generating a public SSH key on the host (i.e. a laptop)
@@ -59,11 +96,11 @@ $ exit
 - log back in again, and no password should be required
 $ ssh debian@192.168.2.14
 
-* Help, I'm Locked Out of my Beaglebone!
+Troubleshooting
 
-- Here are a couple of common problems and ways to fix them
+- Here are a couple of common problems and ways to fix them:
 
-** Public key (on the host) does not feature within authorized_keys (on the beaglebone)
+1. Public key (on the host) does not feature within authorized_keys (on the beaglebone)
 
 - many problems can stem from this mismatch
 - to double check, view the public key of the host, as follows:
@@ -73,7 +110,7 @@ $ cat /Volumes/rootfs/home/debian/.ssh/authorized_keys
 - check to see if any item within authorized_keys matches the host public key
 - using this knowledge it should be possible to regain entry to the beaglebone and re-add the host's public key to beagle bone's authorized_keys as above
 
-** Inaccurate known_hosts file on the host machine
+2. Inaccurate known_hosts file on the host machine
 
 - the known_hosts file on the host machine may contain the wrong key for the beaglebone
 - (this has happened to me in the past, not sure why exactly)

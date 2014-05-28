@@ -1,7 +1,7 @@
 TUTORIAL: SuperCollider Basics
 
 - this document covers the basics of using SuperCollider from the command line on a beaglebone black
-- presumes you are running Debian, with functioning soundcard, and SuperCollider and jackd/alsa are correctly installed
+- it presumes you are running Debian, with functioning soundcard, and SuperCollider and jackd/alsa are correctly installed
 - for a tutorial on how to install supercollider, see here: [TODO: link]
 
 * Extensions
@@ -17,3 +17,18 @@ $ sclang
 Platform.userExtensionDir
 - or
 Platform.systemExtensionDir
+
+* Troubleshooting
+
+- a list of known bugs and issues when using sclang
+
+** "ERROR: No GUI scheme active" when running sclang
+
+- the following error occurs when running sclang, but is not fatal and can be ignored
+
+Meta_GuiRedirect:doesNotUnderstand   0xdf60b0
+	arg this = <instance of Meta_Font>
+	arg selector = 'defaultSansFace'
+	arg args = [*0]
+	var impl = nil
+
