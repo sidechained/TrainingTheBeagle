@@ -154,5 +154,37 @@ http://eewiki.net/display/linuxonarm/BeagleBone+Black
 
 * Installing the Python pyOSC Library
 
-\TODO/
+** Optional Section
 
+- NOTE: this section can be skipped if you already performed these commands in the Adafruit BBIO library installation (see above)
+
+- ssh into the beaglebone black
+$ ssh debian@192.168.2.14
+- make sure the beagle has the correct date and time
+$ sudo ntpdate pool.ntp.org
+- make sure your debian packages are up to date
+$ sudo apt-get update
+- install python-pip package and dependecies
+$ sudo apt-get install build-essential python-dev python-pip -y
+
+** Required Section
+
+- download an archive from here: https://trac.v2.nl/attachment/wiki/pyOSC/pyOSC-0.3.5b-5294.tar.gz
+- copy the tar.gz file onto the beagleboard using scp
+$ scp /path debian@192.168.2.14 :/home/Debian
+- ssh in and untar the file
+$ ssh debian@192.168.2.14
+$ cd /home/debian
+$ tar -xf pyOSC-0.3.5b-5294.tar.gz
+- install pyosc
+$ cd pyOSC-0.3.5b-5294
+NOTE TO SELF: check the above line 
+$ sudo python setup.py install
+- remove the source code and zip
+$ cd ..
+$ rm -r pyOSC-0.3.5b-5294 
+$ rm pyOSC-0.3.5b-5294.tar.gz
+
+** Testing
+
+\TODO/
