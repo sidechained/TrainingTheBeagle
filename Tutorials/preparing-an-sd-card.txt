@@ -1,6 +1,7 @@
 TUTORIAL: Preparing an SD Card For Use with the Beaglebone Black
 
 \TODO/
+
 > complete Installing the Adafruit BBIO Library offline tutorial
 > complete pyOSC installation tutorial
 > add section on creating a disk image of the SD card
@@ -15,7 +16,9 @@ TUTORIAL: Preparing an SD Card For Use with the Beaglebone Black
 -- pyOSC (python library for communicating via the Open Sound Control protocol)
 
 - the first three of these will be covered together as one tutorial, whilst the latter two will be covered as separate guides
-- NOTE: debian will be installed on the SD card from a PC, whilst the other software will be installed from the command line by booting the SD card in the beaglebone and logging in to it remotely via SSH
+- NOTE: debian will be installed on the SD card from a PC...
+- ...whilst the other software will be installed from the command line by booting the SD card in the beaglebone and logging in to it remotely via SSH
+- NOTE: for more information on creating an image of your SD card for backup purposes, see the tutorial entitled "cloning-sd-cards.txt"
 
 * Requirements
 
@@ -30,12 +33,29 @@ TUTORIAL: Preparing an SD Card For Use with the Beaglebone Black
 
 * Installing Debian, Jack and Supercollider
 
-- these are the basic requirements for the Beaglebone to run audio
-- Fredrik Olofsson has produced excellent tutorials on this, no need to reproduce them here
+** Tutorial
+
+- Installing Debian, Jack and Supercollider are the basic requirements for the Beaglebone to run audio
+- Fredrik Olofsson has produced excellent tutorials on this, which we will not attempt to reproduce here
 - There are two possible tutorials, as follows:
 - 1. in depth: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121
 - 2. simplified: http://supercollider.github.io/development/building-beagleboneblack.html
-- also, some discussion: http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/supercollider-on-Beaglebone-Black-td7599684.html
+- also, some discussion here: http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/supercollider-on-Beaglebone-Black-td7599684.html
+
+** Troubleshooting
+
+- this section covers some things that can wrong during the above install process and how to solve them:
+
+"cc1plus: error: unrecognized command line option '-std=c++11'" when building supercollider from source
+
+- can occur when doing $ sudo make install
+- newer kernels seem to include old version of g++, which cmake doesn’t like
+- solution is:
+$ sudo apt-get install g++-4.7
+$ cmake -L -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DSSE=OFF -DSSE2=OFF -DSUPERNOVA=OFF -DNOVA_SIMD=OFF -DSC_QT=OFF -DSC_WII=OFF -DSC_ED=OFF -DSC_IDE=OFF -DSC_EL=ON -DCMAKE_CXX_COMPILER=g++-4.7 -DSEQAN_C++11_STANDARD=ON ..
+
+NOTE: Debian has the package under the name gcc-4.8 (or for the c++ compiler, g++-4.8)
+NOTE: Installing those packages will not mess up your OS, as long as you do not rename it to g++.
 
 * Installing the Adafruit BBIO Library
 
@@ -120,9 +140,9 @@ http://learn.adafruit.com/measuring-temperature-with-a-beaglebone-black
 
 d. Troubleshooting
 
-** PWM Not Working in Adafruit Library
+PWM Not Working in Adafruit Library
 
-- this down to an issue in the kernel, ideally need to update to bone24 or higher
+- this is down to an issue in the kernel, ideally need to update to bone24 or higher
 - fixed it by following instructions here to flash sd card wtih debian 7.1 + bone24 : http://elinux.org/BeagleBoardDebian
 also useful: http://elinux.org/BeagleBone
 - related links here:
@@ -135,17 +155,4 @@ http://eewiki.net/display/linuxonarm/BeagleBone+Black
 * Installing the Python pyOSC Library
 
 \TODO/
-
-* TROUBLESHOOTING
-
-** "cc1plus: error: unrecognized command line option '-std=c++11'" when building supercollider from source
-
-- can occur when doing $ sudo make install
-- newer kernels seem to include old version of g++, which cmake doesn’t like
-- solution is:
-$ sudo apt-get install g++-4.7
-$ cmake -L -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DSSE=OFF -DSSE2=OFF -DSUPERNOVA=OFF -DNOVA_SIMD=OFF -DSC_QT=OFF -DSC_WII=OFF -DSC_ED=OFF -DSC_IDE=OFF -DSC_EL=ON -DCMAKE_CXX_COMPILER=g++-4.7 -DSEQAN_C++11_STANDARD=ON ..
-
-NOTE: Debian has the package under the name gcc-4.8 (or for the c++ compiler, g++-4.8)
-NOTE: Installing those packages will not mess up your OS, as long as you do not rename it to g++.
 
