@@ -1,7 +1,7 @@
 TUTORIAL: OSC Communication
 
 - this document deals (note: WILL deal) with OSC communication between SuperCollider and Python
-- use ultra minimal version of soundvase project as a 
+- use ultra minimal version of soundvase project as an example
 
 Installing OSC Library for Python
 - first, clone the following git repository

@@ -1,5 +1,12 @@
 * TUTORIAL: Github Basics
 
+- this document covers some basics of how to use Github 
+- it is basically a document of our experiences of how to share beaglebone projects using github
+
+
+** Friday 23rd May
+(we worked on both being able to contribute to the /TrainingTheBeagle github page)
+
 - sidechained created a master repo
 - monodread forked it on the github website (fork button)
 - monodread cloned his fork of it to a local directory:

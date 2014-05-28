@@ -4,7 +4,7 @@ Links and Resources
 - covers reference documents, discussion, tutorials and software
 - for more specific resources on specific topics please see the individual tutorials
 
-* Reference Documents
+* Essentials
 
 Official Wiki: http://circuitco.com/support/index.php?title=BeagleBoneBlack#Revision_A5C_.28Production_Version.29
 http://elinux.org/BeagleBone
@@ -35,7 +35,7 @@ http://aquaticus.info/beaglebone-web-led
 - Pi Filler (copies images onto SD card): http://ivanx.com/raspberrypi/
 - OS images for Ubuntu and Debian: http://www.armhf.com/index.php/boards/beaglebone-black/
 
-* Interesting Projects
+* Misc Interesting Projects
 
 Library for embedded real-time Digital Signal Processing / Digital Image Processing algorithms, XDAIS compliant.
 http://beagleboard.org/project/disptec/
@@ -43,5 +43,7 @@ http://beagleboard.org/project/disptec/
 Satellite CCRMA Image
 Info here: https://ccrma.stanford.edu/~eberdahl/Satellite/
 - not available for BeagleBone Black as yet
+
+http://www.fredrikolofsson.com/f0blog/?q=node/594
 
 

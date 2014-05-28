@@ -2,8 +2,12 @@ TUTORIAL: Cloning SD Cards
 
 \TODO/
 > basically complete, but needs testing and tidying up
+> could add section on flashing an SD card to the beaglebone internal memory (eMMC) - something I've been interested to do but never tried, pros and cons are:
+++ would speed up boot process (useful if the devices crash out in performance)
+++ would mean we don’t need to have SD cards for each device
+-- may make it harder to revert to stock image
 
-- this documents covers two procedures for cloning SD cards
+- this document covers two procedures for cloning SD cards
 - cloning is generally a slow process, so is not advisable in time critical situations
 - for us so far, cloning has been useful in two situations:
 - 1. creating a modified debian image which has all the software we need already installed
