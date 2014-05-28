@@ -1,7 +1,14 @@
 # Training The Beagle
 
-A project about learning how to use the Beaglebone Black, by Jonas Hummel and Graham Booth
-and make it easy to reproduce the lessons in the future
+A project about learning how to use the Beaglebone Black, by Jonas Hummel and Graham Booth.
+
+The aim of this repo is to document our work using the Beaglebone for combined audio and physical computing projects, and to make this work reusable as lessons or tutorials for others. All the projects contained here are 
+
+Debian Linux
+Jack
+SuperCollider
+Adafruit BBIO library
+Open Sound Control
 
 ## Topic List
 
