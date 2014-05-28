@@ -5,7 +5,7 @@ TUTORIAL: Audio Hardware
 
 * USB Thumbdrive Soundcard
 
-- TODO: cover jackd and alsa settings here
+\TODO/ overview of jackd and alsa settings here
 
 * HDMI
 

@@ -1,5 +1,8 @@
 TUTORIAL: Cloning SD Cards
 
+\TODO/
+> basically complete, but needs testing and tidying up
+
 - this documents covers two procedures for cloning SD cards
 - cloning is generally a slow process, so is not advisable in time critical situations
 - for us so far, cloning has been useful in two situations:
@@ -32,7 +35,7 @@ $ sudo tar -zcvf ~/rootfs.tar.gz .
 https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20card/beagleboard/X7XDd3BCz40/KKRKmsWQH4AJ
 - to reinstate:
 $ sudo tar -xzvf rootfs.tar.gz -C /Volumes/rootfs
-- need hyphen here or not?
+- Q: need hyphen here or not?
 
 * Method 2: Easy but Slow
 

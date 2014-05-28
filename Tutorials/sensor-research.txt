@@ -1,0 +1,38 @@
+* Sensor Research
+
+- this document collects together some snippets from the google doc on how to use various sensors
+
+\TODO/
+> add section on how to use the temperature sensor (cooking pot) - this involved modifying the device tree overlay
+
+* HC-SR04 Ultrasonic Ranging Sensor
+
+datasheet: http://www.micropik.com/PDF/HCSR04.pdf
+
+http://teknoman117.wordpress.com/2013/04/30/using-a-beaglebone-with-an-hc-sr04-sonar/ says…
+
+...about power: 
+The HC-SR04 is a 5V device, and will not operate at any less than that. As the beaglebone, along with every other ARM Cortex based system, has a maximum voltage of 3.3V, we have to protect the beaglebone from the sonar.  Essentially all I did for this was connect an NPN transistor between one of the beaglebone’s IO pins and ground.  This is fine considering that each of the IO lines on the beaglebone has a configurable pullup or pulldown resistor, we just have to note that the signal is now inverted.  The base of the transistor is connected through a 220 ohm resistor to the echo line of the sonar.  From experimenting, turns out 3.3V is enough to cause the sonar to trigger, so we can hook one of the beaglebone’s IO lines right up to the trigger pin.
+
+...about general operation:
+The operation of the HC-SR04 sonar is fairly straight forward.  One sends a trigger pulse of at least 10 microseconds.  The device then waits for the echo line to activate (in our inverted case, high to low transition) and measures the time from there until it deactivates (low to high in our case).  This time is the round trip flight time of the sonar pulse.  Divide this number by 58, and you have the distance to target in centimeters.
+
+His demo code here: https://github.com/Teknoman117/beaglebot
+
+* Other Sensors We Bought
+
+10 5549 photoresistor photoelectric switch element photodetector element 5MM Shenzhen 
+1027 mobile phone vibration motor flat motor motor mobile phone vibration motor Four Crown 
+Vibration shock sensor module normally open switch vibration sensor module alarm module 
+Sound Sensor Module Voice microphone sound detection module whistles Switch Sound Module
+Single-row seat one hole * 40 feet away from the crystal transposon transposon 2.54MM 18B20 
+Body infrared module HC-SR501 Body infrared sensor module 
+Stainless steel encapsulated waterproof temperature probe temperature sensor 18B20 DS18b20 
+MMA7361 acceleration sensor module tilt angle sensor replace MMA7260 
+801S electronic shock sensor Shenzhen Yu-song 
+A3144E Hall sensor Hall element 44E OH44E Electronics Shenzhen Yu Song 
+ADXL335 module tilt angle sensor module module code 
+Ultrasonic Module HC-SR04 Ultrasonic Ranging Module ultrasonic sensor distance measuring module information 
+Single Bus DHT11 Digital Temperature and Humidity Sensor Module Arduino electronic building blocks 
+NRF24L01 + power enhanced version SI24R01 2.4G wireless module electronics, Shenzhen 
+electroDragon - Chinese online shop
