@@ -1,7 +1,10 @@
 * TUTORIAL: Logging in to the Beaglebone Black Using SSH
 
-- NOTE: changed this document to a general discussion of ssh issues
-
+\TODO/
+> NOTE: changed this document to a general discussion of ssh issues
+> add more troubleshooting tips to SSH Basics section i.e.
+>> how to solve the 'connection refused' error
+>> having wifi up and running can sometimes causes problems, if in doubt turn off wifi and reconnect the ethernet cable
 - this document details how to remotely access your beaglebone from the command line using SSH
 - it currently covers basic login, and has a tutorial for passwordless login
 - you will need to know the IP of your beaglebone before starting, if unsure please see the 'networking' tutorial for details on how to set this up
@@ -34,10 +37,16 @@ $ exit
 
 Troubleshooting:
 
-\TODO/
-- man in the middle attack error
-- how to solve the 'connection refused' error
-- having wifi up and running can sometimes causes problems, if in doubt turn off wifi and reconnect the ethernet cable
+1. "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!"
+
+- if this message comes up, it usually means that you have switched to accessing another beaglebone which has the same IP address as the previous one
+- this can also happen when switching to a new SD card using the same beaglebone (effectively the same thing)
+- to resolve this, we need to remove our local reference to the, as follows (where 192.168.2.14 is the IP of your beaglebone)
+$ ssh-keygen -R 192.168.2.14
+- you should see:
+/Users/grahambooth/.ssh/known_hosts updated.
+Original contents retained as /Users/grahambooth/.ssh/known_hosts.old
+- now login again and it should work
 
 * TUTORIAL: Passwordless login
 
