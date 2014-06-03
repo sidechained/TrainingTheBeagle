@@ -1,4 +1,6 @@
 \TODO/
+> snappier, clearer title
+> move the longer tests and troubleshooting to a separate section at the bottom, so  '1. installing. 2. testing, 3.troubleshooting'
 > complete Installing the Adafruit BBIO Library offline tutorial
 > complete pyOSC installation tutorial
 > add section on creating a disk image of the SD card
