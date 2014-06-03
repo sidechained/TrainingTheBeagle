@@ -4,7 +4,7 @@
 > the 'long tutorial' belongs in the soundvase project, really
 > need to preface the long tutorial below with a super-simple initscript no sound, perhaps just print some numbers to a file for testing
 
-* TUTORIAL: Creating Initialisation Scripts on the Beaglebone Black
+# TUTORIAL: Creating Initialisation Scripts on the Beaglebone Black
 
 - this tutorial covers how to get the beaglebone black to (i.e. Debian) run software on startup
 - embedded systems

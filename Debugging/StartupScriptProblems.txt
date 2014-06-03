@@ -1,0 +1,123 @@
+:::: PROBLEM :::::
+calling sclang as background application ( with '&') from a script does not work!
+
+ERROR:
+terminate called after throwing an instance of 'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::system::system_error> >'
+  what():  assign: Operation not permitted
+
+
+Fredrik has the same problem apparently: (dated May 4th 2014)
+http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/start-sclang-with-systemctl-td7610429.html
+
+"if i remove the & in the script everything works fine."
+
+No solution found yet (May 25th, 2014)
+
+********
+http://stackoverflow.com/questions/23720222/boost-asio-async-reading-established-number-of-chars-from-stdin
+says:
+This is because regular files are not supported for async operations: Strange exception throw - assign: Operation not permitted
+
+Have a look with strace to see what syscall might be complaining
+
+
+ 4 down vote accepted
+	
+********
+http://stackoverflow.com/questions/23614370/strange-exception-throw-assign-operation-not-permitted/23631715#23631715
+says:
+
+Boost.Asio's POSIX stream-oriented descriptors explicitly do not support regular files. Hence, if test is a regular file, then ./client < test will result in posix::stream_descriptor::assign() failing when attempting to assign STDIN_FILENO to the stream_descriptor. The documentation states:
+
+    Boost.Asio includes classes added to permit synchronous and asynchronous read and write operations to be performed on POSIX file descriptors, such as pipes, standard input and output, and various devices (but not regular files).
+
+Consider passing the contents of the test file to client through a pipe.
+
+$ cat test | ./client
+
+
+http://docs.fabfile.org/en/1.5/faq.html#init-scripts-don-t-work
+says: 
+
+Init scripts don’t work!¶
+
+Init-style start/stop/restart scripts (e.g. /etc/init.d/apache2 start) sometimes don’t like Fabric’s allocation of a pseudo-tty, which is active by default. In almost all cases, explicitly calling the command in question with pty=False works correctly:
+
+sudo("/etc/init.d/apache2 restart", pty=False)
+
+If you have no need for interactive behavior and run into this problem frequently, you may want to deactivate pty allocation globally by setting env.always_use_pty to False.
+
+
+http://docs.fabfile.org/en/1.5/faq.html#why-can-t-i-run-programs-in-the-background-with-it-makes-fabric-hang
+
+
+The key to fixing this is to ensure that your process’ standard pipes are all disassociated from the calling shell, which may be done in a number of ways (listed in order of robustness):
+
+    Use a pre-existing daemonization technique if one exists for the program at hand – for example, calling an init script instead of directly invoking a server binary.
+
+            Or leverage a process manager such as supervisord, upstart or systemd - such tools let you define what it means to “run” one of your background processes, then issue init-script-like start/stop/restart/status commands. They offer many advantages over classic init scripts as well.
+
+    Use tmux, screen or dtach to fully detach the process from the running shell; these tools have the benefit of allowing you to reattach to the process later on if needed (though they are more ad-hoc than supervisord-like tools).
+
+    Run the program under nohup and redirect stdin, stdout and stderr to /dev/null (or to your file of choice, if you need the output later):
+
+    run("nohup yes >& /dev/null < /dev/null &")
+
+    (yes is simply an example of a program that may run for a long time or forever; >&, < and & are Bash syntax for pipe redirection and backgrounding, respectively – see your shell’s man page for details.)
+
+
+******************************
+Start processes with nohup command
+http://en.wikipedia.org/wiki/Nohup
+
+
+Note that nohupping backgrounded jobs is typically used to avoid terminating them when logging off from a remote SSH session
+
+
+ALTERNATIV:
+    The screen or tmux command can also detach a process from the current shell. It allows one to reattach to the process later on.
+
+    e.g. the following call will run somescript.sh detached from SIGHUP and in the background:
+
+ $ screen -A -m -d -S somename ./somescript.sh &
+
+http://en.wikipedia.org/wiki/Tmux
+
+http://www.sitepoint.com/tmux-a-simple-start/
+
+To start tmux just type:
+$ tmux
+
+You should get something that looks like this:
+Tmux commands
+Time to play around with tmux commands:
+
+    Ctrl-b c Create new window
+    Ctrl-b d Detach current client
+    Ctrl-b l Move to previously selected window
+    Ctrl-b n Move to the next window
+    Ctrl-b p Move to the previous window
+    Ctrl-b & Kill the current window
+    Ctrl-b , Rename the current window
+    Ctrl-b % Split the current window into two panes
+    Ctrl-b q Show pane numbers (used to switch between panes)
+    Ctrl-b o Switch to the next pane
+    Ctrl-b ? List all keybindings
+    Ctrl-b n (Move to the next window)
+    Ctrl-b p (Move to the previous window)
+    Ctrl-b l (Move to the previously selected window)
+    Ctrl-b w (List all windows / window numbers)
+    Ctrl-b <window number> (Move to the specified window number, the default bindings are from 0 – 9)
+    Ctrl-b % (Split the window vertically)
+    Ctrl-b : “split-window” (Split window horizontally)
+    Ctrl-b o (Goto next pane)
+    Ctrl-b q (Show pane numbers, when the numbers show up type the key to goto that pane)
+    Ctrl-b { (Move the current pane left)
+    Ctrl-b } (Move the current pane right)
+
+
+
+
+
+
+https://gist.github.com/Radamanf/7152723
