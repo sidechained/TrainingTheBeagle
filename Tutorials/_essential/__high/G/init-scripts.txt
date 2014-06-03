@@ -3,6 +3,7 @@
 > this file needs a little bit of work, but is mostly complete
 > the 'long tutorial' belongs in the soundvase project, really
 > need to preface the long tutorial below with a super-simple initscript no sound, perhaps just print some numbers to a file for testing
+> Fredrik's approach here (mention as an alternative): https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--autostart-jack-and-sc
 
 * TUTORIAL: Creating Initialisation Scripts on the Beaglebone Black
 
