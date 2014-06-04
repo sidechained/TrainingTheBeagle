@@ -1,0 +1,19 @@
+* Non-essential Resources
+
+- this document is a unorganised list of links to various interesting projects
+- it will be updated as we go i.e. a constant work in progress
+- NOTE: for more specific resources on specific topics please see the individual tutorials
+
+http://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black
+http://learn.adafruit.com/measuring-light-with-a-beaglebone-black
+http://learn.adafruit.com/blinking-an-led-with-beaglebone-black
+Flashing the eMMC with an Operating System: Tutorial: http://learn.adafruit.com/beaglebone-black-installing-operating-systems
+http://aquaticus.info/beaglebone-web-led
+Pi Filler (copies images onto SD card): http://ivanx.com/raspberrypi/
+OS images for Ubuntu and Debian: http://www.armhf.com/index.php/boards/beaglebone-black/
+Library for embedded real-time Digital Signal Processing / Digital Image Processing algorithms, XDAIS compliant.
+http://beagleboard.org/project/disptec/
+Satellite CCRMA Image: 
+Info here: https://ccrma.stanford.edu/~eberdahl/Satellite/
+- not available for BeagleBone Black as yet
+http://www.fredrikolofsson.com/f0blog/?q=node/594
