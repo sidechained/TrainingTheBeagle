@@ -1,11 +1,4 @@
-\TODO/
-> could rename this tutorial to something more intuitive like 'automatic-startup'
-> this file needs a little bit of work, but is mostly complete
-> the 'long tutorial' belongs in the soundvase project, really
-> need to preface the long tutorial below with a super-simple initscript no sound, perhaps just print some numbers to a file for testing
-> Fredrik's approach here (mention as an alternative): https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--autostart-jack-and-sc
-
-* TUTORIAL: Creating Initialisation Scripts on the Beaglebone Black
+Creating Initialisation Scripts on the Beaglebone Black
 
 - this tutorial covers how to get the beaglebone black to (i.e. Debian) run software on startup
 - embedded systems
@@ -15,10 +8,6 @@
 
 - useful link 1: Making scripts run at boot time with Debian: http://www.debian-administration.org/articles/28
 - useful link 2: http://www.debianhelp.co.uk/initscripts.htm
-
-* Short Tutorial
-
-\TODO/
 
 * Long Tutorial
 
