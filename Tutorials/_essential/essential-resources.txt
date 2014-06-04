@@ -1,4 +1,4 @@
-* Essential Resources
+Essential Resources
 
 - this document is a selection of what we consider to be essential resources for newcomers to the beaglebone black
 - NOTE: for general links to interesting projects, see non-essential-resources.txt
