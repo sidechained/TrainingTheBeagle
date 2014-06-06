@@ -1,8 +1,3 @@
-\TODO/
-> complete Installing the Adafruit BBIO Library offline tutorial
-> complete pyOSC installation tutorial
-> add section on creating a disk image of the SD card
-
 TUTORIAL: Preparing an SD Card For Use with the Beaglebone Black
 
 - this document explains how to install an operating system and some other important software on your Beaglebone Black
@@ -40,6 +35,32 @@ TUTORIAL: Preparing an SD Card For Use with the Beaglebone Black
 - 1. in depth: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121
 - 2. simplified: http://supercollider.github.io/development/building-beagleboneblack.html
 - also, some discussion here: http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/supercollider-on-Beaglebone-Black-td7599684.html
+
+* SSH Basics
+
+- connect your beaglebone via ethernet
+- ping the beagle board to see if it exists
+$ ping 192.168.2.14
+- you should see:
+PING 192.168.2.14 (192.168.2.14): 56 data bytes
+64 bytes from 192.168.2.14: icmp_seq=0 ttl=64 time=0.702 ms
+64 bytes from 192.168.2.14: icmp_seq=1 ttl=64 time=0.543 ms
+64 bytes from 192.168.2.14: icmp_seq=2 ttl=64 time=0.543 ms
+- now, attempt to login
+$ ssh debian@192.168.2.14
+- enter password (by default: debian)
+- if successful, the debian login message should appear as follows:
+Linux debian-armhf 3.8.13-bone30 #1 SMP Thu Nov 14 02:59:07 UTC 2013 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Jan  1 00:01:02 2000 from 192.168.2.21
+- to exit, simply...
+$ exit
 
 ** Troubleshooting
 

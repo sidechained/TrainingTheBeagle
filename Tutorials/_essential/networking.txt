@@ -1,7 +1,6 @@
 TUTORIAL: Networking
 
 - this document includes tutorials on basic networking and troubleshooting
-- may have to be split into separate docs later
 
 * 1. Tutorials
 
@@ -50,8 +49,17 @@ $ sudo /etc/init.d/networking reload
 
 ** Enabling a WIFI Dongle
 
+- It is recommended to use a WIFI dongle that is based on the RALINK 5370 chipset
+- e.g. http://www.aliexpress.com/store/product/Mini-150-Mbps-USB-Nano-802-11n-Wireless-Wifi-Network-LAN-Card-Adapter-EDUP-EP-N8531/409201_840839946.html
+
 - this requires different settings in the /etc/interfaces file
 - NOTE FROM GRAHAM: i started experimenting with this, will find the docs and add here
+
+# wireless network interface
+#auto wlan0
+#iface wlan0 inet dhcp
+#   wpa-ssid "my_wifi_name"
+#   wpa-psk  "my_wifi_pass"
 
 * 2. Troubleshooting
 
@@ -68,3 +76,5 @@ $ sudo nano /etc/udev/rules.d/70-persistent-net.rules
 /etc/udev/rules.d/70-persistent-net.rules
 # BeagleBone: net device ()
 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
+
+
