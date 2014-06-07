@@ -40,7 +40,7 @@ PING 192.168.2.14 (192.168.2.14): 56 data bytes
 ```
 * now, attempt to login  
 `$ ssh debian@192.168.2.14`
-* enter password (by default: debian)
+* enter password (default password = debian)
 * if successful, the debian login message should appear as follows:
 ```
 Linux debian-armhf 3.8.13-bone30 #1 SMP Thu Nov 14 02:59:07 UTC 2013 armv7l
@@ -53,24 +53,28 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Last login: Sat Jan  1 00:01:02 2000 from 192.168.2.21
 ```
-* to exit, simply...
+* to exit, simply...  
 `$ exit`
 
-### Installing Debian
+### Installing the Operating System
+
+Debian
 
 https://github.com/redFrik/udk11-Portable_sonification_projects/tree/master/udk140515#installing-debian-linux
 https://github.com/redFrik/udk11-Portable_sonification_projects/tree/master/udk140515#starting-for-the-first-time
 https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--preparation-first-time-only (debian)
 
-### Installing ALSA
+### Installing Sound Software
+
+#### Installing ALSA
 
 https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-alsa--test-sound
 
-### Installing Jack
+#### Installing Jack
 
 https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-jack
 
-### Installing SuperCollider
+#### Installing SuperCollider
 
 https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-supercollider-37alpha0
 
@@ -81,13 +85,13 @@ https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--start-
 https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--get-low-latency-audio
 https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--loading-files
 
-#### Installing the Adafruit BBIO Library
+#### Installing Physical Computing Software
 
 _compare with_ https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)
 
 * The [Adafruit BBIO Library](https://github.com/adafruit/adafruit-beaglebone-io-python) is one of a number of libraries written to interface with the beaglebone pin headers (for others see the [links section](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.md#links)
 
-##### Installation
+##### Installing the Adafruit BBIO Library
 
 * This tutorial is (heavily) modified from the Angstrom or Ubuntu version found at:
 https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/overview
@@ -167,11 +171,11 @@ This section covers some things that can wrong during the above install process 
 
 #### "cc1plus: error: unrecognized command line option '-std=c++11'" when building supercollider from source
 
-* can occur when doing $ sudo make install
+* can occur when doing `$ sudo make install`
 * newer kernels seem to include old version of g++, which cmake doesn’t like
-* solution is:
-$ sudo apt-get install g++-4.7
-$ cmake -L -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DSSE=OFF -DSSE2=OFF -DSUPERNOVA=OFF -DNOVA_SIMD=OFF -DSC_QT=OFF -DSC_WII=OFF -DSC_ED=OFF -DSC_IDE=OFF -DSC_EL=ON -DCMAKE_CXX_COMPILER=g++-4.7 -DSEQAN_C++11_STANDARD=ON ..
+* solution is:  
+`$ sudo apt-get install g++-4.7`
+`$ cmake -L -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DSSE=OFF -DSSE2=OFF -DSUPERNOVA=OFF -DNOVA_SIMD=OFF -DSC_QT=OFF -DSC_WII=OFF -DSC_ED=OFF -DSC_IDE=OFF -DSC_EL=ON -DCMAKE_CXX_COMPILER=g++-4.7 -DSEQAN_C++11_STANDARD=ON ..`
 
 NOTE: Debian has the package under the name gcc-4.8 (or for the c++ compiler, g++-4.8)
 NOTE: Installing those packages will not mess up your OS, as long as you do not rename it to g++.
