@@ -1,25 +1,24 @@
 # Backup
 
-- this document covers various approaches to:
-1. backing up your beaglebone SD card to a disk image
-2. restoring the image back to an SD card
+This document covers various approaches to:
+- backing up your beaglebone SD card to a disk image
+- restoring the image back to an SD card
 
 ## Backup
 
-- backup is useful at various stages of a long, complex installation process i.e.:
--- https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.txt
+- backup is useful at various stages of a long, complex installation process
+- see https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.txt
 
-1. Using A Third Party Tool
+### Method 1. Using A Third Party Tool
 
-- The easier approach is to use PiCopier
-- This tool was made for the Raspberry Pi, but also works well for backing up beaglebone images
+- The easiest approach is to use PiCopier, which also works well for backing up beaglebone images
 - See: http://ivanx.com/raspberrypi/
 
-2. Unix, Difficult But Fast(isn)
+### Method 2. Unix, Difficult But Fast(ish)
 
-put the sd card into a SD card reader on a PC, then:  
+- put the sd card into a SD card reader on a PC, then:  
 ```$ diskutil list```  
-unmount existing volumes:  
+- unmount existing volumes:  
 ```$ diskutil unmount /Volumes/boot```
 ```$ diskutil unmount /Volumes/rootfs```
 ```$ diskutil unmount /Volumes/Untitled```
@@ -39,7 +38,7 @@ https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20
 ```$ sudo tar -xzvf rootfs.tar.gz -C /Volumes/rootfs```
 - Q: need hyphen here or not?
 
-3. Easy but Slow
+### Method 3. Easy but Slow
 
 - If the destination card is the same size, then an easy (but slower) way is to use the unix dd command.
 - Read from the device, not the partition, so you get partition table for free.
