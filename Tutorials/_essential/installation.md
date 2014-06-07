@@ -1,14 +1,16 @@
 ## Installation
 
-This document explains how to install an operating system and some other important software on your Beaglebone Black. The aim is to install the following essentials for hybrid audio + physical computing projects:
+This document explains how to install an operating system and some other important software on your Beaglebone Black.
+
+The aim is to install the following essentials for hybrid audio + physical computing projects:
 
 * debian (operating system)
 * jack (for audio)
 * supercollider (programming language for audio synthesis)
-* adafruit BBIO library (python library for interfacing with the beaglebone pinouts)
+* adafruit BBIO library (python library for interfacing with the beaglebone pin-ins/outs)
 * pyOSC (python library for communicating via the Open Sound Control protocol)
 
-Debian will be installed on the SD card from a PC...whilst the other software will be installed from the command line by booting the SD card in the beaglebone and logging in to it remotely via SSH. Finally, you may wish to backup your SD card at the end or along the way...for more on this see [the backup tutorial](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/backup.md)
+Debian will be installed on the SD card from a PC, whilst the other software will be installed from the command line by booting the SD card in the beaglebone and logging in to it remotely via SSH. As each stage is relatively complex and time-consuming, you may wish to backup your SD card along the way...for more on this see [the backup tutorial](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/backup.md).
 
 ### Requirements
 
@@ -17,10 +19,10 @@ You will need:
 * a laptop capable of running a unix terminal (i.e. mac/linux)
 * a beaglebone black
 * a 4GB SD card (minimum)
-* a micro to normal size SD card convertor (to insert the SD into your computer)
+* a micro to normal size SD card convertor (to insert the SD card into your computer)
 * a simple USB sound card for your beaglebone (for audio testing)
 * an ethernet connection to your Beaglebone Black (ethernet cable, switch or wireless router) 
-* a working internet connection on the Beaglebone Black (see separate tutorial on internet access (LINK?!))
+* a working internet connection on the Beaglebone Black (see separate tutorial on internet access [here](http://www.TODO.com))
 
 #### SSH Basics
 
@@ -30,7 +32,8 @@ compare with: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk1
 * ping the beagle board to see if it exists
 `$ ping 192.168.2.14`
 * you should see:
-```PING 192.168.2.14 (192.168.2.14): 56 data bytes
+```
+PING 192.168.2.14 (192.168.2.14): 56 data bytes
 64 bytes from 192.168.2.14: icmp_seq=0 ttl=64 time=0.702 ms
 64 bytes from 192.168.2.14: icmp_seq=1 ttl=64 time=0.543 ms
 64 bytes from 192.168.2.14: icmp_seq=2 ttl=64 time=0.543 ms
