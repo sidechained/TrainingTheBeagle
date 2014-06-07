@@ -82,21 +82,14 @@ https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--loadin
 
 #### Installing the Adafruit BBIO Library
 
-compare with: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)
+_compare with_: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)
 
-##### Overview
-
-* the Adafruit BBIO Library is one of a number of libraries written to interface with the beaglebone pin headers
-* for more info see: https://github.com/adafruit/adafruit-beaglebone-io-python
-* Other libraries include [PyBBIO](http://beagleboard.org/project/PyBBIO/) ([and here](https://github.com/alexanderhiam/PyBBIO/wiki)) and [Bonescript](http://beagleboard.org/project/bonescript/) (on Angstrom, using node.js)
-* according to this, Adafruit is the best: http://petebachant.me/stepper-motor-control-with-the-beaglebone-black-and-python/
+* The [Adafruit BBIO Library](https://github.com/adafruit/adafruit-beaglebone-io-python) is one of a number of libraries written to interface with the beaglebone pin headers (for others see the [links section](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.md#links)
 
 ##### Installation
 
 * This tutorial is (heavily) modified from the Angstrom or Ubuntu version found at:
 https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/overview
-
-* NOTE: requires internet connection, which you should have if you completed the debian, jack + supercollider installation above
 
 * ssh into the beaglebone black
 `$ ssh debian@192.168.2.14`
@@ -115,23 +108,18 @@ https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/over
 * remove the cloned git repo
 `$ cd ..`
 `$ sudo rm -rf adafruit-beaglebone-io-python`
-
-* for more details and to troubleshoot any problems see:
-https://pypi.python.org/pypi/Adafruit_BBIO
-https://github.com/adafruit/adafruit-beaglebone-io-python/issues/12
-
-##### Checking Installation
-
-a. Quick Check
-
+* check if the installation worked
 `$ python -c "import Adafruit_BBIO.GPIO as GPIO; print GPIO"`
 * you should see this or similar
 `<module 'Adafruit_BBIO.GPIO' from '/usr/local/lib/python2.7/dist-packages/Adafruit_BBIO/GPIO.so'>`
 
-b. Real-World Check
+For more details and to troubleshoot any problems see:
+https://pypi.python.org/pypi/Adafruit_BBIO
+https://github.com/adafruit/adafruit-beaglebone-io-python/issues/12
 
-* wire up a basic LED circuit, as here: http://learn.adafruit.com/blinking-an-led-with-beaglebone-black
-* start the python interpreter
+##### Real World Test (optional)
+
+* Wire up a basic LED circuit, as [here](http://learn.adafruit.com/blinking-an-led-with-beaglebone-black), then ssh in to your beagle and start the python interpreter, as follows:
 `$ sudo python`
 * import bbio library
 `>>> import Adafruit_BBIO.GPIO as GPIO`
@@ -146,23 +134,12 @@ b. Real-World Check
 
 #### Installing the Python pyOSC Library
 
-* compare with https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)
+* _compare with https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)_
 
-##### Optional Section
-
-* NOTE: this section can be skipped if you already performed these commands in the Adafruit BBIO library installation (see above)
+* NOTE: it is presumed that you have the correct packages installed, and that the date and time of your beaglebone is up to date. If not see the [previous section](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.md#installing-the-adafruit-bbio-library)
 
 * ssh into the beaglebone black
 $ ssh debian@192.168.2.14
-* make sure the beagle has the correct date and time
-$ sudo ntpdate pool.ntp.org
-* make sure your debian packages are up to date
-$ sudo apt-get update
-* install python-pip package and dependecies
-$ sudo apt-get install build-essential python-dev python-pip -y
-
-##### Required Section
-
 * download an archive from here: https://trac.v2.nl/attachment/wiki/pyOSC/pyOSC-0.3.5b-5294.tar.gz
 * copy the tar.gz file onto the beagleboard using scp
 $ scp /path debian@192.168.2.14 :/home/Debian
@@ -212,11 +189,9 @@ http://eewiki.net/display/linuxonarm/BeagleBone+Black
 
 ### Links
 
-* a simplified [here](http://supercollider.github.io/development/building-beagleboneblack.html)
-* some discussion on the install process can be found [here](http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/supercollider-on-Beaglebone-Black-td7599684.html)
-* comprehensive tutorial: https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/using-the-bbio-library
-* a quicker overview: https://pypi.python.org/pypi/Adafruit_BBIO
-* below is a selection from the many well written tutorials for the adafruit BBIO library:
-http://learn.adafruit.com/blinking-an-led-with-beaglebone-black
-http://learn.adafruit.com/connecting-a-push-button-to-beaglebone-black
-http://learn.adafruit.com/measuring-temperature-with-a-beaglebone-black
+* Alternative's to Adafruit BBIO: [PyBBIO](http://beagleboard.org/project/PyBBIO/) ([and here](https://github.com/alexanderhiam/PyBBIO/wiki)) and [Bonescript](http://beagleboard.org/project/bonescript/) (on Angstrom, using node.js). According to [this](http://petebachant.me/stepper-motor-control-with-the-beaglebone-black-and-python/) Adafruit is the best. 
+* Fredrik's simplified (older) installation tutorial can be found [here](http://supercollider.github.io/development/building-beagleboneblack.html) and some discussion [here](http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/supercollider-on-Beaglebone-Black-td7599684.html)
+* A comprehensive [adafruit BBIO tutorial](https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/using-the-bbio-library) and a [quicker overview](https://pypi.python.org/pypi/Adafruit_BBIO)
+* A selection of BBIO tutorials: [blinking led](http://learn.adafruit.com/blinking-an-led-with-beaglebone-black) [push button](http://learn.adafruit.com/connecting-a-push-button-to-beaglebone-black) [measuring temperature](http://learn.adafruit.com/measuring-temperature-with-a-beaglebone-black)
+
+
