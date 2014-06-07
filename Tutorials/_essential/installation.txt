@@ -1,4 +1,4 @@
-TUTORIAL: Installation
+Installation
 
 - presumes that you have an internet connection
 
