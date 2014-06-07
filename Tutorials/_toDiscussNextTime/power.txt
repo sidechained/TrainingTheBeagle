@@ -1,4 +1,6 @@
-TUTORIAL: Power and Batteries
+Power
+
+- NOTE: consolidate and link to Fredrik's project: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--extra-power-consumption
 
 - this document deals with the four methods of powering the beaglebone, these being: external PSU, power over USB, power over ethernet and battery power
 
@@ -155,6 +157,5 @@ https://www.sparkfun.com/tutorials/241
 - follow up hack (not advisable): http://pansenti.wordpress.com/2013/06/01/battery-powered-beaglebone-black-and-the-usb-host-port-works-too/
 - discussion: https://groups.google.com/forum/#!topic/beagleboard/6hQ7voyk_Xw
 - beaglebone battery tutorial here: http://www.element14.com/community/community/knode/single-board_computers/next-gen_beaglebone/blog/tags/bbb
-- Fredrik's project (study for tips): https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--extra-power-consumption
 
 
