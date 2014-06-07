@@ -3,6 +3,7 @@ TUTORIAL: SuperCollider Basics
 - this document covers the basics of using SuperCollider from the command line on a beaglebone black
 - it presumes you are running Debian, with functioning soundcard, and SuperCollider and jackd/alsa are correctly installed
 - for a tutorial on how to install supercollider, see here: [TODO: link]
+- simple three-line example on starting SuperCollider from Fredrik: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131205#--starting-supercollider
 
 * Extensions
 
