@@ -78,3 +78,8 @@ $ git add myRenamedFile.txt
 - it is better to add all the files in the current dir, then git knows that a file has been renamed
 $ git add --all .
 - however, if the former is done accidentally, duplicates can be deleted the repo webpage, and the project pulled locally
+
+* Markdown
+
+https://help.github.com/articles/markdown-basics
+https://help.github.com/articles/github-flavored-markdown
