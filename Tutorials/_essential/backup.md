@@ -18,7 +18,7 @@
 2. Unix, Difficult But Fast(isn)
 
 put the sd card into a SD card reader on a PC, then:  
-```$ diskutil list```
+`$ diskutil list`  
 unmount existing volumes:  
 ```$ diskutil unmount /Volumes/boot```  
 ```$ diskutil unmount /Volumes/rootfs```  
