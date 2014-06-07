@@ -1,22 +1,49 @@
-TUTORIAL: OSC Communication
+OSC Communication
 
-- this document deals (note: WILL deal) with OSC communication between SuperCollider and Python
-- use ultra minimal version of soundvase project as an example
+- this document deals with OSC communication between SuperCollider and Python and vice versa
+- much of this tutorial is based on Fredrik Olofsson's work at https://github.com/redFrik/udk10-Embedded_Systems/
+- for more on how to use OSC as part of a larger 'sound and sensors' project, see the 'soundvase' code:
+https://github.com/sidechained/TrainingTheBeagle/tree/master/Projects/soundvase
 
-Installing OSC Library for Python
-- first, clone the following git repository
-$ git clone https://github.com/gardaud/pyOSC.git
-- then do:
-$ sudo python ./setup.py install
+1. Install pyOSC
 
+- Follow the pyOSC section of: 
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software
 
-* OSC Python libraries
+2. 'Bare Minimum' Examples
 
-- currently using pyOSC, but there are others:
-- scosc, python OSC for supercollider: http://www.patrickkidd.com/
-SC 0.2, python client for SuperCollider http://pypi.python.org/pypi/SC/0.2
+- the following are simple examples to get you started:
+
+a. Python to SuperCollider
+
+- this will be the typical approach for simple sensing projects i.e. sensing in produces sound out
+
+\TODO/
+
+- also see Fredrik Olofsson's approach here (uses sensors):
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--receiving-osc-in-python
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--sending-osc-from-python-to-sc
+
+b. SuperCollider to Python
+
+- this method i.e. sound in activates physical processes (e.g. LED blinking)
+
+\TODO/
+
+* Sensor Examples
+
+- Fredrik Olofsson provides an example of using OSC in combination with sensors
+- NOTE: these require the Adafruit BBIO library
+
+1. read one digital and one analog sensor and send it via open sound control to another computer
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--send-osc-example
 
 * Links
 
-link: http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/OSC-first-timer-problem-td5211207.html
+- there are other python libraries for OSC other than pyOSC e.g.:
+-- scosc, python OSC for supercollider: http://www.patrickkidd.com/
+-- SC 0.2, python client for SuperCollider http://pypi.python.org/pypi/SC/0.2
+
+- troubleshooting
+http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/OSC-first-timer-problem-td5211207.html
 

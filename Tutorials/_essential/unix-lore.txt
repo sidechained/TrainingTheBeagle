@@ -97,10 +97,13 @@ $ ssh debian@192.168.1.1
 
 - copy files over a secure connection (e.g. from laptop to beagle)
 - can be used for both files and folders
-- copying files:
-$ scp -r testfile.txt debian@192.168.1.1:/home/debian
-- copying folders:
+- copying files (replace filename and IP with your own):
+$ scp testfile.txt debian@192.168.1.1:/home/debian
+- copying folders (replace filename and IP with your own):
 $ scp -r soundvase debian@192.168.1.1:/home/debian
+
+see also:
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--copy-files-from-laptop-to-bbb
 
 * sftp
 - copy files between the beagle and another device
