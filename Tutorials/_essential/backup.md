@@ -1,22 +1,24 @@
-# Backup
+## Backup
 
 This document covers various approaches to:
 - backing up your beaglebone SD card to a disk image
 - restoring the image back to an SD card
 
-## Backup
+### Backing Up an SD Card 
 
 - backing up to a disk image can be useful at various stages of a complex installation process
 - such as: https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.txt
+- for all the methods below you will need to remove the micro SD card from your beaglebone and find a way to insert it in your PC
+- NOTE: a micro to full size SD card adapter is useful here
 
-### Method 1. Using A Third Party Tool
+#### Method 1. Using A Third Party Tool
 
 - The easiest approach is to use PiCopier, which also works well for backing up beaglebone images
 - See: http://ivanx.com/raspberrypi/
 
-### Method 2. Unix, Difficult But Fast(ish)
+#### Method 2. Unix, Difficult But Fast(ish)
 
-- put the sd card into a SD card reader on a PC, then:  
+- put the SD card into a card reader on a PC, then:  
 ```$ diskutil list```  
 - unmount existing volumes:  
 ```$ diskutil unmount /Volumes/boot```  
@@ -38,7 +40,7 @@ https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20
 ```$ sudo tar -xzvf rootfs.tar.gz -C /Volumes/rootfs```
 - **Q: need hyphen here or not?**
 
-### Method 3. Easy but Slow
+#### Method 3. Easy but Slow
 
 - If the destination card is the same size, then an easy (but slower) way is to use the unix dd command.
 - Read from the device, not the partition, so you get partition table for free.
@@ -48,7 +50,7 @@ https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20
 - WARNING: This will overwrite /dev/disk1, so triple check this is correct  
 ```$ dd if=/Volumes/Master/card_image.dmg of=/dev/disk1```
 
-## Restore
+### Restore
 
 - restoring can be used to restore operating systems, software and settings
 - for multi-beaglebone installations, it can be a useful way to ensure that each beagle is running the same software
