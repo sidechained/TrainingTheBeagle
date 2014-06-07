@@ -150,7 +150,7 @@ $ vi myTextFile.txt
 - I enters insert mode
 - ESC exits insert mode
 - then type :w to write the file
-- followed by :w to quit
+- followed by :q to quit
 - more details here: http://www.tldp.org/HOWTO/Tips-HOWTO.html
 
 * pwd
