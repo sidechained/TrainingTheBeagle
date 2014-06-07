@@ -17,12 +17,13 @@
 
 2. Unix, Difficult But Fast(isn)
 
-- put the sd card into a SD card reader on a PC, then:
+put the sd card into a SD card reader on a PC, then:
 ```$ diskutil list```
-- unmount existing volumes:
+unmount existing volumes:
     $ diskutil unmount /Volumes/boot
     $ diskutil unmount /Volumes/rootfs
     $ diskutil unmount /Volumes/Untitled
+
 - remount the partition we want:
     $ diskutil mount /dev/disk1s2
 - (or just use the existing mount point as the target)
