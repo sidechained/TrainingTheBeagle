@@ -6,8 +6,8 @@ This document covers various approaches to:
 
 ## Backup
 
-- backup is useful at various stages of a long, complex installation process
-- see https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.txt
+- backing up to a disk image can be useful at various stages of a complex installation process
+- such as: https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.txt
 
 ### Method 1. Using A Third Party Tool
 
@@ -19,9 +19,9 @@ This document covers various approaches to:
 - put the sd card into a SD card reader on a PC, then:  
 ```$ diskutil list```  
 - unmount existing volumes:  
-```$ diskutil unmount /Volumes/boot```
-```$ diskutil unmount /Volumes/rootfs```
-```$ diskutil unmount /Volumes/Untitled```
+```$ diskutil unmount /Volumes/boot```  
+```$ diskutil unmount /Volumes/rootfs```  
+```$ diskutil unmount /Volumes/Untitled```  
 - remount the partition we want:  
 ```$ diskutil mount /dev/disk1s2```
 - (or just use the existing mount point as the target)
