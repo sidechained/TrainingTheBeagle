@@ -57,7 +57,7 @@ https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20
 - however, restoring multiple SD cards takes a long time
 - if you just want to add or remove files to multiple beagleboards, a better approach here might be to create a bash install/uninstall script (see separate tutorial)
 
-\TODO/
+_TODO_
 
 
 
