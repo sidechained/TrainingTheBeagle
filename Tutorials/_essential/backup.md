@@ -38,7 +38,7 @@ This document covers various approaches to:
 https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20card/beagleboard/X7XDd3BCz40/KKRKmsWQH4AJ
 - to reinstate:  
 `$ sudo tar -xzvf rootfs.tar.gz -C /Volumes/rootfs`
-- __Q: need hyphen here or not?__
+- _Q: need hyphen here or not?_
 
 #### Method 3. Easy but Slow
 
@@ -52,8 +52,8 @@ https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20
 
 ### Restoring an SD Card from a Disk Image
 
-- restoring a disk image  operating system, software and settings
-- for multi-beagle installations, it can be a useful way to ensure that each beagle is running the same software
+- restoring from a disk image completely overwrites the card, replacing the operating system, software and settings
+- for multi-beagle installations, restoring from the same image can be a useful way to ensure that each beagle is running the same software
 - however, restoring multiple SD cards takes a long time
 - if you just want to add or remove files to multiple beagleboards, a better approach here might be to create a bash install/uninstall script (see separate tutorial)
 
