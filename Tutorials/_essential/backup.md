@@ -18,7 +18,7 @@
 2. Unix, Difficult But Fast(isn)
 
 - put the sd card into a SD card reader on a PC, then:
-    $ distil list
+```$ diskutil list```
 - unmount existing volumes:
     $ diskutil unmount /Volumes/boot
     $ diskutil unmount /Volumes/rootfs
@@ -29,7 +29,7 @@
 - go into the rootfs folder and backup the contents:
     $ cd /Volumes/rootfs
     $ sudo tar -zcvf ~/rootfs.tar.gz .
-- If you use TAR, make sure you use the p option, which copies the file permissions e.g. $ tar cvjpf
+- If you use TAR, make sure you use the p option, which copies the file permissions e.g. `$ tar cvjpf`
 - got error "tar: Error exit delayed from previous errors."
 - What this means is that tar hit errors which were not bad enough for tar to fail immediately on hitting the error. tar kept going. Then when tar ends it says that it had errors but managed to run to completion.
 - destination drive must have a similar partition structure, did this by restoring original Debian Wheezy image onto freshly formatted card using Pi Filler
