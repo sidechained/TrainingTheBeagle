@@ -29,7 +29,7 @@ You will need:
 compare with: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--logging-in
 
 * connect your beaglebone via ethernet
-* ping the beagle board to see if it exists
+* ping the beagle board to see if it exists  
 `$ ping 192.168.2.14`
 * you should see:
 ```
@@ -38,11 +38,12 @@ PING 192.168.2.14 (192.168.2.14): 56 data bytes
 64 bytes from 192.168.2.14: icmp_seq=1 ttl=64 time=0.543 ms
 64 bytes from 192.168.2.14: icmp_seq=2 ttl=64 time=0.543 ms
 ```
-* now, attempt to login
+* now, attempt to login  
 `$ ssh debian@192.168.2.14`
 * enter password (by default: debian)
 * if successful, the debian login message should appear as follows:
-```Linux debian-armhf 3.8.13-bone30 #1 SMP Thu Nov 14 02:59:07 UTC 2013 armv7l
+```
+Linux debian-armhf 3.8.13-bone30 #1 SMP Thu Nov 14 02:59:07 UTC 2013 armv7l
 
 The programs included with the Debian GNU/Linux system are free software;
 the exact distribution terms for each program are described in the
@@ -82,7 +83,7 @@ https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--loadin
 
 #### Installing the Adafruit BBIO Library
 
-_compare with_: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)
+_compare with_ https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)
 
 * The [Adafruit BBIO Library](https://github.com/adafruit/adafruit-beaglebone-io-python) is one of a number of libraries written to interface with the beaglebone pin headers (for others see the [links section](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.md#links)
 
