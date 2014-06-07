@@ -72,6 +72,9 @@ With the current Git version, the command is restricted to the current directory
 
 * Renaming Files
 
-- adding a renamed file creates duplicates in the online repo
-- for now, these duplicates can be deleted the repo webpage, and the project pulled locally
-- is there a way to avoid this in the first place?
+- when renaming a file, do not simple do…
+$ git add myRenamedFile.txt
+- …as this will create a duplicate in the online repo (will not remove the old file)
+- it is better to add all the files in the current dir, then git knows that a file has been renamed
+$ git add --all .
+- however, if the former is done accidentally, duplicates can be deleted the repo webpage, and the project pulled locally
