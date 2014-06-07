@@ -69,3 +69,9 @@ To restrict the command to the current directory, run:
   (or git add -A .)
 
 With the current Git version, the command is restricted to the current directory.
+
+* Renaming Files
+
+- adding a renamed file creates duplicates in the online repo
+- for now, these duplicates can be deleted the repo webpage, and the project pulled locally
+- is there a way to avoid this in the first place?
