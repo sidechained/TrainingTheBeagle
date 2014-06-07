@@ -1,5 +1,7 @@
 TUTORIAL: Installation
 
+- presumes that you have an internet connection
+
 - this document explains how to install an operating system and some other important software on your Beaglebone Black
 - our aim is to install the following essentials for combined audio + physical computing projects:
 
@@ -33,10 +35,23 @@ TUTORIAL: Installation
 - Fredrik Olofsson has produced excellent tutorials on this, which we will not attempt to reproduce here
 - There are two possible tutorials, as follows:
 - 1. in depth: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-alsa--test-sound
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-jack
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-supercollider-37alpha0
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--start-sc
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--get-low-latency-audio
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--loading-files
+
 - 2. simplified: http://supercollider.github.io/development/building-beagleboneblack.html
 - also, some discussion here: http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/supercollider-on-Beaglebone-Black-td7599684.html
 
+https://github.com/redFrik/udk11-Portable_sonification_projects/tree/master/udk140515#installing-debian-linux
+https://github.com/redFrik/udk11-Portable_sonification_projects/tree/master/udk140515#starting-for-the-first-time
+https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--preparation-first-time-only (debian)
+
 * SSH Basics
+
+compare with: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--logging-in
 
 - connect your beaglebone via ethernet
 - ping the beagle board to see if it exists
@@ -79,6 +94,8 @@ NOTE: Installing those packages will not mess up your OS, as long as you do not 
 
 * Installing the Adafruit BBIO Library
 
+compare with: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)
+
 - the Adafruit BBIO Library is one of a number of libraries written to interface with the beaglebone pin headers
 - for more info see:
 https://github.com/adafruit/adafruit-beaglebone-io-python
@@ -92,8 +109,6 @@ http://beagleboard.org/project/bonescript/
 
 - these tutorial is (heavily) modified from the Angstrom or Ubuntu version found at:
 https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/overview
-
-a. Online Installation
 
 - NOTE: requires internet connection, which you should have if you completed the debian, jack + supercollider installation above
 
@@ -118,12 +133,6 @@ $ sudo rm -rf adafruit-beaglebone-io-python
 - for more details and to troubleshoot any problems see:
 https://pypi.python.org/pypi/Adafruit_BBIO
 https://github.com/adafruit/adafruit-beaglebone-io-python/issues/12
-
-b. Offline Installation
-
-\TODO/
-
-- NOTE: this presumes that your beaglebone has the correct date and time, as conducted whilst installing Debian, Jack and Supercollider (see above)
 
 2. Checking if the Adafruit BBIO library installed correctly
 
@@ -173,6 +182,8 @@ http://www.armhf.com/index.php/boards/beaglebone-black/
 http://eewiki.net/display/linuxonarm/BeagleBone+Black
 
 * Installing the Python pyOSC Library
+
+- compare with https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software (python, bbio)
 
 ** Optional Section
 
