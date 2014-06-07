@@ -1,13 +1,17 @@
 Creating Initialisation Scripts on the Beaglebone Black
 
-- this tutorial covers how to get the beaglebone black to (i.e. Debian) run software on startup
-- embedded systems
+- this tutorial covers how to get the beaglebone black to (i.e. Debian) run software automatically on startup
+- this is an important thing to know in order to create embedded systems
+- we will use the rather complex 'update-rc.d' method. For more info see the following links:
+-- http://www.debian-administration.org/articles/28
+-- http://www.debianhelp.co.uk/initscripts.htm
+- other approaches involve using cron, rc.local, or writing bash scripts. The latter two are demonstrated in a tutorial by Fredrik Olofsson, here:
+-- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--autostart-jack-and-sc
 
-- if using Extensions, be sure to host them in '/usr/local/share/SuperCollider/Extensions' NOT '/home/debian/.local/share/SuperCollider/Extensions' (as this folder is not in the search path when sclang runs as an initScript)
-- PWM is problematic on startup
+* A Couple of Things to Note
 
-- useful link 1: Making scripts run at boot time with Debian: http://www.debian-administration.org/articles/28
-- useful link 2: http://www.debianhelp.co.uk/initscripts.htm
+- NOTE: if using Extensions, be sure to host them in '/usr/local/share/SuperCollider/Extensions' NOT '/home/debian/.local/share/SuperCollider/Extensions' (as this folder is not in the search path when sclang runs as an initScript)
+- NOTE: PWM is problematic on startup
 
 * Long Tutorial
 
