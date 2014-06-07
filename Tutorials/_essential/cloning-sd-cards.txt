@@ -1,16 +1,21 @@
-TUTORIAL: Cloning SD Cards
+Backup
 
-- this document covers two procedures for cloning SD cards
-- cloning is generally a slow process, so is not advisable in time critical situations
-- for us so far, cloning has been useful in two situations:
-- 1. creating a modified debian image which has all the software we need already installed
-- e.g. in our case debian + bbio + supercollider + jack + pyOSC, etc
-- 2. when scaling up a project which uses many beaglebones
-- we used this method at first to ensure that all the beagles in RebDev/Chinese Whispers were identical
-- however as it is very time consuming, any mistakes can be costly
-- a better alternative here is to create a bash install/uninstall script (see separate tutorial)
+- this document covers various approaches to:
+-- 1. backing up your beaglebone SD card to a disk image
+-- 2. restoring the image back to an SD card
 
-* Method 1: Difficult But Fast(isn)
+* Backup
+
+- backup is useful at various stages of a long, complex installation process i.e.:
+-- https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.txt
+
+** Method 1: Using A Third Party Tool
+
+- The easier approach is to use PiCopier
+- This tool was made for the Raspberry Pi, but also works well for backing up beaglebone images
+- See: http://ivanx.com/raspberrypi/
+
+** Method 2: Unix, Difficult But Fast(isn)
 
 - put the sd card into a SD card reader on a PC, then:
 $ distil list
@@ -27,14 +32,14 @@ $ sudo tar -zcvf ~/rootfs.tar.gz .
 - If you use TAR, make sure you use the p option, which copies the file permissions e.g. tar cvjpf
 - got error "tar: Error exit delayed from previous errors."
 - What this means is that tar hit errors which were not bad enough for tar to fail immediately on hitting the error. tar kept going. Then when tar ends it says that it had errors but managed to run to completion.
-- destination drive must have a similar partition structure, did this by flashing original Debian Wheezy image onto freshly formatted card using Pi Filler
+- destination drive must have a similar partition structure, did this by restoring original Debian Wheezy image onto freshly formatted card using Pi Filler
 - advice on how to use linux-dev/tools/install_image.sh script, but didn't work for me:
 https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20card/beagleboard/X7XDd3BCz40/KKRKmsWQH4AJ
 - to reinstate:
 $ sudo tar -xzvf rootfs.tar.gz -C /Volumes/rootfs
 - Q: need hyphen here or not?
 
-* Method 2: Easy but Slow
+** Method 3: Easy but Slow
 
 - If the destination card is the same size, then an easy (but slower) way is to use the unix dd command.
 - Read from the device, not the partition, so you get partition table for free.
@@ -44,7 +49,14 @@ $ dd if=/dev/disk1 of=/Volumes/Master/card_image.dmg
 - WARNING: This will overwrite /dev/disk1, so triple check this is correct
 $ dd if=/Volumes/Master/card_image.dmg of=/dev/disk1
 
+* Restore
 
+- restoring can be used to restore operating systems, software and settings
+- for multi-beaglebone installations, it can be a useful way to ensure that each beagle is running the same software
+- however, due to the time it takes to restore multiple SD cards
+- if you just want to add or remove files to multiple beagleboards, a better approach here might be to create a bash install/uninstall script (see separate tutorial)
+
+\TODO/
 
 
 
