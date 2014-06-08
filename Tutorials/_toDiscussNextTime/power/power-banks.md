@@ -64,10 +64,9 @@ As many of the batteries available on Taobao are fakes, I bought from three diff
 * The first set I purchased were sold as genuine unused batteries and cost 24yuan per battery with 7yuan postage. See [here](http://a.m.taobao.com/i12677731619.htm?ttid=212200@taobao_android_4.2.2)
 * The second and third set were both advertised as reclaimed, retested batteries taken from old laptops. [One](http://a.m.taobao.com/i35858407101.htm?ttid=212200@taobao_android_4.2.2) was 12.5yuan per battery with 10yuan postage, [the other](http://a.m.taobao.com/i18265637568.htm?ttid=212200@taobao_android_4.2.2) was 13yuan/battery with 8yuan postage.
 
-![image of 'real' battery](./images/IMG_20140608_102233.jpg)
-![image of reclaimed battery]
-![image of 'fake' reclaimed battery](./images/IMG_20140608_102320.jpg)
-![bad shrink wrapping on fake battery](./images/IMG_20140608_102504.jpg)
+![image of 'real' battery](./images/IMG_20140608_102233.jpg =250x)
+![image of 'fake' reclaimed battery](./images/IMG_20140608_102320.jpg =250x)
+![bad shrink wrapping on fake battery](./images/IMG_20140608_102504.jpg =250x)
 
 All these batteries are working fine right now, but time will tell as to which ends out
 
