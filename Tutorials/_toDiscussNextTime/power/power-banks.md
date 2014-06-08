@@ -10,7 +10,13 @@ Mobile power banks are an ideal way to power the Beaglebone Black, as:
 
 #### Power Bank Comparison
 
-With this in mind, I purchased four cheap power banks on Chinese commerce site Taobao, to compare and contrast them for use with the Beaglebone. All four power banks have a 5V micro USB input for charging, and have a built in LED which can be used as a flashlight. The following table gives an overview of the features and cost of each bank. For more details see the links column (in Chinese, but will useful images).
+With this in mind, I purchased four cheap power banks on Chinese commerce site Taobao, to compare and contrast them for use with the Beaglebone.
+
+![Powerbank Line Up Alongside Beaglebone](./images/IMG_20140608_165709.jpg "Powerbank Line Up Alongside Beaglebone")
+![Powerbank Overview Inner](./images/IMG_20140608_151527.jpg "Powerbank Overview Inner")
+![Powerbank Overview Outer](./images/IMG_20140608_151807.jpg "Powerbank Overview Outer")
+
+All four power banks have a 5V micro USB input for charging, and have a built in LED which can be used as a flashlight. The following table gives an overview of the features and cost of each bank. For more details see the links column (in Chinese, but will useful images).
 
 | Name	      | Outputs       | Charge LED's | Dimensions | Price   | DIY | Links    | Images   |
 | ---------- | ------------- | ------------ | ---------- | ------- | --- | -------- | -------- | 
@@ -23,13 +29,19 @@ With this in mind, I purchased four cheap power banks on Chinese commerce site T
 
 ##### Samsung
 
-![an image](../images/IMG_20140608_102254 "Logo Title Text 1")
+![an image](../images/ "Samsung")
 
 ##### Square
 
+![an image](../images/ "Square")
+
 ##### Xinbo
 
+![an image](../images/ "Xinbo")
+
 ##### Power Bank
+
+![an image](../images/ "Power Bank")
 
 #### Measuring the Output of the Power Banks
 
@@ -48,12 +60,17 @@ As many of the batteries available on Taobao are fakes, I bought from three diff
 * The first set I purchased were sold as genuine unused batteries and cost 24yuan per battery with 7yuan postage. See [here](http://a.m.taobao.com/i12677731619.htm?ttid=212200@taobao_android_4.2.2)
 * The second and third set were both advertised as reclaimed, retested batteries taken from old laptops. [One](http://a.m.taobao.com/i35858407101.htm?ttid=212200@taobao_android_4.2.2) was 12.5yuan per battery with 10yuan postage, [the other](http://a.m.taobao.com/i18265637568.htm?ttid=212200@taobao_android_4.2.2) was 13yuan/battery with 8yuan postage.
 
-[image of 'real' battery]
+[image of 'real' battery]/Users/grahambooth/Documents/git/TrainingTheBeagle/Tutorials/_toDiscussNextTime/power/images/IMG_20140608_102233.jpg
 [image of reclaimed battery]
 [image of 'fake' reclaimed battery]
+/Users/grahambooth/Documents/git/TrainingTheBeagle/Tutorials/_toDiscussNextTime/power/images/IMG_20140608_102254.jpg
+[shrink wrap]
+/Users/grahambooth/Documents/git/TrainingTheBeagle/Tutorials/_toDiscussNextTime/power/images/IMG_20140608_102320.jpg
+
+/Users/grahambooth/Documents/git/TrainingTheBeagle/Tutorials/_toDiscussNextTime/power/images/IMG_20140608_102504.jpg
+
 
 All these batteries are working fine right now, but time will tell as to which ends out
-
 #### Protected vs Unprotected
 
 
