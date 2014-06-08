@@ -25,7 +25,7 @@ All four power banks have a 5V micro USB input for charging, and have a built in
 | Xinbo      | 5V?A          | Y (front)    | 99x59x22   | 25 + 6  | N   | [here]() | [here]() |
 | Power Bank | 5V1A + 5V2A   | Y            | 95x62x19   | 9 + 8   | Y   | [here]() | [here]() |
 
-* DIY means the power bank comes with case and PCB, but not the battery connectors or wiring, which you have to do yourself. I bought these as they were cheap and could be good to use without the case i.e. to strap the PCB and a battery (or three) directly to the beaglebone itself for ultimate compactness. 
+DIY means the power bank comes with case and PCB, but not the battery connectors or wiring, which you have to do yourself. I bought these as they were cheap and could be good to use without the case i.e. to strap the PCB and a battery (or three) directly to the beaglebone itself for ultimate compactness. 
 
 ##### Samsung
 ![an image](./images/IMG_20140608_152153.jpg "Samsung")
@@ -64,20 +64,14 @@ As many of the batteries available on Taobao are fakes, I bought from three diff
 * The first set I purchased were sold as genuine unused batteries and cost 24yuan per battery with 7yuan postage. See [here](http://a.m.taobao.com/i12677731619.htm?ttid=212200@taobao_android_4.2.2)
 * The second and third set were both advertised as reclaimed, retested batteries taken from old laptops. [One](http://a.m.taobao.com/i35858407101.htm?ttid=212200@taobao_android_4.2.2) was 12.5yuan per battery with 10yuan postage, [the other](http://a.m.taobao.com/i18265637568.htm?ttid=212200@taobao_android_4.2.2) was 13yuan/battery with 8yuan postage.
 
-[image of 'real' battery]IMG_20140608_102233.jpg
-[image of reclaimed battery]
-[image of 'fake' reclaimed battery]
-IMG_20140608_102254.jpg
-[shrink wrap]
-IMG_20140608_102320.jpg
-
-IMG_20140608_102504.jpg
-
+![image of 'real' battery](./images/IMG_20140608_102233.jpg)
+![image of reclaimed battery]
+![image of 'fake' reclaimed battery](./images/IMG_20140608_102320.jpg)
+![bad shrink wrapping on fake battery](./images/IMG_20140608_102504.jpg)
 
 All these batteries are working fine right now, but time will tell as to which ends out
+
 #### Protected vs Unprotected
-
-
 
 Pro's and cons...[from here](http://budgetlightforum.com/node/25927)
 
