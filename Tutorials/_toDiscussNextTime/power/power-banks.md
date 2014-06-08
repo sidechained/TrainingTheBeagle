@@ -2,15 +2,15 @@
 
 Mobile power banks are an ideal way to power the Beaglebone Black, as:
 * they are widely available and cheap to buy
-* they use common high-capacity 18650 lithium-ion cells
-* they typically output 5V2A, which can power both the beaglebone and its USB port  
-(as noted [here](TODO), this is not possible using a 3.7v li-on cell directly)
-* they double as a battery charger when combined with a USB wall adapter and a mobile phone cable
-* the three-cell power banks are compact and match well to the physical dimensions of the beaglebone
+* they use common, high-capacity 18650 lithium-ion cells
+* they typically output 5V 2A, which can power both the beaglebone and its USB port (essential for audio projects) 
+(and as noted [here](TODO), this is not possible using a 3.7v li-on cell directly)
+* they double as battery chargers when combined with a USB wall adapter and a mobile phone cable
+* the three-cell power banks in particular are compact and well matched to the physical dimensions of the beaglebone (88.4 x 55.2 x 19mm)
 
 #### Power Bank Comparison
 
-With this in mind, I purchased four cheap power banks on Chinese commerce site Taobao, to compare and contrast them for use with the Beaglebone.
+In order to find the best match for the BeagleBone, I purchased four cheap power banks on Chinese commerce site Taobao and compared them, as follows:
 
 ![Powerbank Line Up Alongside Beaglebone](./images/IMG_20140608_165709.jpg "Powerbank Line Up Alongside Beaglebone")
 ![Powerbank Overview Inner](./images/IMG_20140608_151527.jpg "Powerbank Overview Inner")
@@ -28,20 +28,20 @@ All four power banks have a 5V micro USB input for charging, and have a built in
 * DIY means the power bank comes with case and PCB, but not the battery connectors or wiring, which you have to do yourself. I bought these as they were cheap and could be good to use without the case i.e. to strap the PCB and a battery (or three) directly to the beaglebone itself for ultimate compactness. 
 
 ##### Samsung
-
-![an image](../images/ "Samsung")
+![an image](./images/IMG_20140608_152153.jpg "Samsung")
+![an image](./images/IMG_20140608_152224.jpg "Samsung")
 
 ##### Square
-
-![an image](../images/ "Square")
+![](./images/IMG_20140608_152300.jpg "Square")
+![](./images/IMG_20140608_152331.jpg "Square")
 
 ##### Xinbo
-
-![an image](../images/ "Xinbo")
+![an image](./images/IMG_20140608_151912.jpg "Xinbo")
+![an image](./images/IMG_20140608_152024.jpg "Xinbo")
 
 ##### Power Bank
-
-![an image](../images/ "Power Bank")
+![an image](./images/IMG_20140608_152057.jpg "Power Bank")
+![an image](./images/IMG_20140608_152125.jpg "Power Bank")
 
 #### Measuring the Output of the Power Banks
 
@@ -60,14 +60,14 @@ As many of the batteries available on Taobao are fakes, I bought from three diff
 * The first set I purchased were sold as genuine unused batteries and cost 24yuan per battery with 7yuan postage. See [here](http://a.m.taobao.com/i12677731619.htm?ttid=212200@taobao_android_4.2.2)
 * The second and third set were both advertised as reclaimed, retested batteries taken from old laptops. [One](http://a.m.taobao.com/i35858407101.htm?ttid=212200@taobao_android_4.2.2) was 12.5yuan per battery with 10yuan postage, [the other](http://a.m.taobao.com/i18265637568.htm?ttid=212200@taobao_android_4.2.2) was 13yuan/battery with 8yuan postage.
 
-[image of 'real' battery]/Users/grahambooth/Documents/git/TrainingTheBeagle/Tutorials/_toDiscussNextTime/power/images/IMG_20140608_102233.jpg
+[image of 'real' battery]IMG_20140608_102233.jpg
 [image of reclaimed battery]
 [image of 'fake' reclaimed battery]
-/Users/grahambooth/Documents/git/TrainingTheBeagle/Tutorials/_toDiscussNextTime/power/images/IMG_20140608_102254.jpg
+IMG_20140608_102254.jpg
 [shrink wrap]
-/Users/grahambooth/Documents/git/TrainingTheBeagle/Tutorials/_toDiscussNextTime/power/images/IMG_20140608_102320.jpg
+IMG_20140608_102320.jpg
 
-/Users/grahambooth/Documents/git/TrainingTheBeagle/Tutorials/_toDiscussNextTime/power/images/IMG_20140608_102504.jpg
+IMG_20140608_102504.jpg
 
 
 All these batteries are working fine right now, but time will tell as to which ends out
