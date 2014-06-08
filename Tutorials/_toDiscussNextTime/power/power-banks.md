@@ -47,11 +47,15 @@ All four power banks have a 5V micro USB input for charging, and have a built in
 
 As these are cheap and therefore potentially low quality devices, I wanted to measure the actual voltage and current output coming from the power banks, to make sure not to overload or underpower the beaglebone. To do this I made a tester cable by hacking off the end of an old USB cable, separating out the power cables, and connecting these to a multimeter. The results were as follows:
 
+Samsung
+Square
+Xinbo
+Power Bank
 [table here]
 
 #### Batteries
 
-For this project I bought Panasonic NCR18650A's - a very common type of high capacity (3100mAh) lithium ion (Li-on) battery. See this [data sheet](http://www.panasonic.com/industrial/includes/pdf/ACA4000CE254-NCR18650A.pdf) and the [Panasonic website] (http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+BA+4+ACA4001+NCR18650A+7+WW). As far as I can tell, these are unprotected batteries i.e. they have no inbuilt circuitry to prevent overcharging or discharging below a certain level (see [below](link) for more about protected vs unprotected batteries.
+For this project I bought Panasonic NCR18650A's - a very common type of high capacity (3100mAh) lithium ion (Li-on) battery (see this [data sheet](http://www.panasonic.com/industrial/includes/pdf/ACA4000CE254-NCR18650A.pdf) and the [Panasonic website](http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+BA+4+ACA4001+NCR18650A+7+WW)). As far as I can tell, these are unprotected batteries i.e. they have no inbuilt circuitry to prevent overcharging or discharging below a certain level (see [below](#protected-vs-unprotected) for more about protected vs unprotected batteries).
 
 ##### Battery Comparison
 
