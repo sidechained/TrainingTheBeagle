@@ -105,7 +105,7 @@ There are two useful commands
 ----------------
 #### 3. Starting/Terminating Processes & Managing Access Rights
 
-**sudo**
+**sudo**  
 superuser privileges are often require to perform certain tasks (sudo = superuser do)
 - e.g. to allow python to access the beaglebone pins through the adafruit bbio library
 Usage: Simply preface the command with `sudo`
@@ -115,14 +115,14 @@ Then enter the password for your beaglebone.
 _NOTE: there are also cases where sudo should not be used_ 
 e.g. running sclang, where superuser is not in the audio group, but the standard user is
 
-**pkill**
+**pkill**  
 kills a running process by **name** e.g: `$ pkill python`
 
-**lsoi**
+**lsoi**  
 _need this ? _
 
-**chmod**
-changes file permissions
+**chmod**  
+changes file permissions  
 _EXAMPLES_
 
 ----------------
@@ -130,7 +130,7 @@ _EXAMPLES_
 
 this section involves running small programs (in /sbin typically), they are not unix commands as such... 
 
-**reboot/shutdown**
+**reboot/shutdown**  
 - reboot the beagle board from the command line:
 ```shell
 $ sudo /sbin/reboot # option 1: directly do reboot
@@ -143,15 +143,15 @@ $ sudo /sbin/shutdown -r now # option 2, shutdown with option for reboot, schedu
 ----------------
 #### 5. Text editors
 
-**nano**
+**nano**  
 _nano_ is a simple text editor in the shell. The interface is mostly self-explanatory, unlike _vim_
 `$ nano myTextFile.txt`#if filename does not exist, it gets created! 
 
-**pico**
-see nano
+**pico**  
+see nano  
 _is there any difference?_
 
-**vi**
+**vi**  
 _vim_ is yet another more difficult to use text editor (IMO)
 - Used as default text editor by the shell, e.g. for commiting git comments
 Basic usage:
@@ -165,26 +165,26 @@ Basic usage:
 ----------------
 #### 6. Miscellanous
 
-**diskutil**
+**diskutil**  
 This is the volume/disc manager, useful for mounting/unmounting etc, e.g. 
 `$ diskutil list` gives you a list of the connected volumes on the system.
 
-**cat**  
+**cat**    
 This prints the contents of a file to the screen e.g.
 `$ cat /etc/passwd`
 or: `$ cat id_rsa.pub`
 
-**setting the correct time on the system**
-**NOTE:requires an internet connection**
+**setting the correct time on the system**  
+**NOTE:requires an internet connection**  
 `$ /usr/sbin/ntpdate -b -s -u pool.ntp.org`
 
-**history**
+**history**  
 _???_
 
-**grep**
+**grep**  
 This performs regular expression search on the given
 
-**some more shell commands others**
+**some more shell commands others**  
 - less
 - bg
 - fg
