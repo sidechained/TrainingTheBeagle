@@ -1,8 +1,10 @@
-SSH Troubleshooting
+## Using SSH - Troubleshooting Guide
 
-- this document details how to remotely access your beaglebone from the command line using SSH
-- it currently covers basic login, and has a tutorial for passwordless login
-- you will need to know the IP of your beaglebone before starting, if unsure please see the 'networking' tutorial for details on how to set this up
+This document details how to remotely access your beaglebone from the command line using SSH
+It currently covers 
+* basic login
+* passwordless login
+You will need to know the IP of your beaglebone before starting, if unsure please see the **networking tutorial** _LINK HERE_ for details on how to set this up
 
 Troubleshooting:
 

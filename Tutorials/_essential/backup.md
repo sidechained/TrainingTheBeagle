@@ -1,21 +1,22 @@
 ## Backup
 
 This document covers various approaches to:
-* backing up your beaglebone SD card to a disk image
+* backing up your Linux System on the beaglebone SD card to a disk image
 * restoring the image back to an SD card
 
-### Backing Up an SD Card 
+#### Backing Up an SD Card 
 
 * backing up to a disk image can be useful at various stages of a complex installation process e.g. as covered [here](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.txt)
 * for all the methods below you will need to remove the micro SD card from your beaglebone and find a way to insert it in your PC
-* NOTE: a micro to full size SD card adapter can be useful here
+NOTE: a micro to full size SD card adapter can be useful here
 
-#### Method 1. Using A Third Party Tool
+##### Method 1. Using A Third Party Tool
 
-* The easiest approach is to use PiCopier, which also works well for backing up beaglebone images
-* Download the app here (also more interesting tools there): http://ivanx.com/raspberrypi/
+* The easiest approach is to use **PiCopier**, which also works well for backing up beaglebone images
+Download the app here: http://ivanx.com/raspberrypi/  
+(there are more interesting tools there)
 
-#### Method 2. Unix, Difficult But Fast(ish)
+##### Method 2. On Unix, Difficult But Fast(ish)
 
 * put the SD card into a card reader on a PC, in the Terminal do:  
 `$ diskutil list` 
@@ -39,7 +40,7 @@ https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20
 `$ sudo tar -xzvf rootfs.tar.gz -C /Volumes/rootfs`
 * _Q: need hyphen here or not?_
 
-#### Method 3. Easy but Slow
+##### Method 3. Easy but Slow
 
 * If the destination card is the same size, then an easy (but slower) way is to use the unix dd command.
 * Read from the device, not the partition, so you get partition table for free.
@@ -55,8 +56,6 @@ https://groups.google.com/forum/?fromgroups#!searchin/beagleboard/backup$20sd$20
 * for multi-beagle installations, restoring from the same image can be a useful way to ensure that each beagle is running the same software
 * however, restoring multiple SD cards takes a long time
 * if you just want to add or remove files to multiple beagleboards, a better approach here might be to create a bash install/uninstall script (see separate tutorial)
-
-__TODO__
 
 
 
