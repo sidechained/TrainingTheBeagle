@@ -12,7 +12,7 @@ NOTE: a micro to full size SD card adapter can be useful here
 
 ##### Method 1. Using A Third Party Tool
 
-* The easiest approach is to use **PiCopier**, which also works well for backing up beaglebone images
+* The easiest approach is to use **PiCopier**, which also works well for backing up beaglebone images.  
 Download the app here: http://ivanx.com/raspberrypi/  
 (there are more interesting tools there)
 
