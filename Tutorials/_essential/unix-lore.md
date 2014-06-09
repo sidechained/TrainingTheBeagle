@@ -7,21 +7,20 @@ This is a quick primer of most of the things you need to know about unix/termina
 
 username/password for beagleboard is **debian/debian**
 
-Some syntax symbols and their meaning:
-`~`	= home directory
-`$`	= used to mark start of the command prompt
-`|`	= (pipe) 
-`/`	= (backslash)
-`#` = separates comments in the command line/ shell/terminal
+Some syntax symbols and their meaning:  
+`~`	= home directory  
+`$`	= used to mark start of the command prompt  
+`|`	= (pipe)   
+`/`	= (backslash)  
+`#` = separates comments in the command line/ shell/terminal  
 
 **Important: Getting help**
 
-Type: `$ whatis [commandname]`, e.g. 
+Type: `$ whatis [commandname]`, e.g.  
 `$ whatis ping`
 
-another possibility is to type just the commandname, or the commandname and `-help` or `--help` to get a display of the helpfile:
-`$ git push --help
-(opens in vim editor, type `q` at the `:` (last line) to exit)
+another possibility is to type just the commandname, or the commandname followed by `-help` or `--help` to get a display of the helpfile:
+`$ git push --help ` (opens in vim editor, type `q` at the `:` (last line) to exit)
 
 
 ###### Some Helpful Shortcuts: 
@@ -36,44 +35,45 @@ For using on the command line / terminal.
 ----------------
 #### 1. Standard actions
 
-###### Navigating:
-** cd ** 
-`$ cd [path to directory]` 	= change to the given directory path
-`$ cd ../..` 	= change to root directory
-`$ cd ..` = go up to parent directory
+###### Navigating: 
+**cd**   
+`$ cd [path to directory]` 	= change to the given directory path  
+`$ cd ../..` 	= change to root directory  
+`$ cd ..` = go up to parent directory  
 
-** ls **
-`$ ls` = show whats in the directory, also works like: 
-`$ ls [path to directory]` - just looking without actuall navigating to the directory
-Options: 
-`$ ls -a` = use -a flag to display hidden files (i.e. those preceded with a `.`)
-`$ ls -l` = use -l to display items in a list
-*- ls -d ?!* mention here?
+**ls**  
+`$ ls` = show whats in the directory, also works like:  
+`$ ls [path to directory]` - just looking without actuall navigating to the directory  
+Options:   
+`$ ls -a` = use -a flag to display hidden files (i.e. those preceded with a `.`)  
+`$ ls -l` = use -l to display items in a list  
+*- ls -d ?!* mention here?  
 
-**pwd**  
-This displays the current directory path e.g
-`$ pwd` -> you get something like: `$ /home/debian/soundvase
+**pwd**   
+This displays the current directory path e.g  
+`$ pwd` -> you get something like: `$ /home/debian/soundvase  
 
 ###### File Management:
+
 **mkdir**  
-`$ mkdir [directoryname]` = create a directory in the current folder
+`$ mkdir [directoryname]` = create a directory in the current folder  
 
 **mv**  
-`$ mv [filename]` = move (==copy) a file around
-e.g. `$ mv bob.pdf ..`
-`$ mv bob.pdf ~/`
-`$ mv bob.pdf bob.txt # creates a duplicate of bob.pdf as bob.txt`
+`$ mv [filename]` = move (==copy) a file around  
+e.g. `$ mv bob.pdf ..`  
+`$ mv bob.pdf ~/`  
+`$ mv bob.pdf bob.txt # creates a duplicate of bob.pdf as bob.txt`  
 
 **cp**  
-`$ cp` = Copy … 
+`$ cp` = Copy …   
 
 **rm**  
-`$ rm annoyingFile.txt` = remove single files of given name
-use -R to remove a whole folder and its contents (recursively) e.g
-`$ rm -R annoyingFolder`
+`$ rm annoyingFile.txt` = remove single files of given name  
+use -R to remove a whole folder and its contents (recursively) e.g  
+`$ rm -R annoyingFolder`  
 
 ----------------
-#### 2. TCP Communication / Up-&Downloads / 
+#### 2. TCP Communication / Up-&Downloads
 
 **ping**  
 This sends a ping msg to the given IP address. useful for checking wether BBB is up & running in the network:
@@ -130,8 +130,8 @@ _EXAMPLES_
 
 this section involves running small programs (in /sbin typically), they are not unix commands as such... 
 
-** reboot/shutdown **
-*reboot the beagle board from the command line:
+**reboot/shutdown**
+- reboot the beagle board from the command line:
 ```shell
 $ sudo /sbin/reboot # option 1: directly do reboot
 $ sudo /sbin/shutdown -r now # option 2, shutdown with option for reboot, scheduled now
@@ -165,7 +165,7 @@ Basic usage:
 ----------------
 #### 6. Miscellanous
 
-** diskutil **
+**diskutil**
 This is the volume/disc manager, useful for mounting/unmounting etc, e.g. 
 `$ diskutil list` gives you a list of the connected volumes on the system.
 
@@ -174,7 +174,7 @@ This prints the contents of a file to the screen e.g.
 `$ cat /etc/passwd`
 or: `$ cat id_rsa.pub`
 
-** setting the correct time on the system **
+**setting the correct time on the system**
 **NOTE:requires an internet connection**
 `$ /usr/sbin/ntpdate -b -s -u pool.ntp.org`
 
@@ -184,7 +184,7 @@ _???_
 **grep**
 This performs regular expression search on the given
 
-** some more shell commands others**
+**some more shell commands others**
 - less
 - bg
 - fg
