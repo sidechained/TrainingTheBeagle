@@ -1,0 +1,92 @@
+## Rules for Markdown in this Project
+
+Some conventions I think we should follow when using markdown:
+
+* we use ## for the document title (not #)
+'# is too big, but # and ## both include a big line break below them'
+* for first sub heading use '###', other headings use '####'
+#### Sample Heading
+* we use *italics* to represents notes or questions to ourselves
+* we use a **bold** __TODO__ to represent elements of tutorials that still need to be completed
+
+* *when marking Comments in a code block we use SC Syntax ('//') -> or rather Terminal Syntax ('#') ?*
+
+----------
+
+#### More Basic Formatting Syntax 
+**Valuable things to know & use:**
+
+* make text bold or italic:
+*This text will be italic*
+**This text will be bold**
+(Both bold and italic can use either a * or an _ around the text for styling. This allows you to combine both bold and italic if needed. 
+In a word with several underscores, it won't work properly! e.g. perform_complicated_task)
+
+* striketrough text: 
+use double '~'. My ~~error~~
+
+* Bullet points / lists 
+'*' makes bullet points and starts a list (you can use hypens '-' as well)
+
+* CODE formatting:
+1. Enclosing in single 's is good for marking up single lines of code e.g.
+'$ sudo python thisismycode.py '
+
+2. enclosing in triple ```'s is good for marking up code blocks e.g.
+'''
+// my amazing sc patch
+s.boot
+s.quit
+'''
+
+3. Syntax Colorization: 
+use ''' [nameOfLanguage] …
+e.g. '''SuperCollider Ndef(\mysound, {|freq=400, amp=0.1| SinOsc.ar(freq) * amp}).play;'''
+other relevant languages: Python, Shell
+
+* Making Paragraphs: 
+Leaving two or spaces at the end of a line forces a carriage return/end of paragraph
+
+* many singles lines containing many ----'s or ===='s create a line break
+-----------------------
+
+* Table of Contents / Cross-reference Links
+These are picked up automatically through the used headings
+
+* LINKS:
+[thisLink] followed by (http://www.link.com) creates a hyperlink that hides the URL under "thislink"
+[Jonas' archive] (http://jonashummel.de)
+
+* ADDITIONALS:
+-> markdown creates nice links next to each heading the document (hover over left of each section heading to see!)
+
+* Insert an Image / Video:
+
+[![IMAGE ALT TEXT HERE](http://myfancyimage.jpg)](http://www.theUrlToTheImageHere)
+
+
+Videos can't be added directly but you can add an image with a link to the video like this:
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
+" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+
+* Insert a Table:
+
+You can create tables by assembling a list of words and dividing them with hyphens - (for the first row), and then separating each column with a pipe |:
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+
+######Reference: 
+*this info is compiled from:* 
+https://help.github.com/articles/github-flavored-markdown
+https://help.github.com/articles/markdown-basics
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
+https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+
+

@@ -13,12 +13,12 @@ This document covers various approaches to:
 #### Method 1. Using A Third Party Tool
 
 * The easiest approach is to use PiCopier, which also works well for backing up beaglebone images
-* See: http://ivanx.com/raspberrypi/
+* Download the app here (also more interesting tools there): http://ivanx.com/raspberrypi/
 
 #### Method 2. Unix, Difficult But Fast(ish)
 
-* put the SD card into a card reader on a PC, then:  
-`$ diskutil list`  
+* put the SD card into a card reader on a PC, in the Terminal do:  
+`$ diskutil list` 
 * unmount existing volumes:  
 `$ diskutil unmount /Volumes/boot`  
 `$ diskutil unmount /Volumes/rootfs`  
