@@ -5,9 +5,9 @@ Some conventions I think we should follow when using markdown:
 * we use ## for the document title (not #)
 `# is too big, but # and ## both include a big line break below them`
 * for first sub heading use `###`, other headings use `####`  
-####Example Heading
+#### Example Heading
 
-_(Every Heading needs an empty line below to work!)_
+_(Every Heading needs an empty space after the `#` and an empty line below to work!)_
 
 * we use `*italics*` to represents notes or questions to ourselves
 * we use a `**bold**` __TODO__ to represent elements of tutorials that still need to be completed
@@ -57,8 +57,8 @@ s.boot
 s.quit
 ```
 - Do Syntax Colorization:  
-use ` ``` [nameOfLanguage] … ``` `  
-for SuperCollider we have to use Javacsript to look like this:  
+use ```` [nameOfLanguage] … ````  
+for SuperCollider we have to use "Javascript" after the ````s` to look like this:  
 ```Javascript   
 Ndef(\mysound, {|freq=400, amp=0.1| SinOsc.ar(freq) * amp}).play;
 ```  

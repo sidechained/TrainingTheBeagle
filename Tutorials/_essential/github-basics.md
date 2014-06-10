@@ -12,6 +12,7 @@ Install with brew: `$ brew install git`
 ### Scenario1: Just Following / Cloning
 
 Author1 wants to get & copy any repo from github 'manually' to his computer. 
+
 __Commandline__
 In Terminal, navigate to your preferred folder. then type `$ git clone [UrlOfTheRepo]`
 
@@ -22,7 +23,7 @@ and click the button "Download ZIP" at the lower right corner to get the zipped 
 
 ### Scenario2: Update your Clone
 
-Author1 wants to update his preferred and updated repo from github 'manually':
+Author1 wants to update his preferred and updated repo from github 'manually':  
 It's easiest to just delete the "master"-folder and clone again... (see above)
 
 
@@ -62,7 +63,7 @@ then save the file and quit the editor:
 `:w` and ` :q`
 
 or use this line instead: 
-`$ git commit -m "merged"` 
+`$ git commit -m "merged" # or any other message than 'merged'` 
 
 #### Do the same with _pull_ instead of _fetch_ + _merge_
 
@@ -75,8 +76,8 @@ $ git push
 ```
 - _monodread_ pulls in the changes (instead of merging, this time)
 `$ git pull`
-- _sidechained_ and _monodread_`s repo`s are now identical  
-_is this true or do I need $ git pull upstream/master ?_
+- _sidechained_ and _monodread_'s repo's are now identical  
+
 
 -------------
 
@@ -99,13 +100,13 @@ Problems: The Commit history needs to be in sync and the "push" can be rejected.
 a) Pull in the latest changes from the online repo:  
 `$ git pull` accept the changes in the editor, quit it, and then do the above pushing again.
 
-b) overwrite the online repo, if you are sure noone else has done anything to it (your local folder is a direct clone of the online repo):  
+b) overwrite the online repo, if you are sure noone else has done anything to it (case: your local folder is a direct clone of the online repo):  
 `$ git push --force`  (But this uploads the whole repo again, in case you have a lot of data -> takes longer)
 
 #### Contribute ("Pull in") your changes from your fork to the original "upstream" repo
 
 Now that your fork is up-to-date with your changes, you want to merge your updated fork with the original repo from which you forked it.
-**For this you have to submit a "pull request"**  via the github website:  
+For this you have to submit a **"pull request"**  via the github website:  
 __Browser__  
 - Now that the fork is up-to-date: Navigate to your repository with the changes you want someone else to pull and press the Pull Request button.
 - For branch selection, choose from dropdownSwitch to your branch
