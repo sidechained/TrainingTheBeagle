@@ -49,14 +49,14 @@ __TODO__ *add another scenario with other working models? e.g. contributing to r
 - _sidechained_ created a new file in the local directory `TrainingTheBeagle/Tutorials` and pushed it
 ```
 $ touch test # creates the file `test`
-$ git add -A 
-$ git commit -m "added test"
-$ git push
+$ git add -A # this adds a change to the 'history'
+$ git commit -m "added test" # this commits the change to the 'history'
+$ git push # this pushes the local changes/commits incl. files to the online repo
 ```
 - _monodread_ fetched the upstream changes:
 ```
-$ git fetch upstream
-$ git merge upstream/master
+$ git fetch upstream # asks the latest changes/files from online upstream repo
+$ git merge upstream/master # merges them with your local files/changes
 ```
 Now the vim editor comes up, press I for inserting text, go to end of document, add a change comment.
 then save the file and quit the editor:
@@ -76,7 +76,8 @@ $ git push
 ```
 - _monodread_ pulls in the changes (instead of merging, this time)
 `$ git pull`
-- _sidechained_ and _monodread_'s repo's are now identical  
+
+- _sidechained_ and _monodread_'s repo's are now identical. 
 
 
 -------------
