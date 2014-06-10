@@ -19,9 +19,9 @@ Some conventions I think we should follow when using markdown:
 ###### Text Formatting: 
 
 * make text bold or italic:  
-*This text will be italic*  
-**This text will be bold**  
-(Both bold and italic can use either a * or an _ around the text for styling. This allows you to combine both bold and italic if needed.  
+`*This text will be italic* ` *This text will be italic*  
+`**This text will be bold** ` **This text will be bold**  
+(Both bold and italic can use either a * or an _ around the text for styling. This allows you to combine both bold and italic if needed.
 In a word with several underscores, it won`t work properly! e.g. perform_complicated_task)  
 
 * striketrough text:   
@@ -31,17 +31,20 @@ use double `~`. My ~~error~~
 `*` makes bullet points and starts a list (you can use hypens `-` as well)
 
 * Making Paragraphs:  
-Leaving two or spaces at the end of a line forces a carriage return/end of paragraph
+Leaving at least **two spaces** at the end of a line forces a carriage return/end of paragraph.
+Also an empty line forces a carriage return.
 
-* many singles lines containing many ----`s or ====`s create a line break  
-`-----------------------` ----
+* many singles lines containing many ----'s or ===='s create a line break  
+`----------------` 
+------------------
 
 * Table of Contents / Cross-reference Links  
-These are picked up automatically through the used headings
-
+These are picked up automatically through the heading formatting  
+(hover over left of each section heading to see!)
 
 ###### CODE formatting:  
-- Enclosing in single `s is good for marking up single lines of code e.g.  
+- Enclosing in single ```   
+is good for marking up single lines of code e.g.  
 `$ sudo python thisismycode.py `  
 
 -Enclosing in triple ````s is good for marking up code blocks e.g.  
@@ -51,16 +54,16 @@ s.boot
 s.quit
 ```
 - Do Syntax Colorization:  
-use ``` [nameOfLanguage] …
-e.g. ```SuperCollider Ndef(\mysound, {|freq=400, amp=0.1| SinOsc.ar(freq) * amp}).play;```  
-other relevant languages: Python, Shell
+use ```` [nameOfLanguage] … `  
+e.g. 
+```SuperCollider   
+Ndef(\mysound, {|freq=400, amp=0.1| SinOsc.ar(freq) * amp}).play;
+```  
+other relevant languages here: Python, Shell
 
 ###### LINKS:  
 [thisLink] followed by (http://www.link.com) creates a hyperlink that hides the URL under "thislink"
 [Jonas` archive] (http://jonashummel.de)
-
-###### ADDITIONALS:  
--> markdown creates nice links next to each heading the document (hover over left of each section heading to see!)
 
 ###### Inserting an Image / Video:
 [![IMAGE Description TEXT HERE](http://myfancyimage.jpg)](http://www.theUrlToTheImageHere)
