@@ -5,16 +5,16 @@ Some conventions I think we should follow when using markdown:
 * we use ## for the document title (not #)
 `# is too big, but # and ## both include a big line break below them`
 * for first sub heading use `###`, other headings use `####`  
-#### Example Heading
-* we use *italics* to represents notes or questions to ourselves
-* we use a **bold** __TODO__ to represent elements of tutorials that still need to be completed
+####Example Heading
+
+* we use `*italics*` to represents notes or questions to ourselves
+* we use a `**bold**` __TODO__ to represent elements of tutorials that still need to be completed
 
 * *when marking Comments in a code block we use SC Syntax (`//`) -> or rather Terminal Syntax (`#`) ?*
 
 ----------
 
 #### More Basic Formatting Syntax 
-**Valuable things to know & use:**
 
 ###### Text Formatting: 
 
@@ -36,9 +36,11 @@ Also an empty line forces a carriage return.
 
 * many singles lines containing many ----'s or ===='s create a line break  
 `----------------` 
-------------------
 
-* Table of Contents / Cross-reference Links  
+------------------
+_(Interesting behaviour here btw: Anything that is directly above a line break will be formatted into a heading1 !)_
+
+* Table of Contents / Cross-reference Links within a document  
 These are picked up automatically through the heading formatting  
 (hover over left of each section heading to see!)
 
@@ -55,8 +57,8 @@ s.quit
 ```
 - Do Syntax Colorization:  
 use ```` [nameOfLanguage] … `  
-e.g. 
-```SuperCollider   
+for SuperCollider we have to use Javacsript, e.g. 
+```Javascript   
 Ndef(\mysound, {|freq=400, amp=0.1| SinOsc.ar(freq) * amp}).play;
 ```  
 other relevant languages here: Python, Shell
