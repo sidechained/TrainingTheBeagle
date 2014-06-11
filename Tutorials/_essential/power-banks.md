@@ -12,9 +12,9 @@ Mobile power banks are an ideal way to power the Beaglebone Black, as:
 
 In order to find the best match for the BeagleBone, I purchased four cheap power banks on Chinese commerce site Taobao and compared them, as follows:
 
-![Powerbank Line Up Alongside Beaglebone](./images/IMG_20140608_165709.jpg "Powerbank Line Up Alongside Beaglebone")
-![Powerbank Overview Inner](./images/IMG_20140608_151527.jpg "Powerbank Overview Inner")
-![Powerbank Overview Outer](./images/IMG_20140608_151807.jpg "Powerbank Overview Outer")
+![Powerbank Line Up Alongside Beaglebone](./_power-images/IMG_20140608_165709.jpg "Powerbank Line Up Alongside Beaglebone")
+![Powerbank Overview Inner](./_power-images/IMG_20140608_151527.jpg "Powerbank Overview Inner")
+![Powerbank Overview Outer](./_power-images/IMG_20140608_151807.jpg "Powerbank Overview Outer")
 
 All four power banks have a 5V micro USB input for charging, and have a built in LED which can be used as a flashlight. The following table gives an overview of the features and cost of each bank. For more details see the links column (in Chinese, but will useful images).
 
@@ -28,20 +28,20 @@ All four power banks have a 5V micro USB input for charging, and have a built in
 DIY means the power bank comes with case and PCB, but not the battery connectors or wiring, which you have to do yourself. I bought these as they were cheap and could be good to use without the case i.e. to strap the PCB and a battery (or three) directly to the beaglebone itself for ultimate compactness. 
 
 ##### Samsung
-![an image](./images/IMG_20140608_152153.jpg "Samsung")
-![an image](./images/IMG_20140608_152224.jpg "Samsung")
+![an image](./_power-images/IMG_20140608_152153.jpg "Samsung")
+![an image](./_power-images/IMG_20140608_152224.jpg "Samsung")
 
 ##### Square
-![](./images/IMG_20140608_152300.jpg "Square")
-![](./images/IMG_20140608_152331.jpg "Square")
+![](./_power-images/IMG_20140608_152300.jpg "Square")
+![](./_power-images/IMG_20140608_152331.jpg "Square")
 
 ##### Xinbo
-![an image](./images/IMG_20140608_151912.jpg "Xinbo")
-![an image](./images/IMG_20140608_152024.jpg "Xinbo")
+![an image](./_power-images/IMG_20140608_151912.jpg "Xinbo")
+![an image](./_power-images/IMG_20140608_152024.jpg "Xinbo")
 
 ##### Power Bank
-![an image](./images/IMG_20140608_152057.jpg "Power Bank")
-![an image](./images/IMG_20140608_152125.jpg "Power Bank")
+![an image](./_power-images/IMG_20140608_152057.jpg "Power Bank")
+![an image](./_power-images/IMG_20140608_152125.jpg "Power Bank")
 
 #### Measuring the Output of the Power Banks
 
@@ -64,9 +64,9 @@ As many of the batteries available on Taobao are fakes, I bought from three diff
 * The first set I purchased were sold as genuine unused batteries and cost 24yuan per battery with 7yuan postage. See [here](http://a.m.taobao.com/i12677731619.htm?ttid=212200@taobao_android_4.2.2)
 * The second and third set were both advertised as reclaimed, retested batteries taken from old laptops. [One](http://a.m.taobao.com/i35858407101.htm?ttid=212200@taobao_android_4.2.2) was 12.5yuan per battery with 10yuan postage, [the other](http://a.m.taobao.com/i18265637568.htm?ttid=212200@taobao_android_4.2.2) was 13yuan/battery with 8yuan postage.
 
-![image of 'real' battery](./images/IMG_20140608_102233.jpg =250x)
-![image of 'fake' reclaimed battery](./images/IMG_20140608_102320.jpg =250x)
-![bad shrink wrapping on fake battery](./images/IMG_20140608_102504.jpg =250x)
+![image of 'real' battery](./_power-images/IMG_20140608_102233.jpg =250x)
+![image of 'fake' reclaimed battery](./_power-images/IMG_20140608_102320.jpg =250x)
+![bad shrink wrapping on fake battery](./_power-images/IMG_20140608_102504.jpg =250x)
 
 All these batteries are working fine right now, but time will tell as to which ends out
 
