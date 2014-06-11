@@ -1,6 +1,17 @@
 ## Networking
 
-This document covers basic network configuration and troubleshooting on the Beaglebone Black, focussing particular on editing the debian /etc/network/interfaces file. It is assumed that you are editing the interfaces file on the beaglebone itself (i.e. by connecting via ssh over ethernet). Another approach is to insert the sd card into your pc, and edit the interfaces file from the rootfs partition (sometimes necessary if you get locked out of the beaglebone itself)
+This document covers basic network configuration and troubleshooting on the Beaglebone Black, focussing particular on
+
+* editing the debian /etc/network/interfaces file
+
+* taking control of the beaglebone using ssh (including passwordless login)
+
+It is assumed that you are editing the interfaces file on the beaglebone itself (i.e. by connecting via ssh over ethernet). Another approach is to insert the sd card into your pc, and edit the interfaces file from the rootfs partition (sometimes necessary if you get locked out of the beaglebone itself)
+
+remotely access your beaglebone from the command line using SSH
+It currently covers 
+
+You will need to know the IP of your beaglebone before starting
 
 ### Tutorials
 
@@ -82,14 +93,6 @@ SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{dev_id}=="0x0", ATTR{type}=
 - and here: http://www.howtogeek.com/howto/ubuntu/change-ubuntu-server-from-dhcp-to-a-static-ip-address/
 
 ## Using SSH - Troubleshooting Guide
-
-This document details how to remotely access your beaglebone from the command line using SSH
-It currently covers 
-* basic login
-* passwordless login
-You will need to know the IP of your beaglebone before starting, if unsure please see the **networking tutorial** _LINK HERE_ for details on how to set this up
-
-Troubleshooting:
 
 1. "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!"
 
@@ -184,8 +187,3 @@ $ sudo nano ~/.ssh/known_hosts
 - attempt to access the beaglebone again via ssh e.g.
 $ ssh debian@192.168.2.14
 - login should now be possible
-
-
-
-
-
