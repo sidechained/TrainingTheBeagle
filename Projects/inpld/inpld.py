@@ -1,10 +1,11 @@
 # inpld project - python script
-# - AIM: poll the value of a sensor and send as OSC to sclang e.g. '/shift 52'
+# - AIM: poll the value of a sensor and send as OSC to sclang e.g. '/gsr 52'
 
 import OSC
 from OSC import OSCClient, OSCMessage
 from threading import Timer
-import Adafruit_BBIO.ADC as ADC 
+import Adafruit_BBIO.ADC as ADC
+import random # for faking random ADC values
 
 inPin = "P9_40" # connect sensor to this pin
 sendAddress = '127.0.0.1', 57120 # address to send to SuperCollider
@@ -14,9 +15,10 @@ def init_sensing_loop():
 	Timer(sensingPollRate, sense_and_send_values).start()
 
 def sense_and_send_values():
-	sensedValue = ADC.read(inPin)
-	msg = OSC.OSCMessage()
-	msg.setAddress('/shift')
+	# sensedValue = ADC.read(inPin)
+	sensedValue = random.random * 400 # faking it for now in the range 0 to 400
+	msg = OSC.OSCMessage() # do we need the OSC. here when OSCMessage has been declared explicitingly above?
+	msg.setAddress('/gsr')
 	msg.append(sensedValue)
 	print "sending locally to supercollider: '{0}', '{1}'".format(msg, client)
 	try:
