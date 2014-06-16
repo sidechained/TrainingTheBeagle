@@ -21,7 +21,7 @@ s.waitForBoot({ // boot the server and then do the following:
 	// SETUP THE Sounds/Controls
 	(
 		Ndef(\monitor).play; // mixer for the two sounds
-		Tdef(\poltergeist).set(\dir, 0, \freq, 1000, \sustain, 2);
+		Tdef(\poltergeist).set(\dir, 1, \freq, 1000, \sustain, 2);
 		Ndef(\crossroads).play;
 		Ndef(\crossroads).end;
 	);
