@@ -5,7 +5,9 @@ Some conventions I think we should follow when using markdown:
 * we use ## for the document title (not #)
 `# is too big, but # and ## both include a big line break below them`
 * for first sub heading use `###`, other headings use `####`  
-####Example Heading
+#### Example Heading
+
+_(Every Heading needs an empty space after the `#` and an empty line below to work!)_
 
 * we use `*italics*` to represents notes or questions to ourselves
 * we use a `**bold**` __TODO__ to represent elements of tutorials that still need to be completed
@@ -28,7 +30,7 @@ In a word with several underscores, it won`t work properly! e.g. perform_complic
 use double `~`. My ~~error~~
 
 * Bullet points / lists   
-`*` makes bullet points and starts a list (you can use hypens `-` as well)
+`* ` makes bullet points and starts a list (you can use hypens `-` as well). It needs a space after the sign!
 
 * Making Paragraphs:  
 Leaving at least **two spaces** at the end of a line forces a carriage return/end of paragraph.
@@ -38,15 +40,14 @@ Also an empty line forces a carriage return.
 `----------------` 
 
 ------------------
-_(Interesting behaviour here btw: Anything that is directly above a line break will be formatted into a heading1 !)_
+_(Note here: Anything that is directly above a line break will be formatted into a heading1 !)_
 
 * Table of Contents / Cross-reference Links within a document  
 These are picked up automatically through the heading formatting  
 (hover over left of each section heading to see!)
 
 ###### CODE formatting:  
-- Enclosing in single ```   
-is good for marking up single lines of code e.g.  
+- Enclosing in single ` ` ` is good for marking up single lines of code e.g.  
 `$ sudo python thisismycode.py `  
 
 -Enclosing in triple ````s is good for marking up code blocks e.g.  
@@ -56,8 +57,8 @@ s.boot
 s.quit
 ```
 - Do Syntax Colorization:  
-use ```` [nameOfLanguage] … `  
-for SuperCollider we have to use Javacsript, e.g. 
+use ```` [nameOfLanguage] … ````  
+for SuperCollider we have to use "Javascript" after the ````s` to look like this:  
 ```Javascript   
 Ndef(\mysound, {|freq=400, amp=0.1| SinOsc.ar(freq) * amp}).play;
 ```  

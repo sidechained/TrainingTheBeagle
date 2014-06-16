@@ -60,30 +60,30 @@ Last login: Sat Jan  1 00:01:02 2000 from 192.168.2.21
 
 Debian
 
-https://github.com/redFrik/udk11-Portable_sonification_projects/tree/master/udk140515#installing-debian-linux
-https://github.com/redFrik/udk11-Portable_sonification_projects/tree/master/udk140515#starting-for-the-first-time
-https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--preparation-first-time-only (debian)
+- https://github.com/redFrik/udk11-Portable_sonification_projects/tree/master/udk140515#installing-debian-linux
+- https://github.com/redFrik/udk11-Portable_sonification_projects/tree/master/udk140515#starting-for-the-first-time
+- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--preparation-first-time-only (debian)
 
 ### Installing Sound Software
 
 #### Installing ALSA
 
-https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-alsa--test-sound
+- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-alsa--test-sound
 
 #### Installing Jack
 
-https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-jack
+- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-jack
 
 #### Installing SuperCollider
 
-https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-supercollider-37alpha0
+- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-supercollider-37alpha0
 
 * installing Jack and Supercollider are the basic requirements for the Beaglebone to run audio
 * Fredrik Olofsson has produced excellent tutorials on this, which we will not attempt to reproduce here
 
-https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--start-sc
-https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--get-low-latency-audio
-https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--loading-files
+- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--start-sc
+- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--get-low-latency-audio
+- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--loading-files
 
 #### Installing Physical Computing Software
 
@@ -182,21 +182,21 @@ NOTE: Installing those packages will not mess up your OS, as long as you do not 
 
 #### PWM Not Working in Adafruit Library
 
-* this is down to an issue in the kernel, ideally need to update to bone24 or higher
-* fixed it by following instructions here to flash sd card wtih debian 7.1 + bone24 : http://elinux.org/BeagleBoardDebian
+This is down to an issue in the kernel, ideally need to update to bone24 or higher
+We fixed it by following instructions here to flash sd card wtih debian 7.1 + bone24 : http://elinux.org/BeagleBoardDebian
 also useful: http://elinux.org/BeagleBone
-* related links here:
-https://github.com/adafruit/adafruit-beaglebone-io-python/issues/22
-https://github.com/adafruit/adafruit-beaglebone-io-python/issues/23
-https://github.com/adafruit/adafruit-beaglebone-io-python/issues/6
-http://www.armhf.com/index.php/boards/beaglebone-black/
-http://eewiki.net/display/linuxonarm/BeagleBone+Black
+Find related links here:
+- https://github.com/adafruit/adafruit-beaglebone-io-python/issues/22
+- https://github.com/adafruit/adafruit-beaglebone-io-python/issues/23
+- https://github.com/adafruit/adafruit-beaglebone-io-python/issues/6
+- http://www.armhf.com/index.php/boards/beaglebone-black/
+- http://eewiki.net/display/linuxonarm/BeagleBone+Black
 
 ### Links
 
 * Alternative's to Adafruit BBIO: [PyBBIO](http://beagleboard.org/project/PyBBIO/) ([and here](https://github.com/alexanderhiam/PyBBIO/wiki)) and [Bonescript](http://beagleboard.org/project/bonescript/) (on Angstrom, using node.js). According to [this](http://petebachant.me/stepper-motor-control-with-the-beaglebone-black-and-python/) Adafruit is the best. 
 * Fredrik's simplified (older) installation tutorial can be found [here](http://supercollider.github.io/development/building-beagleboneblack.html) and some discussion [here](http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/supercollider-on-Beaglebone-Black-td7599684.html)
 * A comprehensive [adafruit BBIO tutorial](https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/using-the-bbio-library) and a [quicker overview](https://pypi.python.org/pypi/Adafruit_BBIO)
-* A selection of BBIO tutorials: [blinking led](http://learn.adafruit.com/blinking-an-led-with-beaglebone-black) [push button](http://learn.adafruit.com/connecting-a-push-button-to-beaglebone-black) [measuring temperature](http://learn.adafruit.com/measuring-temperature-with-a-beaglebone-black)
+* A selection of BBIO tutorials: [blinking led](http://learn.adafruit.com/blinking-an-led-with-beaglebone-black), [push button](http://learn.adafruit.com/connecting-a-push-button-to-beaglebone-black), [measuring temperature](http://learn.adafruit.com/measuring-temperature-with-a-beaglebone-black)
 
 

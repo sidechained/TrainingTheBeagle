@@ -1,47 +1,69 @@
-## TUTORIAL: A quickstart into using Github (mainly through terminal)
+## TUTORIAL: A quickstart into using Github 
 
-This document covers some basics of how to use Github for collaborating on a repo.
+This document covers some basics of how to use Github for collaborating on a repo. We mainly use it through the terminal-commandline and sometimes the web browser.
 It is basically a document of our experiences of how to share beaglebone projects using github as a communication and exchange platform.
 
-For related info, see: "general document-Markdown-Rules"
-In every section there is also a way mentioned how to do the action from the browser.
-__TODO__!!
+For related info on document formatting on github, see: [general document-Markdown-Rules] (https://github.com/sidechained/TrainingTheBeagle/tree/master/Tutorials/general-documentMarkdownRules.md)
 
-#### Scenario1
------
+**When using terminal, you need to install git on your system first!**
+Install with brew: `$ brew install git`
+
+
+### Scenario1: Just Following / Cloning
+
+Author1 wants to get & copy any repo from github 'manually' to his computer. 
+
+__Commandline__
+In Terminal, navigate to your preferred folder. then type `$ git clone [UrlOfTheRepo]`
+
+__Browser__
+For this use the webbrowser and navigate to the repo of interest, e.g. https://github.com/monodread/TrainingTheBeagle
+and click the button "Download ZIP" at the lower right corner to get the zipped repo folder usually named "NameOfRepo-master".
+
+
+### Scenario2: Update your Clone
+
+Author1 wants to update his preferred and updated repo from github 'manually':  
+It's easiest to just delete the "master"-folder and clone again... (see above)
+
+
+### Scenario3: Following a repo through 'Forking'
+
 Author1 _sidechained_ manages the Working Repo, Author2 _monodread_ follows the master branch with this fork of it.
 
-__TODO__ *add scenarios 2,3 with other working models? e.g. contributing to repo without forking...
+__TODO__ *add another scenario with other working models? e.g. contributing to repo without forking...*
 
 
 #### Setup Process
+
 - _sidechained_ created a master repo
 - _monodread_ forked it on the github website (using the fork button)
-- _monodread_ cloned his fork of this repo to a local directory with Terminal:
+- _monodread_ cloned his fork of this repo to a local directory with Terminal:  
 `$ git clone ahttps://github.com/monodread/TrainingTheBeagle.git`
-- _monodread_ added an upstream of the original project master to his fork:
+- _monodread_ added an upstream of the original project master to his fork (relinking this repo to the original)=:  
 `$ git remote add upstream https://github.com/monodread/TrainingTheBeagle.git`
 
+--------------------------
 #### Keep the Fork in sync with the __upstream__ Repo
 
 - _sidechained_ created a new file in the local directory `TrainingTheBeagle/Tutorials` and pushed it
 ```
 $ touch test # creates the file `test`
-$ git add -A 
-$ git commit -m "added test"
-$ git push
+$ git add -A # this adds a change to the 'history'
+$ git commit -m "added test" # this commits the change to the 'history'
+$ git push # this pushes the local changes/commits incl. files to the online repo
 ```
 - _monodread_ fetched the upstream changes:
 ```
-$ git fetch upstream
-$ git merge upstream/master
+$ git fetch upstream # asks the latest changes/files from online upstream repo
+$ git merge upstream/master # merges them with your local files/changes
 ```
 Now the vim editor comes up, press I for inserting text, go to end of document, add a change comment.
 then save the file and quit the editor:
 `:w` and ` :q`
 
 or use this line instead: 
-`$ git commit -m "merged"` 
+`$ git commit -m "merged" # or any other message than 'merged'` 
 
 #### Do the same with _pull_ instead of _fetch_ + _merge_
 
@@ -54,28 +76,43 @@ $ git push
 ```
 - _monodread_ pulls in the changes (instead of merging, this time)
 `$ git pull`
-- _sidechained_ and _monodread_`s repo`s are now identical  
-_is this true or do I need $ git pull upstream/master ?_
+
+- _sidechained_ and _monodread_'s repo's are now identical. 
+
 
 -------------
-#### Add your changes in the fork to the original repo
 
-** For this submitting a "pull request" **  
-This is needed, as soon as author2 /_monodread_ added or changed a file in his fork and wants to synchronize this with the original repo of author1
+### Scenario4: Making changes to your repo and pushing them to your fork and then to the upstream
 
-Author2 creates a new file: `$ touch JonasTutorial.txt`
-_(need to git add, git commit, git push here)?_
-_monodread_ submits this change as a pull request via the github website:
-1. update your local fork to your online repo: 
+#### Updating your fork with your changes:
+
+__Browser__  
+The easiest way to do this is through the browser editor, as it is already all synchronized!
+For this you click on the file that you want to change (in your fork), edit it, save it, ideally with a commit message (at bottom). 
+
+__Commandline__  
+For making changes to the files/folders in your local repo, just edit, save them locally, then: 
 ```
-$ git add -A
-$ git commit -m "added my new file"
-$ git push
+$ git add -A # this adds the change to the git history
+$ git commit -m "added test2" # this adds this stage with a commit message appearing the browser
+$ git push # this pushes the local and modified files to your online repo / fork
 ```
-2. Now that the fork is up-to-date: Navigate to your repository with the changes you want someone else to pull and press the Pull Request button.
-3. For branch selection, choose from dropdownSwitch to your branch
-4. use the pull Request button -> Click the Compare & review button
-5. author1/_sidechained_ gets an email notification and checks the pull request on the website, authorizes it.  
+Problems: The Commit history needs to be in sync and the "push" can be rejected. You have 2 options: 
+a) Pull in the latest changes from the online repo:  
+`$ git pull` accept the changes in the editor, quit it, and then do the above pushing again.
+
+b) overwrite the online repo, if you are sure noone else has done anything to it (case: your local folder is a direct clone of the online repo):  
+`$ git push --force`  (But this uploads the whole repo again, in case you have a lot of data -> takes longer)
+
+#### Contribute ("Pull in") your changes from your fork to the original "upstream" repo
+
+Now that your fork is up-to-date with your changes, you want to merge your updated fork with the original repo from which you forked it.
+For this you have to submit a **"pull request"**  via the github website:  
+__Browser__  
+- Now that the fork is up-to-date: Navigate to your repository with the changes you want someone else to pull and press the Pull Request button.
+- For branch selection, choose from dropdownSwitch to your branch
+- use the pull Request button -> Click the Compare & review button
+- author1/_sidechained_ gets an email notification and checks the pull request on the website, authorizes it.  
 You can review/compare the changes online, line-by-line
 
 -------------
@@ -118,7 +155,8 @@ This resolved the issue so I could commit and pull
 - and this about how to resolve in github for mac: https://help.github.com/articles/resolving-merge-conflicts
 
 --------------
-###### Additional notes: 
+
+### Additional notes: 
 
 **pulling**
 
