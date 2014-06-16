@@ -16,7 +16,7 @@ def init_sensing_loop():
 
 def sense_and_send_values():
 	# sensedValue = ADC.read(inPin)
-	sensedValue = random.random * 400 # faking it for now in the range 0 to 400
+	sensedValue = random.random() * 400 # faking it for now in the range 0 to 400
 	msg = OSC.OSCMessage() # do we need the OSC. here when OSCMessage has been declared explicitingly above?
 	msg.setAddress('/gsr')
 	msg.append(sensedValue)
