@@ -8,6 +8,36 @@ one fingers: about 10,20,30,40,50-60 (but federica was 1..15)
 
 */
 ////////////////////////////////////
+
+(
+// Code for receiving OSC 
+s.waitForBoot({ // boot the server and then do the following:
+
+        var synth;
+
+        // define a simple FFT based pitch shifting SynthDef, and send it to the server
+        SynthDef("pitchShift", { arg out=0, shift = 0.5;
+                    var in, chain;
+                    in = SoundIn.ar(0);
+                    chain = FFT(LocalBuf(2048), in);
+                    chain = PV_BinShift(chain, shift.linexp(0, 1, 0.25, 4)); // .linexp can be adjusted to smooth out nonlinearities in the sensor values
+                    Out.ar(out, 0.5 * IFFT(chain).dup); // .dup here makes the sound come out of both the L + R channel (instead of just L)
+        }).add;
+        s.sync; // wait until the synth has been added to the server before continuing
+        synth = Synth("pitchShift"); // create a synth
+
+        // listen for a /shift OSC message (from Python), and set the \shift parameter of the synth according to the float provided in the OSC message:
+        OSCFunc({arg msg;
+                var shift;
+                shift = msg[1];
+                msg.postln;
+                synth.set(\shift, shift);
+        }, '/shift');
+
+})
+
+)
+
 (
 q = q ? ();
 b = Bus.control(s, 4);
@@ -21,7 +51,7 @@ q.baudrate = 115200;
 
 )
 
-///////////////////////////
+/v//////////////////////////
 // Setup some sounds to play
 (
 Ndef(\fakeGSR, { |min=0, max=380| MouseY.kr(min, max); });
