@@ -1,0 +1,22 @@
+#!/bin/sh
+# Soundvase - startup file
+
+# - this file does three things:
+# 1. sets up the usb soundcard
+# 2. initialises audio (runs the soundvase.scd sclang patch)
+# 3. initialises sensing (runs the soundvase.py python script)
+# - this file is typically run automatically by the soundvaseBoot script
+# - but it can be run by hand by calling: $ sh soundvaseStartup
+# - NOTE: the & is particularly important in the code below to ensure processes are run in parallel threads
+
+sudo exec > /tmp/vase.txt 2>&1
+echo $(date)
+echo "running sclang startup file..."
+echo "starting jack..."
+jackd -dalsa -dhw:1,0 -p512 -n3 -s &
+sleep 4
+echo "start supercollider..."
+sclang /home/debian/inpld/inpld.scd &
+sleep 4
+echo "starting python..."
+sudo python /home/debian/inpld/inpld.py
