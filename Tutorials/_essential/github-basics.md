@@ -115,6 +115,44 @@ __Browser__
 - author1/_sidechained_ gets an email notification and checks the pull request on the website, authorizes it.  
 You can review/compare the changes online, line-by-line
 
+-------------
+#### Merge Conflicts
+
+According to [github](https://help.github.com/articles/resolving-merge-conflicts) a merge conflict "happens when two branches have changed the same part of the same file, and then those branches are merged together. For example, if you make a change on a particular line in a file, and your colleague working in a repository makes a change on the exact same line, a merge conflict occurs. Git has trouble understanding which change should be used, so it asks you to help out."
+
+##### Problem
+
+I tried to pull before committing my latest local changes, which aborted with this error
+
+error: Your local changes to the following files would be overwritten by merge:
+	Tutorials/.DS_Store
+	Tutorials/_essential/backup.md
+Please, commit your changes or stash them before you can merge.
+Aborting
+
+I then did:
+
+$ git add --all :/
+$ git commit -m "commiting before pull"
+
+Then pulled:
+
+$ git pull
+
+With this error:
+Automatic merge failed; fix conflicts and then commit the result.
+
+##### Resolution
+
+I used merge tool, as follows (and agreed to the one conflict it had found on a .ds store file)
+$ git mergetool
+
+This resolved the issue so I could commit and pull
+
+##### Links
+
+- for more info on merge conflicts see this blog post: http://weblog.masukomi.org/2008/07/12/handling-and-avoiding-conflicts-in-git
+- and this about how to resolve in github for mac: https://help.github.com/articles/resolving-merge-conflicts
 
 --------------
 
@@ -153,7 +191,7 @@ But it is **better** to add all the files in the current dir, then git knows tha
 
 However, if the former is done accidentally, duplicates must then be deleted from the repo through the webpage. After that you want to update your local repo by pulling.
 
-
+**Q: what does 'git commit -a' do?**
 
 --------------
 

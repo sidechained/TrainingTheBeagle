@@ -22,14 +22,37 @@ Here are a list of topics for possible future sessions:
 
 ## Schedule:
 
-- Skype again Wed May 28th (possibly, if Jonas' solves Batch error)
-- Skype again Mon June 2nd
+- Skype weekly on progress
+- Do a practical session, trying out stuff as often as possible
 - Graham leaves on July 6th, how many sessions do we want to do before then, and what can we realistically cover?
 
 ## References: 
 
+#### Redfrik UdK Class
+
 - This follows a long a project by redfrik @ Udk: 
 https://github.com/redFrik/udk11-portable_sonification_projects/
 
+#### INLPD / 3D Min Course Berlin
+
 Jonas develops another beagle board there to be used for a mobile networking device, running supercollider, audioprocessing, networking to connect to a central "Republic-like" Server. 
 With a tangible interface (using skin conductance to close connections).
+He compiles some code for this on his repo.
+
+The technological setup will be: 
+One Node consists of 
+- BBB
+- WIFI Adapter
+- Bluetooth Adapter (for Audio)
+- Bluetooth Headset (the monitoring)
+- USB Hub
+- A "Power Bank" to supply the BBB
+- GSR Sensors which go into GPIO / Analog In of BBB (basically bare wire/copper surfaces)
+- Option: Connect a microphone to the Inputs of BBB or use Bluetooth Mic In
+- Option: Connect an LDR or Ultrasound Distance Sensor for some non-touch gestural control! 
+
+
+Each Node is connected to a Network and can send and receive OSC messages! 
+-> Get Utopia Ready!
+-> Can they also stream audio !?!?
+
