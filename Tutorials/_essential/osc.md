@@ -20,7 +20,7 @@ Writing a Python script which can send an OSC message is a three stage process:
 
 The lines marked #1, #2 and #3 in the code below show how this is done in practice:
 
-```
+```python
 from OSC import OSCClient, OSCMessage # 1
 
 sendAddress = '127.0.0.1', 57120 # 2
@@ -59,15 +59,13 @@ To test the above code, go through the following steps:
 `$ cd TrainingTheBeagle/Tutorials/`  
 * Copy the oscExamples folder into your beaglebone's home folder as follows (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
 `$ scp -r oscExamples debian@192.168.2.14:/home/debian`  
-* Log into the beaglebone  
-* (again replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
+* Log into the beaglebone (again replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
 `$ ssh debian@192.168.2.14`  
 * Start the SuperCollider code for receiving OSC messages  
 `$ sclang oscExamples/osc_receive.scd`  
 * You should now see the message "Waiting for /oscTest message from Python"  
 * Open another terminal window so that it is visible  
-* Log into to the beaglebone again from this window (this will allow us to run and see the output of two concurrent processing i.e. sending and receiving)  
-* (again, replace 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
+* Log into to the beaglebone again from this window (this will allow us to run and see the output of two concurrent processing i.e. sending and receiving). Again, replace 192.168.2.14 with the IP of your board, and enter your password as prompted
 `$ ssh debian@192.168.2.14`  
 * Run the Python code for sending an OSC message  
 `$ sudo python oscExamples/osc_sendOnce.py`  
@@ -79,7 +77,7 @@ In many cases, sending a one shot OSC message will not be enough. Often we work 
 
 ##### The 'sendMessage' function
 
-```
+```python
 def sendMessage():
         msg = OSCMessage()
         msg.setAddress('/oscTest')
@@ -95,14 +93,14 @@ As we can see, the code is very similar to our previous example, the only differ
 
 Our timer function is simply called 'timedSendMessage', and looks like this:
 
-```
+```python
 def timedSendMessage():
         Timer(sendRate, sendMessage).start()
 ```
 
 When called 'timedSendMessage' simply waits a set amount of time (the sendRate) before calling a specified function (our 'sendMessage' function). All that is needed now is to set up our client and sendAddress, define the sendRate, and set the timer function into motion. This is done as follows:
 
-```
+```python
 sendAddress = '127.0.0.1', 57120
 sendRate = 2 # send a message every two seconds
 client = OSCClient()
@@ -126,7 +124,7 @@ OSCClientError: while sending: [Errno 111] Connection refused
 
 This is problematic as it stops the script. Therefore, our final addition to the sending code will be to add a couple of extra lines to prevent this from occurring, as follows:
 
-```
+```python
 def sendMessage():
         msg = OSCMessage()
         msg.setAddress('/oscTest')
