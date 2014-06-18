@@ -14,9 +14,9 @@ The following are 'bare bones' examples which show how to send OSC messages betw
 
 Writing a Python script which can send an OSC message is a three stage process:
 
-1. Import the relevant classes from the pyOSC library
-2. Set up a OSC client using the address you wish to send to. In our case this is: localhost (i.e. "127.0.0.1"), port 57120 (SuperCollider's default port)
-3. Format and send a message using the client
+a. Import the relevant classes from the pyOSC library
+b. Set up a OSC client using the address you wish to send to. In our case this is: localhost (i.e. "127.0.0.1"), port 57120 (SuperCollider's default port)
+c. Format and send a message using the client
 
 The lines marked #1, #2 and #3 in the code below show how this is done in practice:
 
@@ -148,41 +148,29 @@ NOTE: To test this code, follow the [testing section](#testing) above but substi
 
 ### 2. SuperCollider to Python
 
-As well as envisaging sensing which actives sound processes, we might also imagine a scenario where sound-making code activates physical processes. For this we need to communicate from sclang to python.
+As well as envisaging sensing which actives sound processes, we might also imagine a scenario where sound-making code activates physical processes. For this we need to communicate the other way around, from sclang to python.
 
 #### Sending an OSC Message from SuperCollider
 
-error handling?
+This is a simple two-line process, which involves setting up a NetAddr and then sending a message to it, as follows:
 
-One shot:
-
-n = NetAddr("127.0.0.1", 9000);
+```
+n = NetAddr("127.0.0.1", 9001);
 n.sendMsg("\oscTest", 100);
+```
 
-Repeatedly:
-
-n = NetAddr("127.0.0.1", 9000);
-Routine({
-	inf.do{
-		n.sendMsg("\oscTest", 100);
-		1.wait;
-	}
-}).play
-
-n = NetAddr("127.0.0.1", 9000);
+For the standalone version of this code see [osc_sendOnce.scd](./oscExamples/osc_sendOnce.scd).
 
 #### Receiving an OSC Message in Python
 
-NOTE: This example is modified from the excellent examples provided by ixi lang at 
+NOTE: This example is modified from ixi software's basic_receive.py example, which can be found in this [zip file](http://ixi-audio.net/content/download/pyOSC_examples.zip). More info at the [backyard](http://www.ixi-audio.net/content/backyard.html).
 
-##s = OSC.ThreadingOSCServer(receive_address) # threading 
-##s = OSC.ForkingOSCServer(receive_address) # forking 
+Receiving OSC in Python using pyOSC is requires four basic stages:
 
-
-1. Import 
-2. Set up an OSCServer on a receive address. In our case the receive
-3. Define a message handler and add it to the server
-4. Create a server thread and then start it
+a. Import the OSCServer class from the pyOSC library, and the time and threading modules
+b. Set up an OSCServer on a receive address. In our case this is '127.0.0.1', port 9001
+c. Define a message handler function (which will print the incoming message), then add it to the server
+d. Create and start a server thread
 
 ```python
 from OSC import OSCServer # 1
@@ -200,7 +188,7 @@ oscServerThread = threading.Thread( target = oscServer.serve_forever ) # 4
 oscServerThread.start() # 4
 ```
 
-We also need two more things…firstly a 
+For things to run smoothly, we also need to add two more elements. Firstly, we will add a few lines which will keep the script alive:
 
 
 ```
@@ -209,7 +197,7 @@ try :
          time.sleep(5)
 ```
 
-…and secondly a function which will exit gracefully and shut down the server if we force an exit from python.
+…and secondly we add a function which will exit gracefully and shut down the server if we press CTRL + C in Python (otherwise Python will hog port 9001)
 
 ```
 except KeyboardInterrupt :
@@ -220,15 +208,35 @@ except KeyboardInterrupt :
      print "Done"
 ```
 
+For the standalone version of this code see [osc_receive.py](./oscExamples/osc_receive.py).
 
+#### Testing (revisited)
 
+Follow the above [testing guide](#testing) to open two concurrent terminal windows, substituting the named files for [osc_receive.py](./oscExamples/osc_receive.py) and [osc_sendOnce.scd](./oscExamples/osc_sendOnce.scd) respectively.
 
+#### Repeatedly Sending from Python
+
+To send repeatedly, we simply wrap the send message in a routine as follows:
+
+```
+n = NetAddr("127.0.0.1", 9001);
+Routine({
+	inf.do{
+		n.sendMsg("\oscTest", 100);
+		2.wait;
+	}
+}).play
+```
+
+For the standalone version of this code see [osc_sendRepeatedly.scd](./oscExamples/osc_sendRepeatedly.scd). To test simply use osc_sendRepeatedly.scd instead of osc_sendOnce.scd.
 
 ### Troubleshooting
 
-This section contains general advice (to be updated as issues occurs)
+This section contains advice on a a number of common issues (to be updated as and when they occur)
 
 #### Force Release A Socket in Python
+
+\TODO/
 
 What to do when this occur happens (a regular occurrence):
 
@@ -239,7 +247,7 @@ socket.error: [Errno 98] Address already in use
 sclang features a trace method for debugging incoming OSC messages. This is a good way test to see if messages are reaching sclang at all. From the sclang command line simply type:  
 `OSCFunc.trace`  
 
-#### 
+#### Discussion of Sending Messages from SuperCollider to Python
 
 http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/OSC-first-timer-problem-td5211207.html
 
