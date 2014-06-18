@@ -6,11 +6,9 @@ This document deals with Open Sound Control communication between SuperCollider 
 
 Python requires the pyOSC library to be able to handle Open Sound Control. For instructions on how to install this library, see the pyOSC section of Fredrik Olofsson's tutorial [here](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software).
 
-### a. Python to SuperCollider
+### 1. Python to SuperCollider
 
-The following are 'bare bones' examples which show how to send OSC messages between Python and SuperCollider.
-
-This will be the typical approach for most simple projects (i.e. sensor input produces sound output).
+The following are 'bare bones' examples which show how to send OSC messages between Python and SuperCollider. This will be the typical approach for most simple projects (i.e. sensor input produces sound output).
 
 #### Sending an OSC Message from Python
 
@@ -55,25 +53,25 @@ Also, see [osc_receive.scd](./oscExamples/osc_receive.scd) for the standalone ve
 
 To test the above code, go through the following steps:
 
-* Firsly, clone the TrainingTheBeagle repo to a convenient temporary location on your pc (i.e. ~/Desktop)
+* Firsly, clone the TrainingTheBeagle repo to a convenient temporary location on your pc (i.e. ~/Desktop)  
 `$ git clone https://github.com/sidechained/TrainingTheBeagle.git`  
-* Navigate to the tutorials folder, where the oscExamples can be found
+* Navigate to the tutorials folder, where the oscExamples can be found  
 `$ cd TrainingTheBeagle/Tutorials/`  
-* Copy the oscExamples folder into your beaglebone's home folder as follows (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)
+* Copy the oscExamples folder into your beaglebone's home folder as follows (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
 `$ scp -r oscExamples debian@192.168.2.14:/home/debian`  
-* Log into the beaglebone
-* (again replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)
+* Log into the beaglebone  
+* (again replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
 `$ ssh debian@192.168.2.14`  
-* Start the SuperCollider code for receiving OSC messages
+* Start the SuperCollider code for receiving OSC messages  
 `$ sclang oscExamples/osc_receive.scd`  
-* You should now see the message "Waiting for /oscTest message from Python"
-* Open another terminal window so that it is visible
-* Log into to the beaglebone again from this window (this will allow us to run and see the output of two concurrent processing i.e. sending and receiving)
-* (again, replace 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)
+* You should now see the message "Waiting for /oscTest message from Python"  
+* Open another terminal window so that it is visible  
+* Log into to the beaglebone again from this window (this will allow us to run and see the output of two concurrent processing i.e. sending and receiving)  
+* (again, replace 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
 `$ ssh debian@192.168.2.14`  
-* Run the Python code for sending an OSC message
+* Run the Python code for sending an OSC message  
 `$ sudo python oscExamples/osc_sendOnce.py`  
-* If successful a message will appear in the OSC receive window. If not see the [troubleshooting section]() of this guide
+* If successful a message will appear in the OSC receive window. If not see the [troubleshooting section](#troubleshooting) of this guide.
 
 #### Repeatedly Sending from Python
 
@@ -114,7 +112,7 @@ timedSendMessage() # init call to start the sensing loop
 
 For the standalone version of this code see [osc_sendRepeatedly.py](./oscExamples/osc_sendRepeatedly.py).
 
-NOTE: To test this code, follow the [testing section]() above but substitute the last line for:
+NOTE: To test this code, follow the [testing section](#testing) above but substitute the last line for:
 
 `$ sudo python osc_sendRepeatedly.py`
 
@@ -146,11 +144,11 @@ The sendMessage function is very similar to before, only we use the 'try...excep
 
 For the standalone version of this code see [osc_sendRepeatedly-WithErrorHandling.py](./oscExamples/osc_sendRepeatedly-WithErrorHandling.py).
 
-NOTE: To test this code, follow the [testing section]() above but substitute the last line for:
+NOTE: To test this code, follow the [testing section](#testing) above but substitute the last line for:
 
 `$ sudo python osc_sendRepeatedly-WithErrorHandling.py`
 
-### b. SuperCollider to Python
+### 2. SuperCollider to Python
 
 As well as envisaging sensing which actives sound processes, we might also imagine a scenario where sound-making code activates physical processes. For this we need to communicate from sclang to python.
 
