@@ -150,35 +150,108 @@ NOTE: To test this code, follow the [testing section](#testing) above but substi
 
 As well as envisaging sensing which actives sound processes, we might also imagine a scenario where sound-making code activates physical processes. For this we need to communicate from sclang to python.
 
-\TODO/
-
-##### Sending an OSC Message from SuperCollider
+#### Sending an OSC Message from SuperCollider
 
 error handling?
 
-##### Receiving an OSC Message in Python
+One shot:
 
-1. 
-2. 
-3. 
+n = NetAddr("127.0.0.1", 9000);
+n.sendMsg("\oscTest", 100);
 
-also include a - which shut down the server if we force an exit from python.
+Repeatedly:
 
-Requires a server
+n = NetAddr("127.0.0.1", 9000);
+Routine({
+	inf.do{
+		n.sendMsg("\oscTest", 100);
+		1.wait;
+	}
+}).play
+
+n = NetAddr("127.0.0.1", 9000);
+
+#### Receiving an OSC Message in Python
+
+NOTE: This example is modified from the excellent examples provided by ixi lang at 
+
+##s = OSC.ThreadingOSCServer(receive_address) # threading 
+##s = OSC.ForkingOSCServer(receive_address) # forking 
+
+
+1. Import 
+2. Set up an OSCServer on a receive address. In our case the receive
+3. Define a message handler and add it to the server
+4. Create a server thread and then start it
+
+```python
+from OSC import OSCServer # 1
+import time, threading # 1
+
+recvAddress = ('127.0.0.1', 9001) # 2
+oscServer = OSCServer(recvAddress) # 2
+
+def oscTestHandler(addr, tags, data, source): # 3
+     print "Received '/oscTest %s'" % data # 3
+
+oscServer.addMsgHandler("/oscTest", oscTestHandler) # 3
+
+oscServerThread = threading.Thread( target = oscServer.serve_forever ) # 4
+oscServerThread.start() # 4
+```
+
+We also need two more things…firstly a 
+
+
+```
+try :
+     while 1 :
+         time.sleep(5)
+```
+
+…and secondly a function which will exit gracefully and shut down the server if we force an exit from python.
+
+```
+except KeyboardInterrupt :
+     print "\nClosing OSCServer."
+     oscServer.close()
+     print "Waiting for Server-thread to finish"
+     oscServerThread.join()
+     print "Done"
+```
+
+
+
+
 
 ### Troubleshooting
 
-OSCFunc.trace
+This section contains general advice (to be updated as issues occurs)
+
+#### Force Release A Socket in Python
+
+What to do when this occur happens (a regular occurrence):
+
+socket.error: [Errno 98] Address already in use
+
+#### OSCFunc.trace
+
+sclang features a trace method for debugging incoming OSC messages. This is a good way test to see if messages are reaching sclang at all. From the sclang command line simply type:  
+`OSCFunc.trace`  
+
+#### 
 
 http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/OSC-first-timer-problem-td5211207.html
 
 ### Additional Resources
 
-#### Combining OSC With Sensing
+http://doc.sccode.org/Guides/OSC_communication.html
 
-NOTE: all the examples below require the Adafruit BBIO library.
+#### Sensor examples: Beaglebone Pin-in/outs + OSC
 
-For more on how to use OSC as part of a larger 'sound and sensors' project, see the ['soundvase' project code](https://github.com/sidechained/TrainingTheBeagle/tree/master/Projects/soundvase). in particular the [python file]() and [SuperCollider file].
+NOTE: all the examples below require the Adafruit BBIO library in order to function.
+
+For more on how to use OSC as part of a larger 'sound and sensors' project, see the ['soundvase' project code](../Projects/soundvase), and in particular the [python file](../Projects/soundvasesoundvase/soundvase.py) and [SuperCollider file](../Projects/soundvase/soundvase.scd).
 
 Also see Fredrik Olofsson's approach here (uses sensors):
 [receiving osc in python](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--receiving-osc-in-python)
