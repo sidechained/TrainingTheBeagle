@@ -1,21 +1,18 @@
 ## OSC Communication
 
-This document deals with Open Sound Control communication between SuperCollider and Python and vice versa. For a primer on OSC itself see 
-[the Open Sound Control website](http://opensoundcontrol.org/introduction-osc).
+This document deals with Open Sound Control communication between SuperCollider and Python and vice versa. For a primer on OSC itself see the [Open Sound Control website](http://opensoundcontrol.org/introduction-osc).
 
 ### Prerequisites
 
-Python requires the pyOSC library to be able to handle Open Sound Control. For instructions on how to install this library, see the pyOSC section of Fredrik Olofsson's tutorial ][here](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software).
+Python requires the pyOSC library to be able to handle Open Sound Control. For instructions on how to install this library, see the pyOSC section of Fredrik Olofsson's tutorial [here](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131114#--installing-software).
 
-### Examples
+### a. Python to SuperCollider
 
 The following are 'bare bones' examples which show how to send OSC messages between Python and SuperCollider.
 
-#### a. Python to SuperCollider
-
 This will be the typical approach for most simple projects (i.e. sensor input produces sound output).
 
-##### Sending an OSC Message from Python
+#### Sending an OSC Message from Python
 
 Writing a Python script which can send an OSC message is a three stage process:
 
@@ -38,49 +35,51 @@ print "sending /oscTest 100 message to SuperCollider"
 client.send(msg) # 3
 ```
 
-See (osc_sendOnce.py)[] for the standalone version of this code (which we will make use of shortly).
+See [osc_sendOnce.py](./oscExamples/osc_sendOnce.py) for the standalone version of this code (which we will make use of shortly).
 
-##### Receiving an OSC Message in SuperCollider
+#### Receiving an OSC Message in SuperCollider
 
-As OSC is native to SuperCollider, no external libraries are required. Therefore the sclang code for receiving messages is an incredibly simple one liner, as follows:
+As OSC is native to SuperCollider, no external libraries are required. Therefore the sclang code for receiving messages is an incredibly concise one liner, as follows:
 
 `OSCFunc({arg msg; ("Received" ++ msg).postln;}, '/oscTest');`
 
-This line simply prints out any OSC message that matches the /oscTest tag (appending a "Received" message to the front). This will continue indefinitely as long as sclang is running and messages are being sent. If we wanted to mirror our 'sendOnce' python example, we could use OSCFunc's .oneShot method to close down the function after execution, so that only one message is received. It is also possible to configure OSCFunc so as to listen to messages coming from a particular sender IP, or only messages targeted at a particular port (i.e. 57120). However, in the interests of getting things working quickly, we have avoided imposing any of these restrictions. For more details on these approaches, see the [OSCFunc documentation](http://doc.sccode.org/Classes/OSCFunc.html).
+This line simply prints out any OSC message that matches the /oscTest tag (appending a "Received" message to the front). This will continue indefinitely as long as sclang is running and messages are being sent.
 
-Also, see (osc_receive.scd)[] for the standalone version of this code (which we will use next).
+NOTE: If we wanted to mirror our 'sendOnce' python example, we could use OSCFunc's .oneShot method to close down the function after execution, so that only one message is received.
 
-##### Testing
+NOTE: It is also possible to configure OSCFunc so as to listen to messages coming from a particular sender IP, or only messages targeted at a particular port (i.e. 57120). However, in the interests of getting things working quickly, we have avoided imposing any of these restrictions. For more details on these approaches, see the [OSCFunc documentation](http://doc.sccode.org/Classes/OSCFunc.html).
+
+Also, see [osc_receive.scd](./oscExamples/osc_receive.scd) for the standalone version of this code (which we will use next).
+
+#### Testing
 
 To test the above code, go through the following steps:
 
 * Firsly, clone the TrainingTheBeagle repo to a convenient temporary location on your pc (i.e. ~/Desktop)
-$ git clone https://github.com/sidechained/TrainingTheBeagle.git
-
-
+`$ git clone https://github.com/sidechained/TrainingTheBeagle.git`  
 * Navigate to the tutorials folder, where the oscExamples can be found
-$ cd TrainingTheBeagle/Tutorials/
+`$ cd TrainingTheBeagle/Tutorials/`  
 * Copy the oscExamples folder into your beaglebone's home folder as follows (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)
-$ scp -r oscExamples debian@192.168.2.14:/home/debian
+`$ scp -r oscExamples debian@192.168.2.14:/home/debian`  
 * Log into the beaglebone
 * (again replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)
-$ ssh debian@192.168.2.14
+`$ ssh debian@192.168.2.14`  
 * Start the SuperCollider code for receiving OSC messages
-$ sclang oscExamples/osc_receive.scd
+`$ sclang oscExamples/osc_receive.scd`  
 * You should now see the message "Waiting for /oscTest message from Python"
 * Open another terminal window so that it is visible
 * Log into to the beaglebone again from this window (this will allow us to run and see the output of two concurrent processing i.e. sending and receiving)
 * (again, replace 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)
-$ ssh debian@192.168.2.14
+`$ ssh debian@192.168.2.14`  
 * Run the Python code for sending an OSC message
-$ sudo python oscExamples/osc_sendOnce.py
+`$ sudo python oscExamples/osc_sendOnce.py`  
 * If successful a message will appear in the OSC receive window. If not see the [troubleshooting section]() of this guide
 
-##### Repeatedly Sending from Python
+#### Repeatedly Sending from Python
 
 In many cases, sending a one shot OSC message will not be enough. Often we work with sensors that need to be polled (i.e. their values need to be read repeatedly), and for this we need to work with loops in Python. In the following example, we will create a function from our existing code, and call that function repeatedly at a set rate in order to repeatedly send a message.
 
-###### The 'sendMessage' function
+##### The 'sendMessage' function
 
 ```
 def sendMessage():
@@ -94,7 +93,7 @@ def sendMessage():
 
 As we can see, the code is very similar to our previous example, the only difference being that the function calls back to a timer function.
 
-###### The Timer Function
+##### The Timer Function
 
 Our timer function is simply called 'timedSendMessage', and looks like this:
 
@@ -119,7 +118,7 @@ NOTE: To test this code, follow the [testing section]() above but substitute the
 
 `$ sudo python osc_sendRepeatedly.py`
 
-##### Error Handling
+#### Error Handling
 
 If you run the Python 'send' code before the SuperCollider 'receive' code, you will notice that Python will throw a 'connection refused' error e.g.
 
@@ -151,7 +150,7 @@ NOTE: To test this code, follow the [testing section]() above but substitute the
 
 `$ sudo python osc_sendRepeatedly-WithErrorHandling.py`
 
-#### b. SuperCollider to Python
+### b. SuperCollider to Python
 
 As well as envisaging sensing which actives sound processes, we might also imagine a scenario where sound-making code activates physical processes. For this we need to communicate from sclang to python.
 
