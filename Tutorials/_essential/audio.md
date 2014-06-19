@@ -52,7 +52,8 @@ ALSA: use 3 periods for playback
 Now onto the meaning of the various command line switches:
 
 #### -P
-* _JACK switch_
+_JACK switch_
+
 * This is an undocumented jackd switch, but it seems to specify audio priority. With it jackdmp reports…  
 `JACK server starting in realtime mode with priority 95`
 * …whilst without it, jackdmp reports:  
@@ -60,11 +61,13 @@ Now onto the meaning of the various command line switches:
 * Q: Does this relate to the rtprio 95 line in /etc/security/limits.conf?
 
 #### -d alsa
-* _JACK switch short for_ `--driver=alsa`
+_JACK switch short for_ `--driver=alsa`
+
 * This selects the output driver. This will always be `alsa`, as this is the only documented driver.
 
 #### -d hw:1,0
-* _ALSA switch short for_ `--device=hw:1,0`
+_ALSA switch short for_ `--device=hw:1,0`
+
 * Here 'hw:1,0' is the name given to the device, and follows some kind of (undocumented) conventions. For example `hw:0` also works with the warning `ALSA: Cannot open PCM device alsa_pcm for playback. Falling back to capture-only mode`. However, trying with the name 'mySoundCard' produces the folowing error:
 
 ```
