@@ -71,11 +71,11 @@ Almost all the available Power Banks use li-ion 18650 batteries, where the volta
 
 Before connecting the Power Bank to our precious Beaglebone we can use a multimeter to measure its actual output in terms of both voltage and current. Typically the connections inside a typical USB port are difficult to accesss. However, a simple way to overcome this is to connect a [male 'Standard A' USB connector] to the port and measure from the newly exposed points.
 
-![](./_images/power_2.jpg "" =100x20)
+![](./_images/power_2.jpg "")
 
 [This image](http://www.pinout.ca/wp-content/themes/directorypress/thumbs/USB_A_pinout1.jpg) shows the pinouts of a male 'Standard A' USB cable, while the process of - is shown in the image below:
 
-{\includegraphics[height=2in]{./_images/power_3.jpg}}
+{\includegraphics[height=0.5in]{./_images/power_3.jpg}}
 
 As it turns out, this power bank isn't so useful for our purposes, as it only provides 1A output (presumably such a small bank is only geared-up to power mobile phones).
 
