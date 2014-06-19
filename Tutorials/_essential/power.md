@@ -75,7 +75,7 @@ Before connecting the Power Bank to our precious Beaglebone we can use a multime
 
 [This image](http://www.pinout.ca/wp-content/themes/directorypress/thumbs/USB_A_pinout1.jpg) shows the pinouts of a male 'Standard A' USB cable, while the process of - is shown in the image below:
 
-![](./_images/power_3.jpg "")
+{\includegraphics[height=2in]{./_images/power_3.jpg}}
 
 As it turns out, this power bank isn't so useful for our purposes, as it only provides 1A output (presumably such a small bank is only geared-up to power mobile phones).
 
