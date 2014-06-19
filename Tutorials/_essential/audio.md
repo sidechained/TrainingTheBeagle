@@ -78,22 +78,27 @@ JackServer::Open failed with -1
 ```
 
 #### -p
-* _ALSA switch short for_ `--period` e.g. `--period 512`
+_ALSA switch short for_ `--period` e.g. `--period 512`
+
 * The default value is 1024
 * The advice given is to set as low as you can go without seeing xruns (audio dropouts)
 * Also note that a larger period size yields higher latency
 
 #### -n
-* _ALSA switch short for_ `--nperiods` e.g. `--nperiods3`
+_ALSA switch short for_ `--nperiods` e.g. `--nperiods3`
+
 * This specifies the number of periods in the hardware buffer
 * Where the default value is 2
 * Note that the period (i.e. -p) mutiplied by the nperiod (i.e. -n) mutiplied by 4 is equal to the JACK buffer size in bytes
 
 ##### -s
-* _ALSA switch short for_ `--softmode`
+_ALSA switch short for_ `--softmode`
+
 * This ignores xruns reported by the ALSA driver. This makes JACK less likely to disconnect unresponsive ports when running without --realtime.
 
 ##### &
+_UNIX command_
+
 * The ampersand is not a jackd command line switch, but is a general unix command that is required to ensure that jackdmp runs in the background and returns the shell to the user.
 * Without this the command line would not reppear we would need to open another terminal session in order to be able to continue.
  
