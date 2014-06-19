@@ -179,13 +179,13 @@ This section covers (will cover) use of HDMI devices for audio input/output. I n
 
 * Apparently [multi-channel audio](http://www.element14.com/community/community/knode/single-board_computers/next-gen_beaglebone/blog/2013/05/28/bbb--audio-notes) is possible.
 * Also [this link](http://www.elinux.org/BeagleBone_Black_Capes) refers to an HDMI audio cape, which could be worth studying.
-* Note that the BBB does not actually support audio out over the mHDMI yet (though it is said to be coming in a near-term release). See [this forum thread](https://groups.google.com/forum/#!category-topic/beagleboard/audio/8Zc9DPd7rxc) for more info
+* Note that the BBB does not actually support audio out over the mHDMI yet (though it is said to be coming in a near-term release). See [this forum thread](https://groups.google.com/forum/#!category-topic/beagleboard/audio/8Zc9DPd7rxc) for more info.
 
 #### To sudo or not to sudo?
 
-Whether to run jackd as root is unclear. The [jackd man page](http://ccrma.stanford.edu/planetccrma/man/man1/jackd.1.html) gives at least one (realtime) example of a jackd command which must be run as root, and generally to run realtime audio requires root access in order to be able to invoke special scheduler and memory allocation privileges. However, it should be noted that the root user is not part of the @audio user group, therefore the limits defined in the /etc/security/limits.conf file will not be enforced.
+NOTE: Need a definitive answer on this one (TODO)
 
-test with sclang to see
+It is not always clear whether to run both jackd and as root in order for audio to work successfully. The [jackd man page](http://ccrma.stanford.edu/planetccrma/man/man1/jackd.1.html) gives at least one (realtime) example of a jackd command which must be run as root, and generally to run realtime audio requires root access in order to be able to invoke special scheduler and memory allocation privileges.
 
 ### Troubleshooting
 
