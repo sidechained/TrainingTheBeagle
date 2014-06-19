@@ -1,6 +1,6 @@
 ## Audio Hardware
 
-This document collects some key information on how to work with audio hardware on the Beaglebone Black under Debian Linux using the ALSA and JACK. Mostly, we will work with USB audio (using a small, low-cost USB soundcard), but we also include a section on [audio over HDMI]().
+This document collects some key information on how to work with audio hardware on the Beaglebone Black in Debian Linux using ALSA and JACK. Mostly, the focus is on USB audio (using a small, low-cost USB soundcard), but there is also section on using [audio over HDMI](#experiments-with-hdmi).
 
 #### What are ALSA and JACK?
 
