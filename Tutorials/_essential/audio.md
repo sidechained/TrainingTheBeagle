@@ -135,12 +135,13 @@ NOTE: in my configuration file I also have the line `@audio - nice -19`. Q: what
 
 #### Testing Audio without SuperCollider
 
-
 * Start jack, if you haven't already  
 `$ jackd -P95 -dalsa -dhw:1,0 -p512 -n3 -s &`
-* Check the name of your soundcard as follows
+* Check the name of your soundcard as follows  
 `$ aplay -L`
-* Look for the first items in the list that is called something like `C-Media USB Headphone Set, USB Audio` and copy it's name (in my case `default:CARD=Set`)
+* Look for the first items in the list that is called something like  
+`C-Media USB Headphone Set, USB Audio`  
+and copy it's name (in my case `default:CARD=Set`)
 * Then the speaker-test program can be used to test audio, as follows (replace `default:CARD=Set` with your device name):  
 `$ speaker-test -Ddefault:CARD=Set`  
 * This should play a test sound through usb soundcard, and can be stopped with CTRL+C.
@@ -158,7 +159,7 @@ Playback open error: -16,Device or resource busy
 
 #### Testing Audio with SuperCollider
 
-It is also worth testing audio with SuperCollider if you have it installed. 
+It is also worth testing audio with SuperCollider (if you have it installed). 
 
 * Start sclang, as follows
 `$ sudo sclang`
@@ -174,23 +175,21 @@ It is also worth testing audio with SuperCollider if you have it installed.
 
 ### Experiments with HDMI
 
-This section covers (will cover) use of HDMI devices for audio input/output. I noticed that HDMI audio worked in Debian accidentally when connecting my pico projector to the Beaglebone. Apparently HDMI audio output is the standard. HDMI is interesting as it may potentially do away with the need for USB bus power, allowing the onboard power to be used for power and recharging. Also, apparently [multi-channel audio](http://www.element14.com/community/community/knode/single-board_computers/next-gen_beaglebone/blog/2013/05/28/bbb--audio-notes) is possible.  Also [this link](http://www.elinux.org/BeagleBone_Black_Capes) refers to an HDMI audio cape, which could be worth studying. Finally, note that the BBB does not actually support audio out over the mHDMI yet (though it is said to be coming in a near-term release). See [this forum thread](https://groups.google.com/forum/#!category-topic/beagleboard/audio/8Zc9DPd7rxc) for more info
+This section covers (will cover) use of HDMI devices for audio input/output. I noticed that HDMI audio worked in Debian accidentally when connecting my pico projector to the Beaglebone. Apparently HDMI audio output is the standard. HDMI is interesting as it may potentially do away with the need for USB bus power, allowing the onboard power to be used for power and recharging.
+
+* Apparently [multi-channel audio](http://www.element14.com/community/community/knode/single-board_computers/next-gen_beaglebone/blog/2013/05/28/bbb--audio-notes) is possible.
+* Also [this link](http://www.elinux.org/BeagleBone_Black_Capes) refers to an HDMI audio cape, which could be worth studying.
+* Note that the BBB does not actually support audio out over the mHDMI yet (though it is said to be coming in a near-term release). See [this forum thread](https://groups.google.com/forum/#!category-topic/beagleboard/audio/8Zc9DPd7rxc) for more info
+
+#### To sudo or not to sudo?
+
+Whether to run jackd as root is unclear. The [jackd man page](http://ccrma.stanford.edu/planetccrma/man/man1/jackd.1.html) gives at least one (realtime) example of a jackd command which must be run as root, and generally to run realtime audio requires root access in order to be able to invoke special scheduler and memory allocation privileges. However, it should be noted that the root user is not part of the @audio user group, therefore the limits defined in the /etc/security/limits.conf file will not be enforced.
+
+test with sclang to see
 
 ### Troubleshooting
 
 This sections documents some common problems when working with JACK/ALSA under Linux.
-
-#### To sudo or not to sudo?
-
-Whether to use sudo or not when running jackd is a moot point.
-
-The [jackd man page](http://ccrma.stanford.edu/planetccrma/man/man1/jackd.1.html) gives at least one (realtime) example of a jackd command which must be run as root.
-
-Generally to run realtime audio requires root access in order to be able to invoke special scheduler and memory allocation privileges.
-
-However, it should be noted that the root user is not part of the @audio user group, therefore the limits defined in the /etc/security/limits.conf file will not be enforced.
-
-test with sclang to see
 
 ### jackd ERROR: "`default' server already active" or "Cannot lock down 82278944 byte memory area (Cannot allocate memory)"
 
@@ -228,8 +227,8 @@ For advice: [http://supercollider.sf.net/wiki/index.php/ERROR:_server_failed_to_
 
 ### Resources
 
-The [ALSA Wikipedia Page](http://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) and [JACK Wikipedia Page](http://en.wikipedia.org/wiki/JACK_Audio_Connection_Kit) are good places to start. The [JACK Github repository](http://github.com/jackaudio/jack2.git)
+* The README.md at the [JACK Github repository](http://github.com/jackaudio/jack2.git) is a good source of general JACK2 information.
+* The [jackd man page](http://ccrma.stanford.edu/planetccrma/man/man1/jackd.1.html) gives an overview of jackd and ALSA command line switches.
+* [This tutorial](http://puredata.info/docs/embedded/bbb/sound) focusses on getting audio running on the Beaglebone for use with Pd. It runs through the whole jackd process including setting scheduler and memory allocation privileges.
 
-The README.md is a good source of general JACK2 information. Finally, the [jackd man page](http://ccrma.stanford.edu/planetccrma/man/man1/jackd.1.html) covers the 
 
-http://puredata.info/docs/embedded/bbb/sound
