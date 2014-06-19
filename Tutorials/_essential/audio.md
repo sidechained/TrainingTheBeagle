@@ -150,10 +150,7 @@ It is also worth testing audio with SuperCollider if you have it installed.
 
 ### Experiments with HDMI
 
-This section covers (will cover) use of HDMI devices for audio input/output. I noticed that HDMI audio worked in Debian accidentally when connecting my pico projector to the Beaglebone. Apparently HDMI audio output is the standard. HDMI is interesting as it may potentially do away with the need for USB bus power, allowing the onboard power to be used for power and recharging. Also, apparently [multi-channel audio](http://www.element14.com/community/community/knode/single-board_computers/next-gen_beaglebone/blog/2013/05/28/bbb--audio-notes) is possible.  Also [this link](http://www.elinux.org/BeagleBone_Black_Capes) refers to an HDMI audio cape, which could be worth studying. Finally, note that the BBB does not actually support audio out over the mHDMI yet (though it is said to be coming in a near-term release).
-
-see: https://groups.google.com/forum/#!categories/beagleboard/audio
-and: https://groups.google.com/forum/#!category-topic/beagleboard/audio/8Zc9DPd7rxc
+This section covers (will cover) use of HDMI devices for audio input/output. I noticed that HDMI audio worked in Debian accidentally when connecting my pico projector to the Beaglebone. Apparently HDMI audio output is the standard. HDMI is interesting as it may potentially do away with the need for USB bus power, allowing the onboard power to be used for power and recharging. Also, apparently [multi-channel audio](http://www.element14.com/community/community/knode/single-board_computers/next-gen_beaglebone/blog/2013/05/28/bbb--audio-notes) is possible.  Also [this link](http://www.elinux.org/BeagleBone_Black_Capes) refers to an HDMI audio cape, which could be worth studying. Finally, note that the BBB does not actually support audio out over the mHDMI yet (though it is said to be coming in a near-term release). See [this forum thread](https://groups.google.com/forum/#!category-topic/beagleboard/audio/8Zc9DPd7rxc) for more info
 
 ### Troubleshooting
 
