@@ -122,6 +122,3 @@ Three options:
 
 #### 
 
-#### Real World Test
-
-How long can three batteries last?
