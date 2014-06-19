@@ -16,3 +16,4 @@ Satellite CCRMA Image:
 Info here: https://ccrma.stanford.edu/~eberdahl/Satellite/
 - not available for BeagleBone Black as yet
 http://www.fredrikolofsson.com/f0blog/?q=node/594
+http://www.acmesystems.it/i2c
