@@ -68,7 +68,7 @@ _JACK switch short for_ `--driver=alsa`
 #### -d hw:1,0
 _ALSA switch short for_ `--device=hw:1,0`
 
-* Here 'hw:1,0' is the name given to the device, and follows some kind of (undocumented) conventions. For example `hw:0` also works with the warning `ALSA: Cannot open PCM device alsa_pcm for playback. Falling back to capture-only mode`. However, trying with the name 'mySoundCard' produces the folowing error:
+* Here 'hw:1,0' is the name given to the device, and follows some kind of (seemingly undocumented) conventions. For example `hw:0` also works with the warning `ALSA: Cannot open PCM device alsa_pcm for playback. Falling back to capture-only mode`. However, trying with the name 'mySoundCard' produces the folowing error:
 
 ```
 ALSA lib control.c:951:(snd_ctl_open_noupdate) Invalid CTL mySoundCard
@@ -81,17 +81,17 @@ JackServer::Open failed with -1
 ```
 
 #### -p
-_ALSA switch short for_ `--period` e.g. `--period 512`
+_ALSA switch short for_ `--period` _e.g._ `--period 512`
 
 * The default value is 1024
 * The advice given is to set as low as you can go without seeing xruns (audio dropouts)
 * Also note that a larger period size yields higher latency
 
 #### -n
-_ALSA switch short for_ `--nperiods` e.g. `--nperiods3`
+_ALSA switch short for_ `--nperiods` _e.g._ `--nperiods3`
 
 * This specifies the number of periods in the hardware buffer
-* Where the default value is 2
+* The default value is 2
 * Note that the period (i.e. -p) mutiplied by the nperiod (i.e. -n) mutiplied by 4 is equal to the JACK buffer size in bytes
 
 ##### -s
@@ -107,13 +107,12 @@ _UNIX command_
  
 #### Realtime vs Non-Realtime Scheduling
 
-* Realtime scheduling can be enforced using the -R switch (short for --realtime)
+* Realtime scheduling can be enforced using the -R switch (short for `--realtime`)
 * Apparently this is "needed for reliable low-latency performance"
-* Curiously -R is not included in the above command, yet we can see from the terminal output that:
-```JACK server starting in realtime mode with priority 95```
+* Curiously -R is not included in the above command, yet we can see from the terminal output that:  
+`JACK server starting in realtime mode with priority 95`
 * Q: How does this happen?
-
-* according to the documentation realtime scheduling requires jackd and its client to run as root
+* According to the documentation realtime scheduling requires jackd and its client to run as root
 
 #### Specifying Sample Rate and Bit Rate
 * Although it is not done above, the sample rate can be set using the ALSA `-r` flag followed by an integer e.g. `-r 44100`.
@@ -136,11 +135,26 @@ NOTE: in my configuration file I also have the line `@audio - nice -19`. Q: what
 
 #### Testing Audio without SuperCollider
 
+
 * Start jack, if you haven't already  
-`$ jackd -P95 -dalsa -dhw:1,0 -p512 -n3 -s &`  
-* Then the speaker-test program can be used to test audio, as follows:  
-`$ speaker-test -Ddefault:CARD=Device`  
+`$ jackd -P95 -dalsa -dhw:1,0 -p512 -n3 -s &`
+* Check the name of your soundcard as follows
+`$ aplay -L`
+* Look for the first items in the list that is called something like `C-Media USB Headphone Set, USB Audio` and copy it's name (in my case `default:CARD=Set`)
+* Then the speaker-test program can be used to test audio, as follows (replace `default:CARD=Set` with your device name):  
+`$ speaker-test -Ddefault:CARD=Set`  
 * This should play a test sound through usb soundcard, and can be stopped with CTRL+C.
+* For more info see the [speaker-test man page](http://linux.die.net/man/1/speaker-test)
+
+NOTE: this did not work for me, I got the following error:
+
+```
+Playback device is default:CARD=Set
+Stream parameters are 48000Hz, S16_LE, 1 channels
+Using 16 octaves of pink noise
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+Playback open error: -16,Device or resource busy
+```
 
 #### Testing Audio with SuperCollider
 
