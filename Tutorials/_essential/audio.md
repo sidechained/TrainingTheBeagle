@@ -4,9 +4,10 @@ This document collects some key information on how to work with audio hardware o
 
 #### What are ALSA and JACK?
 
-Advanced Linux Sound Architecture (ALSA) is the part of the Linux kernel that provides an application programming interface (API) for sound card device drivers. ALSA is used as a hardware back-end by JACK to allow performing low-latency professional-grade audio editing and mixing.
+According to the [ALSA Wikipedia entry](http://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture)
+Advanced Linux Sound Architecture (ALSA) is "the part of the Linux kernel that provides an application programming interface (API) for sound card device drivers. ALSA is used as a hardware back-end by JACK to allow performing low-latency professional-grade audio editing and mixing."
 
-JACK Audio Connection Kit (or JACK; a recursive acronym) is "a professional sound server daemon that provides real-time, low latency connections for both audio and MIDI data between applications that implement its API. JACK can use ALSA, PortAudio, CoreAudio, FFADO and OSS as hardware back-ends."
+Likewise the [JACK Wikipedia Page](http://en.wikipedia.org/wiki/JACK_Audio_Connection_Kit) states that the JACK Audio Connection Kit (or JACK; a recursive acronym) is "a professional sound server daemon that provides real-time, low latency connections for both audio and MIDI data between applications that implement its API. JACK can use ALSA, PortAudio, CoreAudio, FFADO and OSS as hardware back-ends."
 
 JACK comes in two versions, 1 and 2. For our purposes we will use the jackdmp implemention of JACK2, which is described in the [github readme](https://github.com/jackaudio/jack2) as "a C++ version of the JACK low-latency audio server for multi-processor machines" and "is a new implementation of the JACK server core features that aims in removing some limitations of the JACK1 design."
 
