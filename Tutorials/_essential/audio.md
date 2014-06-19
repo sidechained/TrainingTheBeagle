@@ -17,9 +17,9 @@ We recommend using a USB soundcard, as shown [here](http://www.hermann-uwe.de/fi
 
 ### Installation
 
-NOTE: You can skip this if you have already installed jackdmp as part of the wider [installation tutorial](./installation.md).
+To get started we need to install jackdmp (a.k.a. JACK2). To do so, ssh into your beaglebone using the [normal method](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/installation.md#ssh-basics), then refer to the relevant section of [Fredrik Olofsson's tutorial](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-jack).
 
-To get started we need to install jackdmp (a.k.a. JACK2). To do so, ssh into your beaglebone using the [normal method](), then refer to the relevant section of [Fredrik Oloffson's tutorial](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-jack).
+_NOTE: You can skip this if you have already installed jackdmp as part of the wider [installation tutorial](./installation.md)._
 
 ### Deconstructing a Typical jackd Command
 
@@ -27,7 +27,7 @@ In this section we attempt to demystify the various command line switches used i
 
 `$ jackd -P95 -d alsa -d hw:1,0 -p512 -n3 -s &`
 
-It is worth noting here that the `-P` and `-d` at the start are JACK options, whilst those that follow the `-d alsa` are ALSA options. The command as a whole can also be expressed more concisely as:
+It is worth noting here that the `-P` and `-d` options at the start are JACK options, whilst those that follow the `-d alsa` section are ALSA options. The command as a whole can also be expressed more concisely as:
 
 `$ jackd -P95 -dalsa -dhw:1,0 -p512 -n3 -s &`
 
@@ -49,21 +49,22 @@ ALSA: final selected sample format for playback: 16bit little-endian
 ALSA: use 3 periods for playback
 ```
 
-Now onto the meaning of the various command line switches themselves:
+Now onto the meaning of the various command line switches:
 
 #### -P
-* This is an undocumented jackd switch, but it seems to specify audio priority. With it jackdmp reports...
-JACK server starting in realtime mode with priority 95
-* ...whilst without it, jackdmp reports:
-JACK server starting in realtime mode with priority 10
+* _JACK switch_
+* This is an undocumented jackd switch, but it seems to specify audio priority. With it jackdmp reports…  
+`JACK server starting in realtime mode with priority 95`
+* …whilst without it, jackdmp reports:  
+`JACK server starting in realtime mode with priority 10`
 * Q: Does this relate to the rtprio 95 line in /etc/security/limits.conf?
 
 #### -d alsa
-* _JACK switch short for `--driver=alsa`_
+* _JACK switch short for_ `--driver=alsa`
 * This selects the output driver. This will always be `alsa`, as this is the only documented driver.
 
 #### -d hw:1,0
-* _ALSA switch short for `--device=hw:1,0`_
+* _ALSA switch short for_ `--device=hw:1,0`
 * Here 'hw:1,0' is the name given to the device, and follows some kind of (undocumented) conventions. For example `hw:0` also works with the warning `ALSA: Cannot open PCM device alsa_pcm for playback. Falling back to capture-only mode`. However, trying with the name 'mySoundCard' produces the folowing error:
 
 ```
@@ -77,19 +78,19 @@ JackServer::Open failed with -1
 ```
 
 #### -p
-* _ALSA switch short for `--period` e.g. `--period 512`_
+* _ALSA switch short for_ `--period` e.g. `--period 512`
 * The default value is 1024
 * The advice given is to set as low as you can go without seeing xruns (audio dropouts)
 * Also note that a larger period size yields higher latency
 
 #### -n
-* _ALSA switch short for `--nperiods` e.g. `--nperiods3`_
+* _ALSA switch short for_ `--nperiods` e.g. `--nperiods3`
 * This specifies the number of periods in the hardware buffer
 * Where the default value is 2
 * Note that the period (i.e. -p) mutiplied by the nperiod (i.e. -n) mutiplied by 4 is equal to the JACK buffer size in bytes
 
 ##### -s
-* _ALSA switch short for `--softmode`_
+* _ALSA switch short for_ `--softmode`
 * This ignores xruns reported by the ALSA driver. This makes JACK less likely to disconnect unresponsive ports when running without --realtime.
 
 ##### &
