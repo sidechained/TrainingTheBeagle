@@ -67,39 +67,39 @@ e.g. when running jack audio in the background, we might do the following:
 
 ### Getting Help
 
-**whatis**
+**whatis**  
 Type: `$ whatis [commandname]`, e.g.  
 `$ whatis ping`
 
-**--help**
+**--help**  
 another possibility is to type just the commandname, or the commandname followed by `-help` or `--help` to get a display of the helpfile:
 `$ git push --help ` (opens in vim editor, type `q` at the `:` (last line) to exit)
 
 ### Moving Around the Command Line
 
-**CMD+A**
+**CMD+A**  
 move the cursor to start of the command line
 
 ### Clearing the Terminal Window
 
-**clear**
+**clear**  
 the clear command clears the terminal buffer in a 'soft' way (i.e. you can still scroll back to see previously output) e.g.  
 `$ clear`
 
-**CMD+K**
+**CMD+K**  
 this keyboard shortcut clears the terminal buffer in a 'hard' way (i.e. you cannot scroll back)
 
 ### Navigation
 
-**.**
+**.**  
 represents the current path
 
-**..**
+**..**  
 refers to the path one level up from the current path
 for example if we want to move a file in the folder we are in to another folder which resides one level up from where we are currently, we could do the following:  
 `$ mv myFile.txt ../myFolder/`
 
-**cd**   
+**cd**  
 `$ cd [path to directory]` 	= change to the given directory path  
 `$ cd ../..` 	= change to root directory  
 `$ cd ..` = go up to parent directory  
@@ -112,7 +112,7 @@ Options:
 `$ ls -l` = use -l to display items in a list form (also shows file permissions)
 *- ls -d ?!* mention here?  
 
-**pwd**   
+**pwd**  
 This displays the current path e.g
 `$ pwd`
 gives something like  
@@ -124,7 +124,7 @@ gives something like
 create a directory, e.g. in the current folder  
 `$ mkdir [directoryname]`
 
-**mv**
+**mv**  
 move a file to a new location e.g. into a subfolder  
 `$ mv myFile.txt /myFolder/myFile.txt`  
 can also be used for renaming e.g. changing the extension of a file
@@ -139,7 +139,7 @@ Copy a file e.g. to duplicate a file before editing
 use -R to remove a whole folder and its contents (recursively) e.g  
 `$ rm -R annoyingFolder`
 
-**touch**
+**touch**  
 creates a new empty file with the given name e.g.
 `$ touch readme.txt`
 
@@ -156,7 +156,7 @@ This sends a ping msg to the given IP address. useful for checking wether BBB is
 `$ ping 192.168.2.7` this should return something like: 
 `$ `
 
-**traceroute**   
+**traceroute**  
 This traces the package being sent to the given IP … e.g. 
 `$ traceroute 192.168.2.6`
 
@@ -167,7 +167,7 @@ It can be used for both files and folders (option -r):
 `$ scp -r soundvase debian@192.168.1.1:/home/debian` for copying folders
 see also: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--copy-files-from-laptop-to-bbb
 
-**sftp**
+**sftp**  
 for copying files between the beagle and another device
 `$ sftp debian@192.168.7.5` # you will now be in sftp mode
 There are two useful commands
@@ -179,13 +179,13 @@ There are two useful commands
 When using the Beaglebone for
 running processes in the background (e.g. jackd for audio) and needing to terminate these processes.
 
-**CMD+C**
+**CMD+C**  
 terminate the running process
 
-**&**
+**&**  
 used at the end a - background process
 
-**PID's**
+**PID's**  
 PID stands for 'process ID' and can commonly be seen when running background processing using &, which would otherwise lock up
 when we run such a process, it's PID will be shown
 e.g. [1] 12760
@@ -224,20 +224,21 @@ This section involves running small programs (in /sbin typically), they are not 
 ```shell
 ```
 
-**shutdown**
+**shutdown**  
 `$ sudo /sbin/shutdown now #shutdown, scheduled immediatly`
 $ sudo /sbin/reboot # option 1: directly do reboot
 $ sudo /sbin/shutdown -r now # option 2, shutdown with option for reboot, scheduled now
 
-**halt**
+**halt**  
+TODO - add Fredrik's halt example
 
 ### Viewing and Editing Files
 
-**cat**
+**cat**  
 prints the entire contents of a file to the screen e.g.  
 `$ cat ~/Documents/myLongTextFile.txt`
 
-**tail**
+**tail**  
 prints only the end of the file
 
 **pico/nano**  
@@ -259,17 +260,17 @@ Basic usage:
 
 ### Times and Dates
 
-**setting the correct time on the system**  
+**setting the correct time on the system**   
 NOTE:requires an internet connection
 `$ /usr/sbin/ntpdate -b -s -u pool.ntp.org`
 
-### Recalling Previously Used Commands
+### Recalling Previously Used Commands  
 
-**up/down arrows**
+**up/down arrows**  
 The up and down arrow keys can be used to step back through the history of the command line
 e.g. to repeat or modify a previously issued command
 
-**history/grep**
+**history/grep**  
 The history command prints a list of previously executed terminal commands e.g.
 `$ history`
 this can be useful when trying to remember something you did previously or to retracing your steps to understand how you did something
