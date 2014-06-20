@@ -5,8 +5,8 @@
 # https://github.com/moderndevice/CapSense/blob/master/CapTouch.h
 
 # To Do:
-- check that time.clock will actually work as an approach for measuring elapsed time (i.e. that its output can be compared with timeoutCount
-- what is an appropriate value for timeoutCount?
+# - check that time.clock will actually work as an approach for measuring elapsed time (i.e. that its output can be compared with timeoutCount
+# - what is an appropriate value for timeoutCount?
 
 # Requirements:
 # This capacitive sensing method requires two microcontroller pins (send pin, receive pin)
