@@ -1,6 +1,6 @@
 ## Glossary of Unix Lore
 
-_NOTE: this is not really a glossary anymore - as it is now split into topics_
+_NOTE: this is not really a glossary anymore - as it is now split into topics_  
 _TODO: As this file now contains a lot of info, it now needs an introductory discussion of/pointer to 'the essentials'_
 
 This is a quick primer of most of the things you need to know about unix terminal commands to get started with the Beaglebone Black.
@@ -28,10 +28,10 @@ Topic Index:
 
 This section covers some common unix symbols and their meaning.
 
-`$`
+`$`  
 The dollar symbol is used to mark start of the command prompt
 
-`~`
+`~`  
 The tilde symbol acts as a shortcut to the home directory on your pc.
 On the Beaglebone this will be `/home/debian`
 On Mac systems this is the folder one level up from Applications, Desktop, Documents etc e.g. `/Users/yourUserName`
@@ -40,26 +40,26 @@ To find out exactly where your home directory is on your system, you can do the 
 `$ cd ~`
 `$ pwd`
 
-`|`
+`|`  
 The pipe symbol is used to route terminal output to another program or process.
 For example, by piping the command line history, we can get a list of all the ssh commands we have recently executed e.g.  
 `$ history | grep ssh`
 
-`/`
+`/`  
 The backslash is used to escape characters which are otherwise reserved for special purposes (i.e. most of the symbols we are talking about in this section!)
 A common use for the backslash is to escape spaces in file or folder names e.g.
 `cd ~/Desktop/my\ folder\ with\ spaces\ in\ the\ title/`
 
-`#`
+`#`  
 The hash symbol is used to comments in the command line e.g.  
 `$ mkdir myNiceFolder # This is a really cool new folder`
 This is more commonly used in shell scripts than in single line terminal commands
 
-`;`
+`;`  
 The semicolon can be used to run commands one after the other e.g. 
 `$ cd ~/Desktop/Documents; cat myTextFile.txt`
 
-`&`
+`&`  
 The ampersand is used to execute commands as background tasks.
 This is useful in circumstances where a program does not return the shell to the user
 e.g. when running jack audio in the background, we might do the following:
