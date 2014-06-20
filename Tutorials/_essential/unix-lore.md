@@ -8,21 +8,21 @@ This is a quick primer of most of the things you need to know about unix termina
 _NOTE: for keyboard shortcuts, the modifier key differs depending on your system, for example on Mac systems it is CMD, whereas on Linux system it is CTRL. In this guide we refer to the Mac modifier as a convention (CMD)._
 
 Topic Index:  
-[Basic Syntax](#basic-syntax)
-[Getting Help](#getting-help)
-[Moving Around the Command Line](#moving-around-the-command-line)
-[Clearing the Terminal Window](#clearing-the-terminal-window)
-[Navigation](#navigation)
-[File Management](#file-management)
-[Communicating with the Beaglebone](#communicating-with-the-beaglebone)
-[Terminating Processes](#terminating-processes)
-[User Privileges](#user-privileges)
-[File Permissions](#file-permissions)
-[Shutting Down and Restarting the Beaglebone](#shutting-down-and-restarting-the-beaglebone)
-[Viewing and Editing Files](#viewing-and-editing-files)
-[Times and Dates](#times-and-dates)
-[Recalling Previously Used Commands](#recalling-previously-used-commands)
-[Miscellanous Commands](#miscellaneous-commands)
+[Basic Syntax](#basic-syntax)  
+[Getting Help](#getting-help)  
+[Moving Around the Command Line](#moving-around-the-command-line)  
+[Clearing the Terminal Window](#clearing-the-terminal-window)  
+[Navigation](#navigation)  
+[File Management](#file-management)  
+[Communicating with the Beaglebone](#communicating-with-the-beaglebone)  
+[Terminating Processes](#terminating-processes)  
+[User Privileges](#user-privileges)  
+[File Permissions](#file-permissions)  
+[Shutting Down and Restarting the Beaglebone](#shutting-down-and-restarting-the-beaglebone)  
+[Viewing and Editing Files](#viewing-and-editing-files)  
+[Times and Dates](#times-and-dates)  
+[Recalling Previously Used Commands](#recalling-previously-used-commands)  
+[Miscellanous Commands](#miscellaneous-commands)  
 
 ### Basic Syntax
 
