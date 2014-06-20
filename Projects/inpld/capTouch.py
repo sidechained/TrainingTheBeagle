@@ -1,5 +1,12 @@
-# TODO
-- check that time.clock will actually work as an approach for measuring elapsed time
+# capTouch.py - a port of CapTouch from the Arduino CapSense library
+
+# Links to the original C++ files here:
+# https://github.com/moderndevice/CapSense/blob/master/CapTouch.cpp
+# https://github.com/moderndevice/CapSense/blob/master/CapTouch.h
+
+# To Do:
+- check that time.clock will actually work as an approach for measuring elapsed time (i.e. that its output can be compared with timeoutCount
+- what is an appropriate value for timeoutCount?
 
 # Requirements:
 # This capacitive sensing method requires two microcontroller pins (send pin, receive pin)
@@ -17,10 +24,11 @@ class CapTouch:
 	# Function that handles the creation and setup of instances
 
 	def __init__(self, argSendPin,argReceivePin):
+		timeoutCount = 40000000 # originally = 40000000L 
 		sendPin = argSendPin
-	receivePin = argReceivePin
-	calibrateFlag = 0 # uncalibrated on startup
-            GPIO.setup(sendPin, GPIO.OUT) #set sendpin to OUTPUT
+		receivePin = argReceivePin
+		calibrateFlag = 0 # uncalibrated on startup
+		GPIO.setup(sendPin, GPIO.OUT) #set sendpin to OUTPUT
 
 	# PUBLIC METHODS:
 	# Functions available in Wiring sketches, this library, and other libraries
