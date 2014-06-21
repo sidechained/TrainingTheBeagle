@@ -4,7 +4,7 @@
 import OSC
 from OSC import OSCClient, OSCMessage
 from threading import Timer
-import Adafruit_BBIO.ADC as ADC 
+import Adafruit_BBIO.GPIO as GPIO
 
 inPin = "P9_40" # connect potentiometer to this pin
 sendAddress = '127.0.0.1', 57120 # address to send to SuperCollider

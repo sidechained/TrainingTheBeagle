@@ -161,6 +161,22 @@ $ cd ..
 $ rm -r pyOSC-0.3.5b-5294 
 $ rm pyOSC-0.3.5b-5294.tar.gz
 
+2. install pyOSC
+- download from here: https://trac.v2.nl/attachment/wiki/pyOSC/pyOSC-0.3.5b-5294.tar.gz
+- copy the tar.gz file onto the beagleboard
+$ scp /path debian@x.x.x.x :/home/Debian
+- ssh in and untar the file
+$ ssh debian@x.x.x.x
+$ cd /home/debian
+$ tar -xf pyOSC-0.3.5b-5294.tar.gz
+- install pyosc
+$ cd pyOSC-0.3.5b-5294 (CHECK)
+$ sudo python setup.py install
+- remove the source code and zip
+$ cd ..
+$ rm -r pyOSC-0.3.5b-5294 
+$ rm pyOSC-0.3.5b-5294.tar.gz
+
 #### Backing Up the SD Card
 
 Now you're done, consider [backing up the SD card](https://github.com/sidechained/TrainingTheBeagle/blob/master/Tutorials/_essential/backup.md)

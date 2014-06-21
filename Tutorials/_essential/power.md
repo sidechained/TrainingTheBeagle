@@ -99,7 +99,7 @@ Fredrik Olofsson reports that "With the 5000mAh 5v battery fully charged, the sy
 
 ### Powering the Beaglebone via the Onboard TPS65217C Power Management Chip
 
-NOTE: this untested
+_NOTE: this section of the guide is untested_
 
 - beaglebone uses the TPS65217C for power management [link to datasheet]()
 - can be used to run from and to charge a battery
@@ -116,17 +116,12 @@ https://groups.google.com/forum/m/#!msg/beagleboard/TYYoGbcnGO0/oLLtgCXHaUEJ
 usb tutorial below successfully powers the BBB from battery via the 5v barrel jack input. Other users report stability problems this way...
 http://archlinuxarm.org/forum/viewtopic.php?f=28&t=5505
 
-
 reports that a 1400mah lasts 2h50m / charges in about 2 hours
 
 tp5 bat - battery connection point
 tp6 sense - battery voltage sense input
 tp7 ts - temp sense input
 tp8 gnd - system ground
-
-
-
-
 
 ### Futher Reading
 - basic guide: http://pansenti.wordpress.com/2013/06/01/powering-a-beaglebone-black-with-a-single-cell-li-ion-or-lipo-battery-yes-it-can-be-done-but-there-are-issues/
@@ -151,7 +146,7 @@ With the 5000mAh 5v battery fully charged, the system runs for about 9.5 hours.
 Sparkfun LiPo advice:
 https://www.sparkfun.com/tutorials/241
 
-- NOTE: consolidate and link to Fredrik's project: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--extra-power-consumption
+- https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--extra-power-consumption
 
 (and as noted [here](TODO), this is not possible using a 3.7v li-on cell directly)
 
@@ -161,5 +156,3 @@ Capes:
 These capes support powering the USB port
 http://andicelabs.com/beaglebone-powerbar/
 http://andicelabs.com/beaglebone-powercape/
-
-

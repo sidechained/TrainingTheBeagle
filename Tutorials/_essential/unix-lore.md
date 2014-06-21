@@ -52,17 +52,17 @@ A common use for the backslash is to escape spaces in file or folder names e.g.
 
 **#**  
 The hash symbol is used to comments in the command line e.g.  
-`$ mkdir myNiceFolder # This is a really cool new folder`
+`$ mkdir myNiceFolder # This is a really cool new folder`  
 This is more commonly used in shell scripts than in single line terminal commands
 
 **;**   
-The semicolon can be used to run commands one after the other e.g. 
+The semicolon can be used to run commands one after the other e.g.  
 `$ cd ~/Desktop/Documents; cat myTextFile.txt`
 
 **&**  
-The ampersand is used to execute commands as background tasks.
-This is useful in circumstances where a program does not return the shell to the user
-e.g. when running jack audio in the background, we might do the following:
+The ampersand is used to execute commands as background tasks.  
+This is useful in circumstances where a program does not return the shell to the user  
+e.g. when running jack audio in the background, we might do the following:  
 `$ jackd -P95 -d alsa -d hw:1,0 -p512 -n3 -s &`
 
 ### Getting Help
@@ -72,8 +72,9 @@ Type: `$ whatis [commandname]`, e.g.
 `$ whatis ping`
 
 **--help**  
-another possibility is to type just the commandname, or the commandname followed by `-help` or `--help` to get a display of the helpfile:
-`$ git push --help ` (opens in vim editor, type `q` at the `:` (last line) to exit)
+another possibility is to type just the commandname, or the commandname followed by `-help` or `--help` to get a display of the helpfile e.g.  
+`$ git push --help `  
+NOTE: this opens in vim editor, type `q` at the `:` (last line) to exit)
 
 ### Moving Around the Command Line
 
@@ -100,9 +101,13 @@ for example if we want to move a file in the folder we are in to another folder 
 `$ mv myFile.txt ../myFolder/`
 
 **cd**  
-`$ cd [path to directory]` 	= change to the given directory path  
-`$ cd ../..` 	= change to root directory  
-`$ cd ..` = go up to parent directory  
+Examples:  
+change to the given directory path  
+`$ cd [path to directory]`
+change to root directory  
+`$ cd ../..`
+go up to parent directory    
+`$ cd ..`
 
 **ls**  
 `$ ls` = show whats in the directory, also works like:  

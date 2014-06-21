@@ -54,11 +54,15 @@ Also, see [osc_receive.scd](./oscExamples/osc_receive.scd) for the standalone ve
 To test the above code, go through the following steps:
 
 * Firsly, clone the TrainingTheBeagle repo to a convenient temporary location on your pc (i.e. ~/Desktop)  
+`$ cd ~/Desktop` 
 `$ git clone https://github.com/sidechained/TrainingTheBeagle.git`  
 * Navigate to the tutorials folder, where the oscExamples can be found  
 `$ cd TrainingTheBeagle/Tutorials/`  
 * Copy the oscExamples folder into your beaglebone's home folder as follows (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
-`$ scp -r oscExamples debian@192.168.2.14:/home/debian`  
+`$ scp -r oscExamples debian@192.168.2.14:/home/debian`
+* Tidy up by removing the cloned repo from the desktop (or wherever you put it)  
+`$ cd ..`
+`$ rm -r TrainingTheBeagle`
 * Log into the beaglebone (again replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
 `$ ssh debian@192.168.2.14`  
 * Start the SuperCollider code for receiving OSC messages  
