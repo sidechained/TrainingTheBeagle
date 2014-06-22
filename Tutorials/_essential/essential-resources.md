@@ -11,7 +11,7 @@ This document is a selection of important resources for newcomers to the Beagleb
 
 * [Official Beaglebone Black Google Group](https://groups.google.com/forum/#!categories/beagleboard/beaglebone-black): Exc
 * [Beaglebone Community Wiki](http://elinux.org/BeagleBone_Community): Good collection of info from the user community
-* [Reliable Pin Reference](http://stuffwemade.net/hwio/beaglebone-pin-reference/): beware, some online pin references are wrong (e.g. mixing up of P8 and P9)!
+* [Beaglebone Black Pin Reference](http://stuffwemade.net/hwio/beaglebone-pin-reference/): Decent pin reference - beware, some online pin references are wrong (e.g. mixing up of P8 and P9)!
 
 ### Libraries and Extensions
 
