@@ -18,10 +18,10 @@ In this section we introduce a simple 'bare bones' version of the code that is r
 
 * Log into the Beaglebone (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
 `$ ssh debian@192.168.2.14`
-* Make a folder on the Beaglebone (to contain the files we will create for this example), and go into it
-`$ mkdir simpleAutostartExample`
+* Make a folder on the Beaglebone (to contain the files we will create for this example), and go into it  
+`$ mkdir simpleAutostartExample`  
 `$ cd simpleAutostartExample`
-* Create and edit a new file named simpleAutostart.sh
+* Create and edit a new file named simpleAutostart.sh  
 `$ sudo nano simpleAutostart.sh`
 * Paste in the following code
 ```bash
@@ -39,21 +39,25 @@ NOTE: The script itself will simply log the date and the message "The startup sc
 To run the above bash script automatically on boot, we need to call it from within a separate initialisation script. To do this we modify the header section of an existing template file, called 'skeleton', which is found in the /etc/init.d folder.
 
 * Log into the Beaglebone (if you aren't logged in already)
-* Go into the /etc/init.d folder where the 'skeleton' initscript template can be found
+* Go into the /etc/init.d folder where the 'skeleton' initscript template can be found  
 `$ cd /etc/init.d`
-* Copy the skeleton file to a new file named 'simpleAutostart'
-`$ cp skeleton simpleAutostart`
+* Copy the skeleton file to a new file named 'simpleAutostart'  
+`$ cp skeleton simpleAutostart`  
 _NOTE: check if this needs sudo_
-* Edit the new file
+* Edit the new file  
 `$ sudo nano simpleAutostart`
-* Make the following changes to the file
+* Make the following changes to the file  
+
 1. Add extra paths for `:/usr/local/bin` and `:/home/debian/simpleAutostartExample` to the PATH line. The line should now read as follows:  
 `PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/home/debian/simpleAutostartExample`
-* _NOTE_ is `:/usr/local/bin` really needed here as we are running no additional programs
+_NOTE_ is `:/usr/local/bin` really needed here as we are running no additional programs
+
 2. Replace the default name in the NAME line with the name of our bash script. The line should now read:  
 `NAME=simpleAutostart.sh`
+
 3. Change the DAEMON line to point to the path where our bash script is found. The line should now read:  
 `DAEMON=/home/debian/simpleAutostartExample/$NAME`
+
 * Exit and save using CTRL+X
 
 _NOTE_: Other 'cosmetic' changes can also be made, but are not essential, for example changing the 'Provides' section, the descriptions of what the script does, and the author
