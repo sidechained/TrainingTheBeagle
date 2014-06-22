@@ -2,7 +2,7 @@
 
 ## Creating Initialisation Scripts on the Beaglebone Black
 
-This tutorial covers how to start audio and sensing processes automatically on boot using Debian on the Beaglebone Black. This is an important technique which makes it possible to develop embedded systems. We will use the (somewhat complex) 'update-rc.d' method, and will walk through two tutorials, a [bare minimum example](#bare-minimum-example-the-short-version) - which explains the basic concepts - and a more typical [real world example](#real-world-example(the-long-version)) - which runs Python and SuperCollider code. Note that using 'update-rc.d' is not the only way to start processes on boot, for more detail on alternative approaches see the [further reading section](#further-reading) of this tutorial.
+This tutorial covers how to start audio and sensing processes automatically on boot using Debian on the Beaglebone Black. This is an important technique which makes it possible to develop embedded systems. We will use the (somewhat complex) 'update-rc.d' method, and will walk through two tutorials, a [bare minimum example](#bare-minimum-example-aka-the-short-version) - which explains the basic concepts - and a more typical [real world example](#real-world-example-aka-the-long-version) - which runs Python and SuperCollider code. Note that using 'update-rc.d' is not the only way to start processes on boot, for more detail on alternative approaches see the [further reading section](#further-reading) of this tutorial.
 
 Before starting out, there are a couple of things to be aware of:
 
