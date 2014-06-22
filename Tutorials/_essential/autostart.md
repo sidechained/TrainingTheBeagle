@@ -306,4 +306,4 @@ _\TODO/_
 
 For more technical detail about how the update-rc.d approach works in practice, and more about run levels, etc see [here](http://www.debian-administration.org/articles/28) and [here](http://www.debianhelp.co.uk/initscripts.htm).
 
-For an alternative approach using using cron and rc.local see this [tutorial by Fredrik Olofsson](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--autostart-jack-and-sc)
+For an alternative approach using using cron and rc.local see this [tutorial by Fredrik Olofsson](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--autostart-jack-and-sc).
