@@ -10,7 +10,7 @@ Before starting out, there are a couple of things to be aware of:
 
 * In our experience, using the Pulse Width Modulation (PWM) pins is problematic from a startup script. Therefore, if you rely on the PWM pins in your project, you may have to do some additional investigation into this issue.
 
-### Bare Minimum Example (The Short Version)
+###Bare Minimum Example (The Short Version)
 
 In this section we introduce a simple 'bare bones' version of the code that is required to initiate a process on startup. At this stage, the idea is simply to illustrate the principles, not do anything particularly exciting.
 
