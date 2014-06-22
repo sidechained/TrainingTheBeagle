@@ -2,15 +2,15 @@
 
 ## Creating Initialisation Scripts on the Beaglebone Black
 
-This tutorial covers how to start audio and sensing processes automatically on boot using Debian on the Beaglebone Black. This is an important technique which makes it possible to develop embedded systems. We will use the (rather complex) 'update-rc.d' method, using a short [bare bones method] which explains the basic concepts, and a more typical [real world example]. Using 'update-rc.d' is not the only way to start processes on boot, for more detail on alternative approaches see the [further reading section of this tutorial](#further-reading).
+This tutorial covers how to start audio and sensing processes automatically on boot using Debian on the Beaglebone Black. This is an important technique which makes it possible to develop embedded systems. We will use the (somewhat complex) 'update-rc.d' method, and will walk through two tutorials, a [bare minimum example](#bare-minimum-example-(the-short-version)) - which explains the basic concepts - and a more typical [real world example](#real-world-example(the-long-version)) which runs Python and SuperCollider code. Note that using 'update-rc.d' is not the only way to start processes on boot, for more detail on alternative approaches see the [further reading section of this tutorial](#further-reading).
 
-Before starting out, a couple of warnings:
+Before starting out, there are a couple of things to be aware of:
 
 * If you are using Extensions, be sure to host them in '/usr/local/share/SuperCollider/Extensions' NOT '/home/debian/.local/share/SuperCollider/Extensions' (as this folder is not in the search path when sclang runs as an initScript)
 
-* In our experience, using the Pulse Width Modulation (PWM) pins is problematic from a startup script, as the system doesn't appear to have access to the correct resources. Therefore, if you rely on the PWM pins in your project, you may have to do some additional investigation into this issue.
+* In our experience, using the Pulse Width Modulation (PWM) pins is problematic from a startup script. Therefore, if you rely on the PWM pins in your project, you may have to do some additional investigation into this issue.
 
-### Bare Bones Method (The Short Version)
+### Bare Minimum Example (The Short Version)
 
 In this section we introduce a simple 'bare bones' version of the code that is required to initiate a process on startup. At this stage, the idea is simply to illustrate the principles, not do anything particularly exciting.
 
@@ -74,7 +74,7 @@ _NOTE_: Other 'cosmetic' changes can also be made, but are not essential, for ex
 
 From this basic starting point you can experiment with changes to the bash shell script (autostart.sh) to do more than simply logging a message to a file. For more on how to run Python or SuperCollider code from the shell script, see the following section.
 
-### Real World Method (The Long Version)
+### Real World Example (The Long Version)
 
 _NOTE: this tutorial was tested using the 'debian-wheezy-7.2-armhf-3.8.13-bone30.img.xz' (November 23, 2013), found [here](http://www.armhf.com/index.php/download/)_
 
