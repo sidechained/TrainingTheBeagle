@@ -132,13 +132,14 @@ In this section we will use SuperCollider to change the frequency of a sine wave
 _NOTE: the '&' here ensures that jack will run as a background process_
 * Now let's start our SuperCollider patch. This presumes you are still in the autostartExamples folder (if not go there first)
 `$ sclang autostart.scd &`  
-* The server will boot (takes a few seconds)
-\TODO/ Q: should this command use sudo?  
+* The server will boot (takes a few seconds)  
+_\TODO/ Q: should this command use sudo?_
 * Once this is up and running, we can run our Python script
 `$ sudo python autostart.py`
 * If all is well, messages from Python should start be received and displayed on screen and you should be able to hear the frequency of a sine wave change in response to light changes at the photoresistor.
 
-_NOTE: if you find the above process confusing, you can always ssh into the beaglebone from two separate terminal windows and run the jack and sclang commands in one, and the python commands in the other_  
+_NOTE: if you find the above process confusing, you can always ssh into the beaglebone from two separate terminal windows and run the jack and sclang commands in one, and the python commands in the other_
+
 _NOTE: if you make mistakes in the above process, you may need to kill processes in order to be able to start again. To get back to a clean slate, try_:  
 `$ pkill python`  
 `$ pkill sclang`  
@@ -257,7 +258,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 The most important changes made are as follows:
 
 1. Added extra paths in the PATH section i.e.  
-`:/usr/local/bin` (this gives us access to \TODO/???)
+`:/usr/local/bin` (this gives us access to executables i.e. Python and SuperCollider)  
 `:/home/debian/autostartExamples` (this gives us access to our project folder)  
 
 2. Replaced the default name in the NAME section with the name of our bash script i.e.  
@@ -268,11 +269,9 @@ The most important changes made are as follows:
 
 These are the only changes that are needed for the init script to function correctly, but we also made some 'cosmetic' changes, such as:
 
-4. changing the 'Provides:' section from 'skeleton' to 'autostart'
-
-5. replacing the short description, description and DESC field with appropriate text
-
-6. changing the author field
+* changing the 'Provides:' section from 'skeleton' to 'autostart'
+* replacing the short description, description and DESC field with appropriate text
+* changing the author field
 
 If you like you can also perform all these edits by hand…or if you prefer, you can use the pre-modified code we have provided in the 'autostartExamples' folder. To use this file, you need to move it to the /etc/init.d/ system folder, as follows:  
 `$ sudo mv autostart /etc/init.d/`  
@@ -280,14 +279,14 @@ _NOTE: symlinking to this file from /etc/init.d may also be possible, but we hav
 
 The only thing that remains now is to tell the system to use this script on startup. To do this we need to:
 * Register the initscript with a program called update-rc.d so that it will be called on boot 
-`$ sudo /usr/sbin/update-rc.d autostart defaults`
+`$ sudo /usr/sbin/update-rc.d autostart defaults`  
 _NOTE: 'defaults' means we use what is called the 'LSB header' from our modified skeleton file to specify exactly when in the boot process the script will be run (i.e. the # Required-Start, # Required-Stop, # Default-Start and # Default-Stop fields)_
 * To check for success, execute the following command and look for 'autostart' in the list (with a number prepended to it)  
-`$ ls /etc/rc*.d`
+`$ ls /etc/rc*.d`  
 _NOTE: this is the list of run levels, of which I think we are only using run level 2 (i.e. rc2.d) with headless debian_
 * Now reboot the system to see if the initialisation script works  
 `$ sudo reboot`
-* Our code should now run automatically once the Beaglebone comes back up, and - as before - you should hear the frequency change in response to light changes at the photoresistor.
+* Our code should now run automatically once the Beaglebone comes back up, and - as before - you should hear the frequency change in response to light changes at the photoresistor.  
 _NOTE: You should still be able to ssh into the beagle board as normal whilst all this is going on_
 
 ### Deregistering the Initscript
