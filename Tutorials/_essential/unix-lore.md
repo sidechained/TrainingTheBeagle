@@ -1,11 +1,14 @@
-## Glossary of Unix Lore
+traceroute example
+add lsof to 'terminating processes' section
 
 _NOTE: this is not really a glossary anymore - as it is now split into topics_  
 _TODO: As this file now contains a lot of info, it now needs an introductory discussion of/pointer to 'the essentials'_
 
-This is a quick primer of most of the things you need to know about unix terminal commands to get started with the Beaglebone Black.
+## Glossary of Unix Lore
 
-_NOTE: for keyboard shortcuts, the modifier key differs depending on your system, for example on Mac systems it is CMD, whereas on Linux system it is CTRL. In this guide we refer to the Mac modifier as a convention (CMD)._
+This is a primer covering most of the things you need to know about unix terminal commands to get started with the Beaglebone Black.
+
+_NOTE: In this guide when mentioning keyboard shortcuts we refer to the Mac modifier key (i.e. CMD). If using a Linux system please substitute this for CTRL. Please note that there may also be other conventions we use that are also Mac specific (without realising it) _
 
 Topic Index:  
 [Basic Syntax](#basic-syntax)  
@@ -33,10 +36,10 @@ The dollar symbol is used to mark start of the command prompt
 
 **~**  
 The tilde symbol acts as a shortcut to the home directory on your pc.
-On the Beaglebone this will be `/home/debian`
-On Mac systems this is the folder one level up from Applications, Desktop, Documents etc e.g. `/Users/yourUserName`
+* On the Beaglebone this will be `/home/debian`
+* On Mac systems this is the folder one level up from Applications, Desktop, Documents etc e.g. `/Users/yourUserName`
 
-To find out exactly where your home directory is on your system, you can do the following  
+To find out exactly where your home directory is on your system, you can do the following:  
 `$ cd ~`  
 `$ pwd`
 
@@ -46,8 +49,8 @@ For example, by piping the command line history, we can get a list of all the ss
 `$ history | grep ssh`
 
 **/**    
-The backslash is used to escape characters which are otherwise reserved for special purposes (i.e. most of the symbols we are talking about in this section!)
-A common use for the backslash is to escape spaces in file or folder names e.g.
+The backslash symbol is used to escape characters which are otherwise reserved for special purposes (i.e. most of the symbols we are talking about in this section!)
+A common use for the backslash is to escape spaces in file or folder names e.g.  
 `cd ~/Desktop/my\ folder\ with\ spaces\ in\ the\ title/`
 
 **#**  
@@ -56,12 +59,12 @@ The hash symbol is used to comments in the command line e.g.
 This is more commonly used in shell scripts than in single line terminal commands
 
 **;**   
-The semicolon can be used to run commands one after the other e.g.  
+The semicolon can be used to run commands one after the other on the same line e.g.  
 `$ cd ~/Desktop/Documents; cat myTextFile.txt`
 
 **&**  
-The ampersand is used to execute commands as background tasks.  
-This is useful in circumstances where a program does not return the shell to the user  
+The ampersand is used at the end of a line to execute commands as background tasks.  
+This is useful in circumstances where a program does not return control to the user  
 e.g. when running jack audio in the background, we might do the following:  
 `$ jackd -P95 -d alsa -d hw:1,0 -p512 -n3 -s &`
 
@@ -74,121 +77,128 @@ Type: `$ whatis [commandname]`, e.g.
 **--help**  
 another possibility is to type just the commandname, or the commandname followed by `-help` or `--help` to get a display of the helpfile e.g.  
 `$ git push --help `  
-NOTE: this opens in vim editor, type `q` at the `:` (last line) to exit)
+NOTE: this opens in vim editor, type `:q` to exit
 
 ### Moving Around the Command Line
 
 **CMD+A**  
-move the cursor to start of the command line
+Moves the cursor to start of the command line
 
 ### Clearing the Terminal Window
 
 **clear**  
-the clear command clears the terminal buffer in a 'soft' way (i.e. you can still scroll back to see previously output) e.g.  
+The clear command clears the terminal buffer in a 'soft' way (i.e. you can still scroll back to see previously output) e.g.  
 `$ clear`
 
 **CMD+K**  
-this keyboard shortcut clears the terminal buffer in a 'hard' way (i.e. you cannot scroll back)
+This keyboard shortcut clears the terminal buffer in a 'hard' way (i.e. you cannot scroll back)
 
 ### Navigation
 
-**.**  
-represents the current path
-
 **..**  
-refers to the path one level up from the current path
-for example if we want to move a file in the folder we are in to another folder which resides one level up from where we are currently, we could do the following:  
+Refers to the path one level up from the current path  
+For example if we want to move a file in the folder we are in to another folder which resides one level up from where we are currently, we could do the following:  
 `$ mv myFile.txt ../myFolder/`
 
 **cd**  
-Examples:  
-change to the given directory path  
-`$ cd [path to directory]`
+Change to the given directory path e.g.  
+`$ cd myNewDir`
 change to root directory  
 `$ cd ../..`
 go up to parent directory    
 `$ cd ..`
 
 **ls**  
-`$ ls` = show whats in the directory, also works like:  
-`$ ls [path to directory]` - just looking without actuall navigating to the directory  
+Show whats in a given directory e.g for the current path
+`$ ls`  
+Just looking without actually navigating to the directory 
+`$ ls /pathTo/myDirectory`  
 Options:   
-`$ ls -a` = use -a flag to display hidden files (i.e. those preceded with a `.`)  
-`$ ls -l` = use -l to display items in a list form (also shows file permissions)
-*- ls -d ?!* mention here?  
+Use -a flag to display hidden files (i.e. those preceded with a `.`)  
+`$ ls -a`
+Use -l to display items in a list form (also shows file permissions)
+`$ ls -l`
 
 **pwd**  
 This displays the current path e.g
 `$ pwd`
-gives something like  
-`/home/debian/soundvase`
+on the beaglebone may show something like  
+`/home/debian`
 
 ### File Management
 
 **mkdir**  
-create a directory, e.g. in the current folder  
-`$ mkdir [directoryname]`
+Create a directory, e.g. in the current folder  
+`$ mkdir myNewDir`
 
 **mv**  
-move a file to a new location e.g. into a subfolder  
+Move a file to a new location e.g. into a subfolder  
 `$ mv myFile.txt /myFolder/myFile.txt`  
-can also be used for renaming e.g. changing the extension of a file
-`$ mv bob.pdf bob.txt'
+Can also be used for renaming e.g. changing the extension of a file
+`$ mv myFile.txt bob.pdf'
 
 **cp**  
 Copy a file e.g. to duplicate a file before editing
 `$ cp myFirstFile.txt mySecondFile.txt`
 
 **rm**  
-`$ rm annoyingFile.txt` = remove single files of given name  
-use -R to remove a whole folder and its contents (recursively) e.g  
+Remove individual files by name 
+`$ rm annoyingFile.txt`
+Use -R to remove a whole folder and its contents (recursively) e.g  
 `$ rm -R annoyingFolder`
 
 **touch**  
-creates a new empty file with the given name e.g.
+Creates a new empty file with the given name e.g.
 `$ touch readme.txt`
 
 ### Communicating with the Beaglebone
 
-NOTE: the default username/password for beagleboard is **debian/debian**
-
-**ssh**  
-is used to log into the beaglebone via a TCP Cable Connection 
-`$ ssh debian@192.168.1.1` = Login at the given IP under name _debian_
+The default username/password for beagleboard is **debian/debian**
 
 **ping**  
-This sends a ping msg to the given IP address. useful for checking wether BBB is up & running in the network:
-`$ ping 192.168.2.7` this should return something like: 
-`$ `
+This sends a ping msg to a given IP address and is useful for checking whether a Beaglebone is connected and running on the network e.g.  
+`$ ping 192.168.2.7`  
+If the Beaglebone exists at this address, you should see something like:
+```
+PING 192.168.2.14 (192.168.2.14): 56 data bytes
+64 bytes from 192.168.2.14: icmp_seq=0 ttl=64 time=0.702 ms
+64 bytes from 192.168.2.14: icmp_seq=1 ttl=64 time=0.543 ms
+64 bytes from 192.168.2.14: icmp_seq=2 ttl=64 time=0.543 ms
+```
+
+**ssh**  
+Used to remotely log into the beaglebone via a network connection 
+e.g. to login at the given IP with the username 'debian':
+`$ ssh debian@192.168.1.1`
 
 **traceroute**  
 This traces the package being sent to the given IP … e.g. 
 `$ traceroute 192.168.2.6`
 
 **scp**  
-In case you want to copy files over a secure connection (e.g. from laptop to beagle)
-It can be used for both files and folders (option -r):
+Copy files over a secure connection (e.g. from laptop to Beaglebone)
+It can be used for sending individual files… e.g:
 `$ scp testfile.txt debian@192.168.1.1:/home/debian #replace filename and IP with your own`
-`$ scp -r soundvase debian@192.168.1.1:/home/debian` for copying folders
-see also: https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--copy-files-from-laptop-to-bbb
+…and also for folders e.g.
+`$ scp -r soundvase debian@192.168.1.1:/home/debian`  
+…also, see how Fredrik Olofsson does it[here](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--copy-files-from-laptop-to-bbb)
 
 **sftp**  
-for copying files between the beagle and another device
-`$ sftp debian@192.168.7.5` # you will now be in sftp mode
-There are two useful commands
-- put (from laptop to beaglebone) e.g. `$ put aFileFromMyLaptop.txt`
-- get (from beaglebone to laptop) e.g. `$ get aFileFromMyBeagle.txt`
+Another way to copy files between the beagle and another device (i.e. a laptop)  
+Example:
+`$ sftp debian@192.168.7.5`  
+You will now be in sftp mode, where there are two useful commands…
+* get downloads from beaglebone to laptop e.g. 
+`$ put aFileFromMyLaptop.txt`
+* put uploads from laptop to beaglebone e.g. 
+`$ get aFileFromMyBeagle.txt`
 
 ### Terminating Processes
 
-When using the Beaglebone for
-running processes in the background (e.g. jackd for audio) and needing to terminate these processes.
+Sometimes it is necessary to terminate processes that are running in the background e.g. when using jackd for audio.
 
 **CMD+C**  
-terminate the running process
-
-**&**  
-used at the end a - background process
+Force exits from an interactive running process e.g a running bash script
 
 **PID's**  
 PID stands for 'process ID' and can commonly be seen when running background processing using &, which would otherwise lock up
@@ -196,46 +206,39 @@ when we run such a process, it's PID will be shown
 e.g. [1] 12760
 
 **pkill**  
-kills a running process by **name** e.g: `$ pkill python`
-
-**lsof -p**  
-using the -p switch of lsof lets us see the processes that are currently running 
+kills a running process by name e.g:  
+`$ pkill python`
 
 ### User Privileges
 
 **sudo**  
-sudo is short for 'superuser do'
-superuser privileges are often require to perform certain tasks
-they enter the password for your beaglebone (typically 'debian').
-- e.g. to allow python to access the beaglebone pins through the adafruit bbio library
-Usage: Simply preface the command with `sudo` e.g.
+sudo is short for 'superuser do' and requires that you enter the password for your beaglebone (typically 'debian')  
+Superuser privileges are often require to perform certain tasks e.g. to allow Python to access the Beaglebone pins through the Adafruit BBIO library
+Usage is simply to preface the command with `sudo` e.g.
 `$ sudo python sense.py`
-
-_NOTE: there are also cases where sudo should not be used_ 
-e.g. ?
 
 ### File Permissions
 
 **chmod**  
 changes file permissions  
-_EXAMPLES_
+\TODO/
 
 ### Shutting Down and Restarting the Beaglebone
 
 This section involves running small programs (in /sbin typically), they are not unix commands as such... 
 
-**reboot/shutdown**  
-- reboot the beagle board from the command line:
-```shell
-```
+**reboot**  
+Reboot the beagle board from the command line e.g.  
+`$ sudo /sbin/reboot`
 
-**shutdown**  
-`$ sudo /sbin/shutdown now #shutdown, scheduled immediatly`
-$ sudo /sbin/reboot # option 1: directly do reboot
-$ sudo /sbin/shutdown -r now # option 2, shutdown with option for reboot, scheduled now
+**shutdown**
+Shutdown immediately:  
+`$ sudo /sbin/shutdown now`
+Shutdown with option for reboot, scheduled now:  
+`$ sudo /sbin/shutdown -r now`
 
 **halt**  
-TODO - add Fredrik's halt example
+\TODO/: add Fredrik's halt example
 
 ### Viewing and Editing Files
 
@@ -244,29 +247,32 @@ prints the entire contents of a file to the screen e.g.
 `$ cat ~/Documents/myLongTextFile.txt`
 
 **tail**  
-prints only the end of the file
+prints only the end of the file e.g.
+`$ tail myLongFile.txt`
 
 **pico/nano**  
 _pico_ and _nano_ are simple text editors which can be used as follows  
 `$ nano myTextFile.txt`
-unlike _vim_ their interfaces are largely self-explanatory
-note that if a given filename does not exist, it is created automatically! This is useful for creating and starting to edit a new blank file.
+Unlike vim their interfaces are largely self-explanatory
+Note that if a given filename does not exist, it is created automatically! This is useful for creating and starting to edit a new blank file.
 
 **vi**  
-_vim_ is yet another more difficult to use text editor (IMO)
-- Used as default text editor by the shell, e.g. for commiting git comments
+vim is yet another more difficult to use text editor (IMO)
+it is used as default text editor by the shell, e.g. for commiting git comments  
 Basic usage:
 `$ vi myTextFile.txt`
-- `I` enters insert mode
-- `ESC` exits insert mode
-- then type `:w` to write the file
-- followed by `:q` to quit
-- more details here: http://www.tldp.org/HOWTO/Tips-HOWTO.html
+And some basic commands:
+* `I` enters insert mode
+* `ESC` exits insert mode
+* then type `:w` to write the file
+* followed by `:q` to quit
+* more details [here](http://www.tldp.org/HOWTO/Tips-HOWTO.html)
 
 ### Times and Dates
 
-**setting the correct time on the system**   
-NOTE:requires an internet connection
+**ntpdate**
+Used to set the correct time on the system (sync with NTP server)  
+_NOTE:requires an internet connection_  
 `$ /usr/sbin/ntpdate -b -s -u pool.ntp.org`
 
 ### Recalling Previously Used Commands  
