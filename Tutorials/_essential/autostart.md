@@ -6,13 +6,73 @@ This tutorial covers how to start audio and sensing processes automatically on b
 
 Before starting out, a couple of warnings:
 
-* if you are using Extensions, be sure to host them in '/usr/local/share/SuperCollider/Extensions' NOT '/home/debian/.local/share/SuperCollider/Extensions' (as this folder is not in the search path when sclang runs as an initScript)
+* If you are using Extensions, be sure to host them in '/usr/local/share/SuperCollider/Extensions' NOT '/home/debian/.local/share/SuperCollider/Extensions' (as this folder is not in the search path when sclang runs as an initScript)
 
-* in our experience, using the Pulse Width Modulation (PWM) pins is problematic from a startup script, as the system doesn't appear to have access to the correct resources. Therefore, if you rely on the PWM pins in your project, you may have to do some additional investigation into this issue.
+* In our experience, using the Pulse Width Modulation (PWM) pins is problematic from a startup script, as the system doesn't appear to have access to the correct resources. Therefore, if you rely on the PWM pins in your project, you may have to do some additional investigation into this issue.
 
 ### Bare Bones Method (The Short Version)
 
-\TODO/
+In this section we introduce a simple 'bare bones' version of the code that is required to initiate a process on startup. At this stage, the idea is simply to illustrate the principles, not do anything particularly exciting.
+
+#### Step 1. Create a Simple Bash Shell Script (to be run on startup)
+
+* Log into the Beaglebone (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
+`$ ssh debian@192.168.2.14`
+* Make a folder on the Beaglebone (to contain the files we will create for this example), and go into it
+`$ mkdir simpleAutostartExample`
+`$ cd simpleAutostartExample`
+* Create and edit a new file named simpleAutostart.sh
+`$ sudo nano simpleAutostart.sh`
+* Paste in the following code
+```bash
+#!/bin/sh
+sudo exec > /tmp/simpleAutostartLog.txt 2>&1
+echo $(date)
+echo "The startup script ran succesfully!"
+```
+* Exit and save using CTRL+X
+
+NOTE: The script itself will simply log the date and the message "The startup script ran succesfully!" to a temporary file called simpleAutostartLog.txt, which lives in the Beaglebone's /tmp folder. Once the autostart procedure has been initiated, we will be able to log in and check the content of this file to see if the script worked or not.
+
+#### Step 2. Create an Initialisation Script (from a template)
+
+To run the above bash script automatically on boot, we need to call it from within a separate initialisation script. To do this we modify the header section of an existing template file, called 'skeleton', which is found in the /etc/init.d folder.
+
+* Log into the Beaglebone (if you aren't logged in already)
+* Go into the /etc/init.d folder where the 'skeleton' initscript template can be found
+`$ cd /etc/init.d`
+* Copy the skeleton file to a new file named 'simpleAutostart'
+`$ cp skeleton simpleAutostart`
+_NOTE: check if this needs sudo_
+* Edit the new file
+`$ sudo nano simpleAutostart`
+* Make the following changes to the file
+1. Add extra paths for `:/usr/local/bin` and `:/home/debian/simpleAutostartExample` to the PATH line. The line should now read as follows:  
+`PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/home/debian/simpleAutostartExample`
+* _NOTE_ is `:/usr/local/bin` really needed here as we are running no additional programs
+2. Replace the default name in the NAME line with the name of our bash script. The line should now read:  
+`NAME=simpleAutostart.sh`
+3. Change the DAEMON line to point to the path where our bash script is found. The line should now read:  
+`DAEMON=/home/debian/simpleAutostartExample/$NAME`
+* Exit and save using CTRL+X
+
+_NOTE_: Other 'cosmetic' changes can also be made, but are not essential, for example changing the 'Provides' section, the descriptions of what the script does, and the author
+
+#### Step 3. Tell the System to Run the Initialisation Script on Startup
+
+* To tell the system to use the initialisation script on boot, we register the script with a program called update-rc.d, as follows  
+`$ sudo /usr/sbin/update-rc.d simpleAutostart defaults`
+* Now reboot the Beaglebone to test if our script works  
+`$ sudo reboot`
+* Once the Beaglebone is up and running, ssh back in as normal (replacing 192.168.2.14 with the IP of your beagle)    
+`$ ssh debian@192.168.2.14`
+* Check the content of the log file  
+`$ cat /tmp/simpleAutostartLog.txt`
+* You should see a very recent time and date, followed by the message "The startup script ran succesfully!". If not please double check the changes you made above, and see the [troubleshooting section](#troubleshooting) for additional ideas on what might be going wrong.
+
+#### Extending the Bash Shell Script
+
+From this basic starting point you can experiment with changes to the bash shell script (autostart.sh) to do more than simply logging a message to a file. For more on how to run Python or SuperCollider code from the shell script, see the following section.
 
 ### Real World Method (The Long Version)
 
@@ -215,7 +275,7 @@ _NOTE: symlinking to this file from /etc/init.d may also be possible, but we hav
 The only thing that remains now is to tell the system to use this script on startup.
 
 To do this we register the initscript with a program called update-rc.d so that it will be called on boot, as follows  
-`$ sudo /usr/sbin/update-rc.d vaseBoot defaults`
+`$ sudo /usr/sbin/update-rc.d autostart defaults`
 - _NOTE: 'defaults' means we use what is called the 'LSB header' from our modified skeleton file to specify exactly when in the boot process the script will be run (i.e. the # Required-Start, # Required-Stop, # Default-Start and # Default-Stop fields)_
 * To check for success, execute the following command and look for 'autostart' in the list (with a number prepended to it)
 `$ ls /etc/rc*.d`
@@ -228,7 +288,7 @@ To do this we register the initscript with a program called update-rc.d so that 
 ### Deregistering the Initscript
 
 The script can be deregistered with update-rc.d at any time using:  
-`$ sudo /usr/sbin/update-rc.d vaseBoot remove`
+`$ sudo /usr/sbin/update-rc.d autostart remove`
 
 ### Troubleshooting
 
