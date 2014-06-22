@@ -1,12 +1,12 @@
-_TODO: add traceroute example_
-_TODO: add lsof to 'terminating processes' section_
+_TODO: add traceroute example_  
+_TODO: add lsof to 'terminating processes' section_  
 _TODO: As this file now contains a lot of info, it now needs an introductory discussion of/pointer to 'the essentials'_
 
 ## Unix Lore
 
 This is a primer covering most of the things you need to know about unix terminal commands to get started with the Beaglebone Black.
 
-_NOTE: In this guide when mentioning keyboard shortcuts we refer to the Mac modifier key (i.e. CMD). If using a Linux system please substitute this for CTRL. Please note that there may also be other conventions we use that are also Mac specific (without realising it) _
+_NOTE: When mentioning keyboard shortcuts we refer to the Mac modifier key (i.e. CMD). If using a Linux system please substitute this for CTRL. Please note that there may also be other conventions we use that are also Mac specific (without realising it)_
 
 Topic Index:  
 [Basic Syntax](#basic-syntax)  
@@ -70,11 +70,12 @@ e.g. when running jack audio in the background, we might do the following:
 
 **whatis**  
 Type:  
-`$ whatis [commandname]`, e.g.  
+`$ whatis [commandname]`  
+e.g.  
 `$ whatis ping`
 
 **--help**  
-another possibility is to type just the commandname, or the commandname followed by `-help` or `--help` to get a display of the helpfile e.g.  
+Another possibility is to type just the commandname, or the commandname followed by `-help` or `--help` to get a display of the helpfile e.g.  
 `$ git push --help `  
 NOTE: this opens in vim editor, type `:q` to exit
 
@@ -108,20 +109,20 @@ go up to parent directory
 `$ cd ..`
 
 **ls**  
-Show whats in a given directory e.g for the current path
+Show whats in a given directory e.g for the current path  
 `$ ls`  
-Just looking without actually navigating to the directory 
+Just looking without actually navigating to the directory  
 `$ ls /pathTo/myDirectory`  
-Options:   
+Options:  
 Use -a flag to display hidden files (i.e. those preceded with a `.`)  
-`$ ls -a`
-Use -l to display items in a list form (also shows file permissions)
+`$ ls -a`  
+Use -l to display items in a list form (also shows file permissions)  
 `$ ls -l`
 
 **pwd**  
-This displays the current path e.g
-`$ pwd`
-on the beaglebone may show something like  
+This displays the current path e.g  
+`$ pwd`  
+On the beaglebone may show something like this:  
 `/home/debian`
 
 ### File Management
@@ -133,21 +134,21 @@ Create a directory, e.g. in the current folder
 **mv**  
 Move a file to a new location e.g. into a subfolder  
 `$ mv myFile.txt /myFolder/myFile.txt`  
-Can also be used for renaming e.g. changing the extension of a file
-`$ mv myFile.txt bob.pdf'
+Can also be used for renaming e.g. changing the extension of a file  
+`$ mv myFile.txt bob.pdf`
 
 **cp**  
-Copy a file e.g. to duplicate a file before editing
+Copy a file e.g. to duplicate a file before editing  
 `$ cp myFirstFile.txt mySecondFile.txt`
 
 **rm**  
-Remove individual files by name 
-`$ rm annoyingFile.txt`
+Remove individual files by name  
+`$ rm annoyingFile.txt`  
 Use -R to remove a whole folder and its contents (recursively) e.g  
 `$ rm -R annoyingFolder`
 
 **touch**  
-Creates a new empty file with the given name e.g.
+Creates a new empty file with the given name e.g.  
 `$ touch readme.txt`
 
 ### Communicating with the Beaglebone
@@ -166,30 +167,30 @@ PING 192.168.2.14 (192.168.2.14): 56 data bytes
 ```
 
 **ssh**  
-Used to remotely log into the beaglebone via a network connection 
-e.g. to login at the given IP with the username 'debian':
+Used to remotely log into the beaglebone via a network connection  
+e.g. to login at the given IP with the username 'debian':  
 `$ ssh debian@192.168.1.1`
 
 **traceroute**  
-This traces the package being sent to the given IP … e.g. 
+This traces the package being sent to the given IP … e.g.  
 `$ traceroute 192.168.2.6`
 
 **scp**  
 Copy files over a secure connection (e.g. from laptop to Beaglebone)
-It can be used for sending individual files… e.g:
-`$ scp testfile.txt debian@192.168.1.1:/home/debian #replace filename and IP with your own`
-…and also for folders e.g.
+It can be used for sending individual files… e.g:  
+`$ scp testfile.txt debian@192.168.1.1:/home/debian #replace filename and IP with your own`  
+…and also for folders e.g.  
 `$ scp -r soundvase debian@192.168.1.1:/home/debian`  
-…also, see how Fredrik Olofsson does it[here](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--copy-files-from-laptop-to-bbb)
+…also, see how Fredrik Olofsson does it [here](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131128#--copy-files-from-laptop-to-bbb)
 
 **sftp**  
 Another way to copy files between the beagle and another device (i.e. a laptop)  
-Example:
+Example:  
 `$ sftp debian@192.168.7.5`  
 You will now be in sftp mode, where there are two useful commands…
-* get downloads from beaglebone to laptop e.g. 
+* get downloads from beaglebone to laptop e.g.  
 `$ put aFileFromMyLaptop.txt`
-* put uploads from laptop to beaglebone e.g. 
+* put uploads from laptop to beaglebone e.g.  
 `$ get aFileFromMyBeagle.txt`
 
 ### Terminating Processes
@@ -200,8 +201,8 @@ Sometimes it is necessary to terminate processes that are running in the backgro
 Force exits from an interactive running process e.g a running bash script
 
 **PID's**  
-PID stands for 'process ID' and can commonly be seen when running background processing using &, which would otherwise lock up
-when we run such a process, it's PID will be shown
+PID stands for 'process ID' and can commonly be seen when running background processing using &, which would otherwise lock up  
+when we run such a process, it's PID will be shown  
 e.g. [1] 12760
 
 **pkill**  
@@ -212,8 +213,8 @@ kills a running process by name e.g:
 
 **sudo**  
 sudo is short for 'superuser do' and requires that you enter the password for your beaglebone (typically 'debian')  
-Superuser privileges are often require to perform certain tasks e.g. to allow Python to access the Beaglebone pins through the Adafruit BBIO library
-Usage is simply to preface the command with `sudo` e.g.
+Superuser privileges are often require to perform certain tasks e.g. to allow Python to access the Beaglebone pins through the Adafruit BBIO library  
+Usage is simply to preface the command with `sudo` e.g.  
 `$ sudo python sense.py`
 
 ### File Permissions
@@ -232,7 +233,7 @@ Reboot the beagle board from the command line e.g.
 
 **shutdown**
 Shutdown immediately:  
-`$ sudo /sbin/shutdown now`
+`$ sudo /sbin/shutdown now`  
 Shutdown with option for reboot, scheduled now:  
 `$ sudo /sbin/shutdown -r now`
 
@@ -246,32 +247,33 @@ prints the entire contents of a file to the screen e.g.
 `$ cat ~/Documents/myLongTextFile.txt`
 
 **tail**  
-prints only the end of the file e.g.
+prints only the end of the file e.g.  
 `$ tail myLongFile.txt`
 
 **pico/nano**  
 _pico_ and _nano_ are simple text editors which can be used as follows  
-`$ nano myTextFile.txt`
-Unlike vim their interfaces are largely self-explanatory
+`$ nano myTextFile.txt`  
+Unlike vim their interfaces are largely self-explanatory  
 Note that if a given filename does not exist, it is created automatically! This is useful for creating and starting to edit a new blank file.
 
 **vi**  
-vim is yet another more difficult to use text editor (IMO)
+vim is yet another more difficult to use text editor (IMO)  
 it is used as default text editor by the shell, e.g. for commiting git comments  
-Basic usage:
-`$ vi myTextFile.txt`
+Basic usage:  
+`$ vi myTextFile.txt`  
 And some basic commands:
 * `I` enters insert mode
 * `ESC` exits insert mode
 * then type `:w` to write the file
 * followed by `:q` to quit
-* more details [here](http://www.tldp.org/HOWTO/Tips-HOWTO.html)
+
+See [here](http://www.tldp.org/HOWTO/Tips-HOWTO.html) for more details.
 
 ### Times and Dates
 
-**ntpdate**
+**ntpdate**  
 Used to set the correct time on the system (sync with NTP server)  
-_NOTE:requires an internet connection_  
+_NOTE: requires an internet connection_  
 `$ /usr/sbin/ntpdate -b -s -u pool.ntp.org`
 
 ### Recalling Previously Used Commands  
@@ -281,17 +283,17 @@ The up and down arrow keys can be used to step back through the history of the c
 e.g. to repeat or modify a previously issued command
 
 **history/grep**  
-The history command prints a list of previously executed terminal commands e.g.
-`$ history`
-this can be useful when trying to remember something you did previously or to retracing your steps to understand how you did something
-the output of history can also be piped to a grep search in order to look for specific entries e.g. to filter out all the jackd commands you have previously issued
-`$ history | grep jackd`
+The history command prints a list of previously executed terminal commands e.g.  
+`$ history`  
+this can be useful when trying to remember something you did previously or to retracing your steps to understand how you did something  
+the output of history can also be piped to a grep search in order to look for specific entries e.g. to filter out all the jackd commands you have previously issued  
+`$ history | grep jackd`  
 Q: how far does history go back?
 
 ### Miscellanous Commands
 
 **diskutil**  
-This is the volume/disc manager, useful for mounting/unmounting etc, e.g. 
+This is the volume/disc manager, useful for mounting/unmounting etc, e.g.  
 `$ diskutil list` gives you a list of the connected volumes on the system.
 
 ### Further Reading
