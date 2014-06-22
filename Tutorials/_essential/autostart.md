@@ -46,10 +46,10 @@ To run the above bash script automatically on boot, we need to call it from with
 _NOTE: check if this needs sudo_
 * Edit the new file  
 `$ sudo nano simpleAutostart`
-* Make the following changes to the file  
+* Make the following changes to the file: 
 
 1. Add extra paths for `:/usr/local/bin` and `:/home/debian/simpleAutostartExample` to the PATH line. The line should now read as follows:  
-`PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/home/debian/simpleAutostartExample`
+`PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/home/debian/simpleAutostartExample`  
 _NOTE_ is `:/usr/local/bin` really needed here as we are running no additional programs
 
 2. Replace the default name in the NAME line with the name of our bash script. The line should now read:  
@@ -60,13 +60,13 @@ _NOTE_ is `:/usr/local/bin` really needed here as we are running no additional p
 
 * Exit and save using CTRL+X
 
-_NOTE_: Other 'cosmetic' changes can also be made, but are not essential, for example changing the 'Provides' section, the descriptions of what the script does, and the author
+_NOTE_: Other 'cosmetic' changes can also be made, but are not essential (for example changing the 'Provides' section, the descriptions of what the script does, and the author).
 
 #### Step 3. Tell the System to Run the Initialisation Script on Startup
 
 * To tell the system to use the initialisation script on boot, we register the script with a program called update-rc.d, as follows  
 `$ sudo /usr/sbin/update-rc.d simpleAutostart defaults`
-* Now reboot the Beaglebone to test if our script works  
+* Now we are ready to reboot the Beaglebone to test if our script works  
 `$ sudo reboot`
 * Once the Beaglebone is up and running, ssh back in as normal (replacing 192.168.2.14 with the IP of your beagle)    
 `$ ssh debian@192.168.2.14`
@@ -76,20 +76,20 @@ _NOTE_: Other 'cosmetic' changes can also be made, but are not essential, for ex
 
 #### Extending the Bash Shell Script
 
-From this basic starting point you can experiment with changes to the bash shell script (autostart.sh) to do more than simply logging a message to a file. For more on how to run Python or SuperCollider code from the shell script, see the following section.
+From this basic starting point you can experiment with changes to the bash shell script (simpleAutostart.sh) to do more than simply logging a message to a file. For more on how to run Python or SuperCollider code from the shell script, see the following section.
 
 ### Real World Example (A.K.A The long version)
 
 _NOTE: this tutorial was tested using the 'debian-wheezy-7.2-armhf-3.8.13-bone30.img.xz' (November 23, 2013), found [here](http://www.armhf.com/index.php/download/)_
 
-In contrast to the bare bones method, this section aims to show how to run actual audio and sensing processes on startup. More specifically, by audio processes we mean jackd + sclang + scsynth, and by sensing processes we mean python + the Adafruit BBIO library. In addition to these processes, we will send also messages from Python to sclang using Open Sound Control (using the pyOSC library for python, build in OSC functionality of SuperCollider). For more detail on this see the separate [OSC Communication Tutorial](./osc.md)
+In contrast to the bare bones method, this section aims to show how to run actual audio and sensing processes on startup. More specifically, by audio processes we mean jackd + sclang + scsynth, and by sensing processes we mean python + the Adafruit BBIO library. In addition to these processes, we will send also messages from Python to sclang using Open Sound Control (using the pyOSC library for python, build in OSC functionality of SuperCollider). For more detail on this see the separate [OSC Communication Tutorial](./osc.md).
 
 #### Prerequisites
 
 To follow along, you will need:
 
 * a beaglebone black running Debian (wheezy), jack, pyOSC and SuperCollider  
-(if you have not yet installed these, see the separate [installation tutorial](./installation.md)
+(if you have not yet installed these, see the separate [installation tutorial](./installation.md))
 * a USB audio sound card, similar to the one shown [here](http://www.dhgate.com/product/usb-3d-sound-card-usb-2-0-to-3d-audio-sound/151239248.html)
 * headphones or a speaker with a 3.5mm minijack input
 * a photoresistor (aka light-dependant resistor or LDR)
@@ -99,12 +99,10 @@ To follow along, you will need:
 
 #### Step 1. Create a Python Script to Read Values from a Photoresistor
 
-Firstly, setup a simple light sensing circuit on your beagle board, by following the tutorial described [here](http://learn.adafruit.com/measuring-light-with-a-beaglebone-black/)
+Firstly, setup a simple light sensing circuit on your beagle board, by following the tutorial described [here](http://learn.adafruit.com/measuring-light-with-a-beaglebone-black/)  
 _NOTE: this tutorial also covers how to install the Adafruit BBIO library_
 
-Now we will use a simple Python script to repeatedly poll this light dependant resistor and send its value to SuperCollider for sonification. The script we will use is called autostart.py and can be viewed [here](./autostartExamples/autostart.py).
-
-To do this:
+Now we will use a simple Python script to repeatedly poll this light dependant resistor and send its value to SuperCollider for sonification. The script we will use is called autostart.py and can be viewed [here](./autostartExamples/autostart.py), and the steps we need to undertake as are as follows:
 
 * Clone the TrainingTheBeagle repo to a convenient temporary location on your pc (i.e. ~/Desktop)  
 `$ cd ~/Desktop`  
@@ -121,32 +119,31 @@ To do this:
 * Go into the newly copied autostartExamples folder, and run the Python script found there  
 `$ cd autostartExamples`  
 `$ sudo python autostart.py`
-* Now look for changing values on the screen as you expose the LDR to more light
+* Now look for changing values on the screen as you expose the LDR to more light. The following message should appear (followed by a number) each time the sensor is polled  
+`sending locally to supercollider: /light` 
 * If this works, we are ready to move on to generating some basic sounds with these values
-
-\TODO/: mention what the expected output should be here
 
 #### Step 2. Receive Photoresistor Values in SuperCollider and Use Them to Make Sound
 
-In this section we will use SuperCollider to change the frequency of a sine wave in response to values coming from our photoresistor (as sent by Python). The SuperCollider patch we will use is called autostart.scd and can be viewed [here](./autostartExamples/autostart.scd). This file is already on our Beaglebone (in the autostartExamples folder which we copied across using scp command in in the previous step). We will now test it alongside our previously created Python script, as follows:
+In this section we will use SuperCollider to change the frequency of a sine wave in response to values coming from our photoresistor (as sent by Python). The SuperCollider patch we will use is called autostart.scd and can be viewed [here](./autostartExamples/autostart.scd). This file is already on our Beaglebone (in the autostartExamples folder which we copied across using the 'scp' command in in the previous step). We will now test it alongside our previously created Python script, as follows:
 
 * Firstly start up jack (to enable audio)  
 `$ jackd -dalsa -dhw:1,0 -p256 -n3 -s &`  
 _NOTE: the '&' here ensures that jack will run as a background process_
-* Now let's start our SuperCollider patch. This presumes you are still in the autostartExamples folder, if not go there first  
+* Now let's start our SuperCollider patch. This presumes you are still in the autostartExamples folder (if not go there first)
 `$ sclang autostart.scd &`  
+* The server will boot (takes a few seconds)
 \TODO/ Q: should this command use sudo?  
-\TODO/ is there any expected output here that we can look for here?
-* Once this is going, we can now run our Python script as follows
+* Once this is up and running, we can run our Python script
 `$ sudo python autostart.py`
-* All is well if you hear the frequency of a sine wave change in response to light changes at the photoresistor.
+* If all is well, messages from Python should start be received and displayed on screen and you should be able to hear the frequency of a sine wave change in response to light changes at the photoresistor.
 
-_NOTE: if you find the above process confusing, you can always ssh into the beaglebone from two separate terminal windows and run the jack and sclang commands in one, and the python commands in the other_
-_NOTE: if you make mistakes in the above process, you may need to kill processes in order to be able to start again. To get back to a clean slate, try:  
+_NOTE: if you find the above process confusing, you can always ssh into the beaglebone from two separate terminal windows and run the jack and sclang commands in one, and the python commands in the other_  
+_NOTE: if you make mistakes in the above process, you may need to kill processes in order to be able to start again. To get back to a clean slate, try_:  
 `$ pkill python`  
 `$ pkill sclang`  
 `$ pkill jackd`
-* If all else fails, reboot the system:  
+…and if all else fails, reboot the system:  
 `$ sudo reboot`
 
 #### Step 3. Create a Shell Script to Automate the Process of Starting Jack, SuperCollider and Python
@@ -175,7 +172,7 @@ echo "starting python..."
 sudo python /home/debian/initScript/autostart.py #4
 ```
 
-Also note the pauses and prints between processes. The pauses allowing time for jack and sclang to start successfully, while the prints are logged to the file, so that even though we won't see when running the script automatically on boot, we will be able to trace where execution stopped, in the case of any problem.
+Also note the pauses and prints between processes. The pauses allow time for jack and sclang to start successfully, while the prints are logged to the file, so that even though we won't see when running the script automatically on boot, we will be able to trace where execution stopped, in the case of any problem.
 
 Now let's test the script as follows (make sure you have killed all existing processes as described above first).
 
@@ -257,42 +254,48 @@ PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 ```
 
-The most important changes that were made were as follows:
+The most important changes made are as follows:
 
-* Added extra paths in the PATH section i.e.  
+1. Added extra paths in the PATH section i.e.  
 `:/usr/local/bin` (this gives us access to \TODO/???)
 `:/home/debian/autostartExamples` (this gives us access to our project folder)  
-* Replaced the default name in the NAME section with the name of our bash script i.e.  
+
+2. Replaced the default name in the NAME section with the name of our bash script i.e.  
 `NAME=autostart.sh`
-* Changed the DAEMON field to point to the path where our bash script is found i.e.  
+
+3. Changed the DAEMON field to point to the path where our bash script is found i.e.  
 `DAEMON=/home/debian/autostartExamples/$NAME`
 
 These are the only changes that are needed for the init script to function correctly, but we also made some 'cosmetic' changes, such as:
-* changing the 'Provides:' section from 'skeleton' to 'autostart'
-* replacing the short description, description and DESC field with appropriate text
-* changing the author
+
+4. changing the 'Provides:' section from 'skeleton' to 'autostart'
+
+5. replacing the short description, description and DESC field with appropriate text
+
+6. changing the author field
 
 If you like you can also perform all these edits by hand…or if you prefer, you can use the pre-modified code we have provided in the 'autostartExamples' folder. To use this file, you need to move it to the /etc/init.d/ system folder, as follows:  
-`$ sudo mv autostart /etc/init.d/`
+`$ sudo mv autostart /etc/init.d/`  
 _NOTE: symlinking to this file from /etc/init.d may also be possible, but we have yet to test this_
 
-The only thing that remains now is to tell the system to use this script on startup.
-
-To do this we register the initscript with a program called update-rc.d so that it will be called on boot, as follows  
+The only thing that remains now is to tell the system to use this script on startup. To do this we need to:
+* Register the initscript with a program called update-rc.d so that it will be called on boot 
 `$ sudo /usr/sbin/update-rc.d autostart defaults`
-- _NOTE: 'defaults' means we use what is called the 'LSB header' from our modified skeleton file to specify exactly when in the boot process the script will be run (i.e. the # Required-Start, # Required-Stop, # Default-Start and # Default-Stop fields)_
-* To check for success, execute the following command and look for 'autostart' in the list (with a number prepended to it)
+_NOTE: 'defaults' means we use what is called the 'LSB header' from our modified skeleton file to specify exactly when in the boot process the script will be run (i.e. the # Required-Start, # Required-Stop, # Default-Start and # Default-Stop fields)_
+* To check for success, execute the following command and look for 'autostart' in the list (with a number prepended to it)  
 `$ ls /etc/rc*.d`
-* _NOTE: this is the list of run levels, of which I think we are only using run level 2 (i.e. rc2.d) with headless debian_
-* now reboot the system to see if the initialisation script works  
+_NOTE: this is the list of run levels, of which I think we are only using run level 2 (i.e. rc2.d) with headless debian_
+* Now reboot the system to see if the initialisation script works  
 `$ sudo reboot`
-* Our code should now run automatically, and - as before - you should hear the frequency change in response to light changes at the photoresistor.
-- _NOTE: You should still be able to ssh into the beagle board as normal whilst all this is going on_
+* Our code should now run automatically once the Beaglebone comes back up, and - as before - you should hear the frequency change in response to light changes at the photoresistor.
+_NOTE: You should still be able to ssh into the beagle board as normal whilst all this is going on_
 
 ### Deregistering the Initscript
 
 The script can be deregistered with update-rc.d at any time using:  
 `$ sudo /usr/sbin/update-rc.d autostart remove`
+
+It also helps to clean up the the /etc/init.d folder from time to time.
 
 ### Troubleshooting
 
@@ -304,7 +307,6 @@ _\TODO/_
 
 ### Further Reading
 
-http://www.debian-administration.org/articles/28  
-http://www.debianhelp.co.uk/initscripts.htm  
-[tutorial by Fredrik Olofsson](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--autostart-jack-and-sc) using cron, rc.local
+For more technical detail about how the update-rc.d approach works in practice, and more about run levels, etc see [here](http://www.debian-administration.org/articles/28) and [here](http://www.debianhelp.co.uk/initscripts.htm).
 
+For an alternative approach using using cron and rc.local see this [tutorial by Fredrik Olofsson](https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131219#--autostart-jack-and-sc)
