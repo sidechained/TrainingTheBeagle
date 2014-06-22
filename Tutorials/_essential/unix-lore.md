@@ -1,10 +1,8 @@
-traceroute example
-add lsof to 'terminating processes' section
-
-_NOTE: this is not really a glossary anymore - as it is now split into topics_  
+_TODO: add traceroute example_
+_TODO: add lsof to 'terminating processes' section_
 _TODO: As this file now contains a lot of info, it now needs an introductory discussion of/pointer to 'the essentials'_
 
-## Glossary of Unix Lore
+## Unix Lore
 
 This is a primer covering most of the things you need to know about unix terminal commands to get started with the Beaglebone Black.
 
@@ -71,7 +69,8 @@ e.g. when running jack audio in the background, we might do the following:
 ### Getting Help
 
 **whatis**  
-Type: `$ whatis [commandname]`, e.g.  
+Type:  
+`$ whatis [commandname]`, e.g.  
 `$ whatis ping`
 
 **--help**  
