@@ -68,6 +68,10 @@ other relevant languages here: Python, Shell
 [thisLink] followed by (http://www.link.com) creates a hyperlink that hides the URL under "thislink"
 [Jonas` archive] (http://jonashummel.de)
 
+- When linking to our own repo, but somewhere else, write like this (no spaces!) `[installation tutorial](./_essential/installation.md)`. This links to the "installation.md" in the folderpath given. [installation tutorial](./_essential/installation.md)
+- When linking to other sections within this file, do this: `[The Reference Section] (######-reference)` 
+[The Reference Section](######-reference)
+
 ###### Inserting an Image / Video:
 [![IMAGE Description TEXT HERE](http://myfancyimage.jpg)](http://www.theUrlToTheImageHere)
 
