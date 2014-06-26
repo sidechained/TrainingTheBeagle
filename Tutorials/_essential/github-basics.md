@@ -124,7 +124,8 @@ According to [github](https://help.github.com/articles/resolving-merge-conflicts
 
 I tried to pull before committing my latest local changes, which aborted with this error
 
-```error: Your local changes to the following files would be overwritten by merge:
+```
+error: Your local changes to the following files would be overwritten by merge:
 	Tutorials/.DS_Store
 	Tutorials/_essential/backup.md
 Please, commit your changes or stash them before you can merge.
