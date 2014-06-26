@@ -28,7 +28,7 @@ sudo exec > /tmp/simpleAutostartLog.txt 2>&1
 echo $(date)
 echo "The startup script ran succesfully!"
 ```
-* Exit and save using CTRL+X
+* Exit and save using CTRL+X and "Y" to confirm the edits.
 
 NOTE: The script itself will simply log the date and the message "The startup script ran succesfully!" to a temporary file called simpleAutostartLog.txt, which lives in the Beaglebone's /tmp folder. Once the autostart procedure has been initiated, we will be able to log in and check the content of this file to see if the script worked or not.
 
@@ -56,7 +56,7 @@ _NOTE_ is `:/usr/local/bin` really needed here as we are running no additional p
 3. Change the DAEMON line to point to the path where our bash script is found. The line should now read:  
 `DAEMON=/home/debian/simpleAutostartExample/$NAME`
 
-* Exit and save using CTRL+X
+* Exit and save using CTRL+X and "Y" to confirm the edits.
 
 _NOTE_: Other 'cosmetic' changes can also be made, but are not essential (for example changing the 'Provides' section, the descriptions of what the script does, and the author).
 
@@ -131,7 +131,7 @@ _NOTE: the '&' here ensures that jack will run as a background process_
 * Now let's start our SuperCollider patch. This presumes you are still in the autostartExamples folder (if not go there first)
 `$ sclang autostart.scd &`  
 * The server will boot (takes a few seconds)  
-_\TODO/ Q: should this command use sudo?_
+__TODO__ Q: should this command use sudo?_
 * Once this is up and running, we can run our Python script
 `$ sudo python autostart.py`
 * If all is well, messages from Python should start be received and displayed on screen and you should be able to hear the frequency of a sine wave change in response to light changes at the photoresistor.
@@ -154,7 +154,7 @@ Now we get to the actual automatic start procedures. The first stage is to creat
 3. Run our SuperCollider patch
 4. Run our Python script
 
-The shell script is named autostart.sh and can be found [here](./autostart.sh). It is also replicated below, marked with #1-4 comments to show how the above process occurs.
+The shell script is named autostart.sh and can be found [here](./autostartExamples/autostart.sh). It is also replicated below, marked with #1-4 comments to show how the above process occurs.
 
 ```bash
 #!/bin/sh
@@ -296,7 +296,7 @@ It also helps to clean up the the /etc/init.d folder from time to time.
 
 ### Troubleshooting
 
-_\TODO/_ 
+__\TODO/__ 
 
 #### Document PWM issue here
 
