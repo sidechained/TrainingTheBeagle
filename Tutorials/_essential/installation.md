@@ -79,8 +79,8 @@ Debian
 
 - https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-supercollider-37alpha0
 
-* installing Jack and Supercollider are the basic requirements for the Beaglebone to run audio
-* Fredrik Olofsson has produced excellent tutorials on this, which we will not attempt to reproduce here
+Installing Jack and Supercollider are the basic requirements for the Beaglebone to run audio!   
+Fredrik Olofsson has produced excellent tutorials on this, which we will not attempt to reproduce here:
 
 - https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--start-sc
 - https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--get-low-latency-audio
