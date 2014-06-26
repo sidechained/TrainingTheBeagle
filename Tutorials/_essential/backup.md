@@ -31,22 +31,22 @@ If the destination sd card is the same size as the source sd card, then an easy 
 
 #### Backing Up
 
-__NOTE: __ $ diskutil list may be a better approach than $ ls | grep disk
-__NOTE: __ unmounting may not be necessary, I followed the guide without unmounting boot and rootfs first and it seemed to work fine
+__NOTE:__ $ diskutil list may be a better approach than $ ls | grep disk
+__NOTE:__ unmounting may not be necessary, I followed the guide without unmounting boot and rootfs first and it seemed to work fine
 
 * Firstly, we need to know the device name that the sd card is given when it is inserted. Before inserting the card, perform the following command:
-'$ ls | grep disk'  
+`$ ls | grep disk`  
 * Make a note of the entries that begin with 'disk'. Typically, if no other drives are connected you should only see disk0 and it's associated partitions (disk0s1, disk0s2 etc). Entries named 'rdisk' can be ignored.
 * Now insert the sd card, wait a few seconds, and perform the same command again:
-'$ ls | grep disk'
+`$ ls | grep disk`
 * Make a note of which disk has been added (typically this would be disk1)
 * Now check to see if your sd card was mounted automatically when it was inserted:
-'$ cd /Volumes; ls'  
+`$ cd /Volumes; ls`  
 * If the 'boot' or 'rootfs' volume names appear in the list, unmount them as follows:
 `$ diskutil unmount /Volumes/boot`  
 `$ diskutil unmount /Volumes/rootfs`  
 * Now check if they have been unmounted successfully (boot and rootfs should no longer be in the list)
-'$ ls'  
+`$ ls`
 * Back up the sd card to an image (replacing disk? with the actual name of your sd card's device as found above, and putting your image in an appropriate place i.e. not necessarily ion '~/Desktop'):
 `$ sudo dd if=/dev/disk? of=~/Desktop/myBeagleboneImage.dmg`
 * At the prompt, enter your password, then wait for the backup to complete (will take a while, and no indication of progress is given)
@@ -55,7 +55,7 @@ __NOTE: __ unmounting may not be necessary, I followed the guide without unmount
 #### Restoring
 
 * To restore the disk image to an sd card, we again need to find out the device name that the sd card is given when it is inserted (this can potentially be skipped if you are restoring directly after backing up).
-'$ ls | grep disk'  
+`$ ls | grep disk`  
 * Make a note of the entries that begin with 'disk'. Typically, if no other drives are connected you should only see disk0 and it's associated partitions (disk0s1, disk0s2 etc)
 * Now insert the sd card, and perform the same command again:
 '$ ls | grep disk'
@@ -65,19 +65,19 @@ __NOTE: __ unmounting may not be necessary, I followed the guide without unmount
 
 ### Method 3. Backing up the rootfs partition
 
-If your destination sd card is not the same size as your source sd card, then taking an image of the whole volume will not work. One approach in this case is just to back up the rootfs partition of your sd card, and overwrite. This approach is faster than the above method 2, but 
+If your destination sd card is not the same size as your source sd card, then taking an image of the whole volume will not work. One approach in this case is just to back up the rootfs partition of your sd card, and overwrite. This approach is faster than the above method 2...
 
 #### Backing Up
 
 * Insert the sd card into your PC, then check if the boot partition was mounted automatically:
-'$ cd /Volumes; ls'  
+`$ cd /Volumes; ls`
 * If the 'boot' partition appear in the list, unmount it as follows:
 `$ diskutil unmount /Volumes/boot`  
 * A message similar to 'Volume boot on disk1s1 unmounted' should appear
 * Backup the contents of the rootfs partition
 NOTE: the p option, which copies the file permissions e.g. `$ tar cvjpf`
 `$ sudo tar -zcvf /Volumes/rootfs/ ~/Desktop/myBeagleRootfsImage.tar.gz .`
-* got error "tar: Error exit delayed from previous errors."
+* got error `"tar: Error exit delayed from previous errors."`
 * What this means is that tar hit errors which were not bad enough for tar to fail immediately on hitting the error. tar kept going. Then when tar ends it says that it had errors but managed to run to completion.
 * destination drive must have a similar partition structure, did this by restoring original Debian Wheezy image onto freshly formatted card using Pi Filler
 
