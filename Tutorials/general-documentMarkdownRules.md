@@ -70,8 +70,8 @@ other relevant languages here: Python, Shell
 
 - When linking to our own repo, but somewhere else, write like this (no spaces!) `[installation tutorial](./_essential/installation.md)`. This links to the "installation.md" in the folderpath given. [installation tutorial](./_essential/installation.md)
 
-- When linking to other sections within this file, do this: `[The Code Formatting Section](######CODE-formatting:)` 
-[The Code Formatting Section](######CODE-formatting:)
+- When linking to other sections which have a header __within__ this file, do this: `[The Code Formatting Section](#code-formatting)` 
+[The Code Formatting Section](#code-formatting)
 
 ###### Inserting an Image / Video:
 [![IMAGE Description TEXT HERE](http://myfancyimage.jpg)](http://www.theUrlToTheImageHere)
