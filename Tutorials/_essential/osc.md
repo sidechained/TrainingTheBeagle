@@ -223,11 +223,11 @@ Follow the above [testing guide](#testing) to open two concurrent terminal windo
 To send repeatedly, we simply wrap the send message in a routine as follows:
 
 ```
-n = NetAddr("127.0.0.1", 9001);
+n = NetAddr("127.0.0.1", 9001); //define address to send to here: localhost on port 9001
 Routine({
 	inf.do{
 		n.sendMsg("\oscTest", 100);
-		2.wait;
+		2.wait; // wait 2 seconds, then repeat it
 	}
 }).play
 ```
@@ -240,7 +240,7 @@ This section contains advice on a a number of common issues (to be updated as an
 
 #### Force Release A Socket in Python
 
-\TODO/
+__TODO__
 
 What to do when this occur happens (a regular occurrence):
 
