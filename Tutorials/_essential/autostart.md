@@ -71,7 +71,7 @@ In case this returns an error like this one:
 ```
 update-rc.d: using dependency based boot sequencing
 insserv: script simpleAutostart is not an executable regular file, skipped!
-``
+```
 You will have to change permission of the file to be executable: `$ sudo chmod +x simpleAutostart.sh`
 Then do the step above again!
 
