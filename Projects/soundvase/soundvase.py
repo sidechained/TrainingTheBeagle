@@ -4,7 +4,7 @@
 import OSC
 from OSC import OSCClient, OSCMessage
 from threading import Timer
-import Adafruit_BBIO.GPIO as GPIO
+import Adafruit_BBIO.ADC as ADC
 
 inPin = "P9_40" # connect potentiometer to this pin
 sendAddress = '127.0.0.1', 57120 # address to send to SuperCollider
@@ -32,9 +32,10 @@ client = OSCClient()
 client.connect( sendAddress )
 init_sensing_loop() # init call to start the sensing loop
 
-try: 
-     while True: 
-         time.sleep(1) 
+# try block to prevent python from hogging OSC ports, needed when receiving OSC msgs!
+try:
+	while True:
+		time.sleep(1) 
 
 except KeyboardInterrupt:
     print "\nClosing OSCServer."
