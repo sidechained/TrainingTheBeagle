@@ -42,6 +42,8 @@ To run the above bash script automatically on boot, we need to call it from with
 * Copy the skeleton file to a new file named 'simpleAutostart'  
 `$ cp skeleton simpleAutostart`  
 _NOTE: check if this needs sudo_
+IT DOES!! permission denied
+
 * Edit the new file  
 `$ sudo nano simpleAutostart`
 * Make the following changes to the file: 
@@ -64,6 +66,15 @@ _NOTE_: Other 'cosmetic' changes can also be made, but are not essential (for ex
 
 * To tell the system to use the initialisation script on boot, we register the script with a program called update-rc.d, as follows  
 `$ sudo /usr/sbin/update-rc.d simpleAutostart defaults`
+
+In case this returns an error like this one: 
+```
+update-rc.d: using dependency based boot sequencing
+insserv: script simpleAutostart is not an executable regular file, skipped!
+``
+You will have to change permission of the file to be executable: `$ sudo chmod +x simpleAutostart.sh`
+Then do the step above again!
+
 * Now we are ready to reboot the Beaglebone to test if our script works  
 `$ sudo reboot`
 * Once the Beaglebone is up and running, ssh back in as normal (replacing 192.168.2.14 with the IP of your beagle)    
@@ -71,6 +82,11 @@ _NOTE_: Other 'cosmetic' changes can also be made, but are not essential (for ex
 * Check the content of the log file  
 `$ cat /tmp/simpleAutostartLog.txt`
 * You should see a very recent time and date, followed by the message "The startup script ran succesfully!". If not please double check the changes you made above, and see the [troubleshooting section](#troubleshooting) for additional ideas on what might be going wrong.
+
+For Jonas this returns:
+`cat: /tmp/simpleAutostartLog.txt: No such file or directory`
+What's going wrong here?
+Do we need other permissions elsewhere
 
 #### Extending the Bash Shell Script
 
@@ -102,12 +118,12 @@ _NOTE: this tutorial also covers how to install the Adafruit BBIO library_
 
 Now we will use a simple Python script to repeatedly poll this light dependant resistor and send its value to SuperCollider for sonification. The script we will use is called autostart.py and can be viewed [here](./autostartExamples/autostart.py), and the steps we need to undertake as are as follows:
 
-* Clone the TrainingTheBeagle repo to a convenient temporary location on your pc (i.e. ~/Desktop)  
+* Clone the TrainingTheBeagle repo to a convenient temporary location locally, on your pc (i.e. ~/Desktop)  
 `$ cd ~/Desktop`  
 `$ git clone https://github.com/sidechained/TrainingTheBeagle.git`  
 * Navigate to the tutorials folder, where the autostartExamples can be found  
 `$ cd TrainingTheBeagle/Tutorials/`  
-* Copy the autostartExamples folder into your beaglebone's home folder as follows (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
+* Copy the autostartExamples folder into your beaglebone's home folder with scp as follows (replacing 192.168.2.14 with the IP of your own beagle, and entering your password as prompted)  
 `$ scp -r autostartExamples debian@192.168.2.14:/home/debian`
 * Tidy up by removing the cloned repo from the desktop (or wherever you put it)  
 `$ cd ..`  
@@ -117,6 +133,11 @@ Now we will use a simple Python script to repeatedly poll this light dependant r
 * Go into the newly copied autostartExamples folder, and run the Python script found there  
 `$ cd autostartExamples`  
 `$ sudo python autostart.py`
+
+Get this error: 
+```  File "autostart.py", line 1
+SyntaxError: Non-ASCII character '\xc2' in file autostart.py on line 1, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+``
 * Now look for changing values on the screen as you expose the LDR to more light. The following message should appear (followed by a number) each time the sensor is polled  
 `sending locally to supercollider: /light` 
 * If this works, we are ready to move on to generating some basic sounds with these values
