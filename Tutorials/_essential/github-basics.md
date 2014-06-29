@@ -1,13 +1,11 @@
 ## TUTORIAL: A quickstart into using Github 
 
-This document covers some basics of how to use Github for collaborating on a repo. We mainly use it through the terminal-commandline and sometimes the web browser.
-It is basically a document of our experiences of how to share beaglebone projects using github as a communication and exchange platform.
+This document covers some basics of how to use Github for collaborating on a repo. It is basically a document of our experiences of how to share beaglebone projects using github as a communication and exchange platform. We use git from the command line, but the github site also offers some useful functions for doing small edits.
 
-For related info on document formatting on github, see: [general document-Markdown-Rules] (https://github.com/sidechained/TrainingTheBeagle/tree/master/Tutorials/general-documentMarkdownRules.md)
+For related info on document formatting on github - using GitHub Flavored Markdown, see: [general document-Markdown-Rules] (https://github.com/sidechained/TrainingTheBeagle/tree/master/Tutorials/general-documentMarkdownRules.md)
 
 **When using terminal, you need to install git on your system first!**
 Install with brew: `$ brew install git`
-
 
 ### Scenario1: Just Following / Cloning
 
