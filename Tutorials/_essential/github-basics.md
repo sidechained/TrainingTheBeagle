@@ -7,6 +7,12 @@ For related info on document formatting on github - using GitHub Flavored Markdo
 **When using terminal, you need to install git on your system first!**
 Install with brew: `$ brew install git`
 
+__NOTE: When working from Mac OSX you will get merge conflicts through .ds store files__
+- Check these links for clearing that: 
+- http://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository 
+- http://stackoverflow.com/questions/18393498/gitignore-all-the-ds-store-files-in-every-folder-and-subfolder
+
+
 ### Scenario1: Just Following / Cloning
 
 Author1 wants to get & copy any repo from github 'manually' to his computer. 
