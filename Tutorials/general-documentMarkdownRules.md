@@ -65,8 +65,13 @@ Ndef(\mysound, {|freq=400, amp=0.1| SinOsc.ar(freq) * amp}).play;
 other relevant languages here: Python, Shell
 
 ###### LINKS:  
-[thisLink] followed by (http://www.link.com) creates a hyperlink that hides the URL under "thislink"
+- [thisLink] followed by (http://www.link.com) creates a hyperlink that hides the URL under "thislink" (no spaces)
 [Jonas` archive] (http://jonashummel.de)
+
+- When linking to our own repo, but somewhere else, write like this (no spaces!) `[installation tutorial](./_essential/installation.md)`. This links to the "installation.md" in the folderpath given. [installation tutorial](./_essential/installation.md)
+
+- When linking to other sections which have a header __within__ this file, do this: `[The Code Formatting Section](#code-formatting)` 
+[The Code Formatting Section](#code-formatting)
 
 ###### Inserting an Image / Video:
 [![IMAGE Description TEXT HERE](http://myfancyimage.jpg)](http://www.theUrlToTheImageHere)

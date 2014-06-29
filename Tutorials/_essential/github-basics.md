@@ -118,34 +118,32 @@ You can review/compare the changes online, line-by-line
 
 According to [github](https://help.github.com/articles/resolving-merge-conflicts) a merge conflict "happens when two branches have changed the same part of the same file, and then those branches are merged together. For example, if you make a change on a particular line in a file, and your colleague working in a repository makes a change on the exact same line, a merge conflict occurs. Git has trouble understanding which change should be used, so it asks you to help out."
 
-##### Problem
+##### Problem: .DS Store Files on Mac -> The Mergetool
 
 I tried to pull before committing my latest local changes, which aborted with this error
 
+```
 error: Your local changes to the following files would be overwritten by merge:
 	Tutorials/.DS_Store
 	Tutorials/_essential/backup.md
 Please, commit your changes or stash them before you can merge.
 Aborting
-
+```
 I then did:
-
+```
 $ git add --all :/
 $ git commit -m "commiting before pull"
+```
+Then pulled: `$ git pull`
 
-Then pulled:
-
-$ git pull
-
-With this error:
-Automatic merge failed; fix conflicts and then commit the result.
+Got this error: `Automatic merge failed; fix conflicts and then commit the result.`
 
 ##### Resolution
 
 I used merge tool, as follows (and agreed to the one conflict it had found on a .ds store file)
-$ git mergetool
+`$ git mergetool`
 
-This resolved the issue so I could commit and pull
+This resolved the issue so I could commit and pull!
 
 ##### Links
 

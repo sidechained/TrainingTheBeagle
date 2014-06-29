@@ -87,6 +87,7 @@ Q: How does the Beagle work in DHCP mode, does it act as an DHCP server, allocat
 
 To enable DHCP on your Beaglebone, your /etc/network/interfaces files should include a section that looks as follows:
 
+<<<<<<< HEAD
 ```
 # primary network interface
 auto eth0
@@ -116,12 +117,28 @@ iface eth0 inet dhcp
 * …with the following lines (replacing)
 NOTE - if you want to use a base address other than '192.168.1', replace this in the address, network, broadcast and gateway lines
 
+=======
+- on Debian, DHCP is enabled by default
+- using DHCP is often an issue
+- to change this we need to edit /etc/network/interfaces
+- firstly, log in
+`$ ssh debian@192.168.1.3`
+- now make a backup of the interfaces file (in case of emergency)
+`$ sudo cp /etc/network/interfaces /etc/network/interfaces.bak`
+- edit the original version
+`$ sudo nano /etc/network/interfaces`
+- replace the following...
+`iface eth0 inet dhcp`
+- with… (example for IP of 192.168.1.3)
+```
+>>>>>>> 95f21aba981964ea7ead293a3f106ba76a5ae866
 iface eth0 inet static
        address 192.168.1.x
        netmask 255.255.255.0
        network 192.168.1.0
        broadcast 192.168.1.255
        gateway 192.168.1.1
+<<<<<<< HEAD
 
 * restart networking (this saves us from having to reboot)
 `$ sudo /etc/init.d/networking restart`  
@@ -132,11 +149,18 @@ iface eth0 inet static
 `$ ssh debian@192.168.1.x`
 * If log in fails, first try rebooting the board using the onboard reset button
 * If you still have problems logging in, consult the [finding my IP section]() of this document in order to regain access
+=======
+```
+- restart networking  
+`$ sudo /etc/init.d/networking restart` 
+`$ sudo /etc/init.d/networking reload`
+>>>>>>> 95f21aba981964ea7ead293a3f106ba76a5ae866
 
 #### 2. USB-To-Ethernet
 
 In the absence of ethernet hardware (i.e. cables and/or an ethernet switch), it can be convenient to use the Beaglebone's built-in USB-To-Ethernet functionality (as provided by the onboard microcontroller), which allows us to ssh in simply by connecting the beaglebone to a laptop via a Standard to Mini USB Cable. Another advantage of this approach is that is it often simpler to share your pc's internet connection this way than via traditional ethernet (see [here](http://robotic-controls.com/learn/beaglebone/beaglebone-internet-over-usb-only) and [here](http://askubuntu.com/questions/380810/internet-over-usb-on-beaglebone-black)).
 
+<<<<<<< HEAD
 _NOTE: For the ultimate in convenience, it is tempting to use this USB connection to power the Beaglebone as well, but the maximum 0.5A output of most laptops USB ports is not enough to reliably write to the. Therefore it is essential to bolster this by using an appropriately rated (i.e. 5V2A) external power supply (such as [this one]).
 
 Under Angstrom Linux, USB-To-Ethernet forms part of the default networking configuration, where the Beaglebone uses the address 192.168.7.2 and the pc uses the address 192.168.7.1. In what followsm we will attempt to recreate this functionality within Debian.
@@ -160,6 +184,11 @@ When trying to log into the Beaglebone for the first time, we are faced with a c
 If you are booting your Beaglebone from a micro SD card, then the easiest way to find out what kind of networking configuration is in use is to mount the SD card on your pc and take a look at the /etc/network/interfaces file from there. 
 
 ##### Under Linux
+=======
+_is there an easy way work with the beagle over DHCP and know what IP it has been allocated?_
+- according to http://www.armhf.com/index.php/getting-started-with-ubuntu-img-file/ Wheezy runs a DHCP server by default
+- suggestion is: Try pinging it by name: "debian-armhf" for the debian images and "ubuntu-armhf" for the ubuntu images. It is setup for DHCP, so whatever your network handed out. You could mount partition 2 of the SD card and check the logs or edit the /etc/network/interfaces file to have a static IP address:
+>>>>>>> 95f21aba981964ea7ead293a3f106ba76a5ae866
 
 For Linux users opening and edited
 this is easy, as the file system of the Beaglebone's SD card is also Linux based (Q: EXT3?), so the /etc/network/interfaces file can be opened and edited in whatever method your flavour of Linux allows (i.e. via text editor, or via the  terminal using nano)
@@ -290,13 +319,74 @@ http://www.mathworks.co.uk/help/simulink/ug/getting-the-beagleboard-ip-address.h
 - if this message comes up, it usually means that you have switched to accessing another beaglebone which has the same IP address as the previous one
 - this can also happen when switching to a new SD card using the same beaglebone (effectively the same thing)
 - to resolve this, we need to remove our local reference to the, as follows (where 192.168.2.14 is the IP of your beaglebone)
-$ ssh-keygen -R 192.168.2.14
+`$ ssh-keygen -R 192.168.2.14`
 - you should see:
-/Users/grahambooth/.ssh/known_hosts updated.
-Original contents retained as /Users/grahambooth/.ssh/known_hosts.old
+`/Users/grahambooth/.ssh/known_hosts` updated.
+Original contents retained as `/Users/grahambooth/.ssh/known_hosts.old`
 - now login again and it should work
 
+<<<<<<< HEAD
 Troubleshooting
+=======
+###### TUTORIAL: Passwordless login
+
+- logging into the beaglebone the traditional way (i.e. `$ ssh debian@192.168.x.x`) requires a password, which can become tedious to enter
+- a passwordless approach involves generating a secure SSH public key on the device that connects to the beaglebone (the host)
+- this key is then copied onto the beaglebone itself, the host becomes "trusted" and the password is no longer needed to gain access
+
+* __Generating a public SSH key on the host (i.e. a laptop)__
+
+- go into the hosts home directory
+`$ cd ~/`
+- check if an .ssh directory already exists
+`$ ls -al`
+- if not then create one (if there is then check if there is a id_rsa.pub
+`$ mkdir .ssh`
+- now go into the .ssh directory
+`$ cd .ssh`
+- invoke the command to generate the public key:
+`$ ssh-keygen -t rsa -C "yourname@yourdomain.ext"`
+__or__
+`$ ssh-keygen -b 1024 -t rsa -f id_rsa -P ""`
+_NOTE: choose the best of the above two approaches_
+- press enter when prompted for a file in which to save the key
+- press enter when asked for a passphrase (no passphrase means no password is required on login)
+
+* __Copying the public key from the laptop to the beaglebone__
+
+- go into the local ssh directory, if you are not there already
+`$ cd ~/.ssh`
+-  
+`$ cat id_rsa.pub`
+- copy the response into the clipboard
+- log into the beagle as normal (entering the password)
+`$ ssh debian@192.168.2.14`
+- cd into the home directory
+`$ /debian/home/`
+- create 
+_SOMETHING MISSING HERE?_
+- go into the laptop's home directory
+`$ cd ~/`
+- check if an .ssh directory already exists
+`$ ls -al`
+- if not then create one (if there is then check if there is a id_rsa.pub
+`$ mkdir .ssh`
+- now go into the .ssh directory
+`$ cd .ssh`
+- check if an 'authorized_keys' file exists
+`$ ls -a`
+- if not, create one
+`$ touch authorized_keys`
+- edit the 'authorized_keys' file
+`$ nano authorized_keys`
+- paste the context of the clipboard onto a new line at the bottom of the file, then use CTRL+X to exit, choosing Y when prompted whether to save
+- log out of the beaglebone 
+`$ exit`
+- log back in again, and no password should be required
+`$ ssh debian@192.168.2.14`
+
+##### Troubleshooting
+>>>>>>> 95f21aba981964ea7ead293a3f106ba76a5ae866
 
 - Here are a couple of common problems and ways to fix them:
 
@@ -304,9 +394,9 @@ Troubleshooting
 
 - many problems can stem from this mismatch
 - to double check, view the public key of the host, as follows:
-$ cat ~/.ssh/id_dsa.pub
+`$ cat ~/.ssh/id_dsa.pub`
 - now remove the sd card from the beaglebone, mount it on your laptop, then:
-$ cat /Volumes/rootfs/home/debian/.ssh/authorized_keys
+`$ cat /Volumes/rootfs/home/debian/.ssh/authorized_keys`
 - check to see if any item within authorized_keys matches the host public key
 - using this knowledge it should be possible to regain entry to the beaglebone and re-add the host's public key to beagle bone's authorized_keys as above
 
@@ -315,9 +405,9 @@ $ cat /Volumes/rootfs/home/debian/.ssh/authorized_keys
 - the known_hosts file on the host machine may contain the wrong key for the beaglebone
 - (this has happened to me in the past, not sure why exactly)
 - edit the host machine's known_hosts file:
-$ sudo nano ~/.ssh/known_hosts
+`$ sudo nano ~/.ssh/known_hosts`
 - look for the line which matches the IP of the beaglebone you are trying to connect to e.g. line beginning 192.168.2.14 
 - cut the line from the CTRL+K. then exit using CTRL+X, choosing Y when prompted whether to save
 - attempt to access the beaglebone again via ssh e.g.
-$ ssh debian@192.168.2.14
+`$ ssh debian@192.168.2.14`
 - login should now be possible

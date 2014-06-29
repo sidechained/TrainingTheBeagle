@@ -7,6 +7,7 @@ The aim is to install the following essentials for hybrid audio + physical compu
 * debian (operating system)
 * jack (for audio)
 * supercollider (programming language for audio synthesis)
+* python (programming language for managing the GPIOs on the beagle board)
 * adafruit BBIO library (python library for interfacing with the beaglebone pin-ins/outs)
 * pyOSC (python library for communicating via the Open Sound Control protocol)
 
@@ -78,8 +79,8 @@ Debian
 
 - https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--install-supercollider-37alpha0
 
-* installing Jack and Supercollider are the basic requirements for the Beaglebone to run audio
-* Fredrik Olofsson has produced excellent tutorials on this, which we will not attempt to reproduce here
+Installing Jack and Supercollider are the basic requirements for the Beaglebone to run audio!   
+Fredrik Olofsson has produced excellent tutorials on this, which we will not attempt to reproduce here:
 
 - https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--start-sc
 - https://github.com/redFrik/udk10-Embedded_Systems/tree/master/udk131121#--get-low-latency-audio
@@ -153,8 +154,8 @@ $ ssh debian@192.168.2.14
 $ cd /home/debian
 $ tar -xf pyOSC-0.3.5b-5294.tar.gz
 * install pyosc
-$ cd pyOSC-0.3.5b-5294
-NOTE TO SELF: check the above line 
+$ cd pyOSC-0.3.5b-5294  
+_NOTE TO SELF: check the above line_
 $ sudo python setup.py install
 * remove the source code and zip
 $ cd ..
