@@ -5,7 +5,9 @@ add section on 'find' to unix lore
 
 This document covers basic network configuration and troubleshooting on the Beaglebone Black, focussing on the following topics:
 
-[TOPIC LIST HERE]
+__[TOPIC LIST:]__
+[Networking Basics](#networking-basics)
+[Ping](#ping)
 
 ### Networking Basics
 
