@@ -190,7 +190,7 @@ ifconfig usb0 192.168.7.2
 route add default gw 192.168.7.1
 ```
 
-Q: What is the state of play on USB-to-Ethernet is the current ARM debian image?
+_Q: What is the state of play on USB-to-Ethernet is the current ARM debian image?_
 
 ### Identifying the IP Address of Your Beaglebone
 
@@ -201,7 +201,7 @@ When trying to log into the Beaglebone for the first time, we are faced with a c
 If you are booting your Beaglebone from a micro SD card, then the easiest way to find out what kind of networking configuration is in use is to mount the SD card on your pc and take a look at the /etc/network/interfaces file from there. 
 
 ##### Under Linux
-=======
+
 _is there an easy way work with the beagle over DHCP and know what IP it has been allocated?_
 - according to http://www.armhf.com/index.php/getting-started-with-ubuntu-img-file/ Wheezy runs a DHCP server by default
 - suggestion is: Try pinging it by name: "debian-armhf" for the debian images and "ubuntu-armhf" for the ubuntu images. It is setup for DHCP, so whatever your network handed out. You could mount partition 2 of the SD card and check the logs or edit the /etc/network/interfaces file to have a static IP address:
