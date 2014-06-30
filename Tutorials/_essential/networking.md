@@ -208,6 +208,30 @@ directly in Finder
 \TODO/
 
 If you know your Beaglebone has been given a static IP address, but you don't know what this IP address you could perform a scan of.
+_UNDER DEVELOPMENT_
+Use `nmap` and `grep` are useful to quickly scan networks.
+
+To install nmap, enter `$ sudo apt-get install nmap`. 
+Once it is installed, enter `$ nmap -sP 192.168.2.0/24`  (put your subnet IP range here, we use ..2.xxx)
+Which returns something like: 
+```
+Nmap scan report for easy.box (192.168.2.1)
+Host is up (0.025s latency).
+Nmap scan report for localhost (192.168.2.14)
+Host is up (0.0011s latency).
+Nmap scan report for localhost (192.168.2.103)
+Host is up (0.089s latency).
+Nmap scan report for localhost (192.168.2.119)
+Host is up (0.14s latency).
+Nmap scan report for localhost (192.168.2.200)
+Host is up (0.0047s latency).
+Nmap scan report for localhost (192.168.2.222)
+Host is up (0.0086s latency).
+```
+or this: ?
+`$ nmap -sP $(ip -o addr show | grep inet\  | grep eth | cut -d\  -f 7)`
+
+
 
 ### Enabling SSH Passwordless Login
 
