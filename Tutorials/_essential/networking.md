@@ -6,8 +6,22 @@ add section on 'find' to unix lore
 This document covers basic network configuration and troubleshooting on the Beaglebone Black, focussing on the following topics:
 
 __[TOPIC LIST:]__
-[Networking Basics](#networking-basics)
-[Ping](#ping)
+- [Networking Basics](#networking-basics)
+- [Ping it!](#ping)
+- [Using SSH](#SSH)
+- [Using ipconfig](#ipconfig)
+- [debian default networking](#default-debian-networking)
+- [Using a static IP](#1-static-ip)
+- [Using USB to Ethernet](#2-usb-to-ethernet)
+- [How to identify your IP address](#identifying-the-ip-address-of-your-beaglebone)
+- [Scan your network for IP addresses](#2-peform-a-scan)
+- [Enable ssh Login without password](#enabling-ssh-passwordless-login)
+- [Use beaglebone.local for login](#accessing-the-beaglebone-using-a-local-address-ie-beaglebonelocal)
+- [Using a WIFI Dongle](#enabling-a-wifi-dongle)
+- [Troubleshooting Section](#troubleshooting)
+- [Further Reading](#further-reading)
+
+--------------------------------
 
 ### Networking Basics
 
@@ -238,6 +252,7 @@ or this: ?
 ### Enabling SSH Passwordless Login
 
 Logging into the beaglebone the traditional way (i.e. using `$ ssh debian@192.168.x.x`) requires a password, which can become tedious to enter. The following tutorial demonstrates a passwordless approach, which involves generating a secure SSH public key on the device that connects to the beaglebone (the host). This key is then copied onto the beaglebone itself, the host becomes "trusted" and the password is no longer needed in order to gain access. 
+Also: Check out this [Tutorial](#tutorial-passwordless-login) for password-less login below.
 
 #### Generating a public SSH key on the host (i.e. a laptop)
 
@@ -312,7 +327,9 @@ According to [wikipedia](http://en.wikipedia.org/wiki/.local) .local addresses "
 - e.g. http://www.aliexpress.com/store/product/Mini-150-Mbps-USB-Nano-802-11n-Wireless-Wifi-Network-LAN-Card-Adapter-EDUP-EP-N8531/409201_840839946.html
 - NOTE: I remember having some problems getting my dongle to power up, need to go though this again to remember the problem
 
-### Troubleshooting
+--------------------------------------
+
+## Troubleshooting
 
 This section contains a list of common network problems and how to resolve them.
 
@@ -338,7 +355,7 @@ http://www.mathworks.co.uk/help/simulink/ug/getting-the-beagleboard-ip-address.h
 - guide here: http://elinux.org/RPi_Setting_up_a_static_IP_in_Debian
 - and here: http://www.howtogeek.com/howto/ubuntu/change-ubuntu-server-from-dhcp-to-a-static-ip-address/
 
-## Using SSH - Troubleshooting Guide
+#### Using SSH - Troubleshooting Guide
 
 1. "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!"
 
@@ -352,7 +369,9 @@ Original contents retained as `/Users/grahambooth/.ssh/known_hosts.old`
 - now login again and it should work
 
 <<<<<<< HEAD
-Troubleshooting
+
+------------------------
+
 =======
 ###### TUTORIAL: Passwordless login
 
@@ -411,7 +430,7 @@ _SOMETHING MISSING HERE?_
 - log back in again, and no password should be required
 `$ ssh debian@192.168.2.14`
 
-##### Troubleshooting
+##### Troubleshooting this tutorial
 >>>>>>> 95f21aba981964ea7ead293a3f106ba76a5ae866
 
 - Here are a couple of common problems and ways to fix them:
