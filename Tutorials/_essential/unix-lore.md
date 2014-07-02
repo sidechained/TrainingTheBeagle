@@ -220,8 +220,19 @@ Usage is simply to preface the command with `sudo` e.g.
 ### File Permissions
 
 **chmod**  
-changes file permissions  
-\TODO/
+changes file permissions. See this [manpage](http://ss64.com/bash/chmod.html) for more commands.
+The usual cases would be: 
+````
+sudo chmod -r--r--r-- myFilenameOrDirectoryPath # this is only readaccess for everyone
+# this needs sudo to work especially if you have a permission denied error!
+```
+Other permissions would be: 
+* `-rwxr-r--` # full access for owner, readaccess for group and other (444 in numbers)
+* `-rwxrw-rw-` # full access for owner, read & write access for group and other (764)
+* `-rwxrwxrwx` # full access for owner, group and other (777)
+
+
+
 
 ### Shutting Down and Restarting the Beaglebone
 

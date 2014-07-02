@@ -5,7 +5,24 @@ add section on 'find' to unix lore
 
 This document covers basic network configuration and troubleshooting on the Beaglebone Black, focussing on the following topics:
 
-[TOPIC LIST HERE]
+__[TOPIC LIST:]__
+- [Networking Basics](#networking-basics)
+- [Ping it!](#ping)
+- [Using SSH](#SSH)
+- [Using ipconfig](#ipconfig)
+- [Setup your network settings](#editing-the-network-configuration-file)
+- [Using DHCP](#0-dhcp)
+- [Using a static IP](#1-static-ip)
+- [Using USB to Ethernet](#2-usb-to-ethernet)
+- [How to identify your IP address](#identifying-the-ip-address-of-your-beaglebone)
+- [Scan your network for IP addresses](#2-peform-a-scan)
+- [Enable ssh Login without password](#enabling-ssh-passwordless-login)
+- [Use beaglebone.local for login](#accessing-the-beaglebone-using-a-local-address-ie-beaglebonelocal)
+- [Using a WIFI Dongle](#enabling-a-wifi-dongle)
+- [Troubleshooting Section](#troubleshooting)
+- [Further Reading](#further-reading)
+
+--------------------------------
 
 ### Networking Basics
 
@@ -173,7 +190,7 @@ ifconfig usb0 192.168.7.2
 route add default gw 192.168.7.1
 ```
 
-Q: What is the state of play on USB-to-Ethernet is the current ARM debian image?
+_Q: What is the state of play on USB-to-Ethernet is the current ARM debian image?_
 
 ### Identifying the IP Address of Your Beaglebone
 
@@ -184,7 +201,7 @@ When trying to log into the Beaglebone for the first time, we are faced with a c
 If you are booting your Beaglebone from a micro SD card, then the easiest way to find out what kind of networking configuration is in use is to mount the SD card on your pc and take a look at the /etc/network/interfaces file from there. 
 
 ##### Under Linux
-=======
+
 _is there an easy way work with the beagle over DHCP and know what IP it has been allocated?_
 - according to http://www.armhf.com/index.php/getting-started-with-ubuntu-img-file/ Wheezy runs a DHCP server by default
 - suggestion is: Try pinging it by name: "debian-armhf" for the debian images and "ubuntu-armhf" for the ubuntu images. It is setup for DHCP, so whatever your network handed out. You could mount partition 2 of the SD card and check the logs or edit the /etc/network/interfaces file to have a static IP address:
@@ -208,10 +225,35 @@ directly in Finder
 \TODO/
 
 If you know your Beaglebone has been given a static IP address, but you don't know what this IP address you could perform a scan of.
+_UNDER DEVELOPMENT_
+Use `nmap` and `grep` are useful to quickly scan networks.
+
+To install nmap, enter `$ sudo apt-get install nmap`. 
+Once it is installed, enter `$ nmap -sP 192.168.2.0/24`  (put your subnet IP range here, we use ..2.xxx)
+Which returns something like: 
+```
+Nmap scan report for easy.box (192.168.2.1)
+Host is up (0.025s latency).
+Nmap scan report for localhost (192.168.2.14)
+Host is up (0.0011s latency).
+Nmap scan report for localhost (192.168.2.103)
+Host is up (0.089s latency).
+Nmap scan report for localhost (192.168.2.119)
+Host is up (0.14s latency).
+Nmap scan report for localhost (192.168.2.200)
+Host is up (0.0047s latency).
+Nmap scan report for localhost (192.168.2.222)
+Host is up (0.0086s latency).
+```
+or this: ?
+`$ nmap -sP $(ip -o addr show | grep inet\  | grep eth | cut -d\  -f 7)`
+
+
 
 ### Enabling SSH Passwordless Login
 
 Logging into the beaglebone the traditional way (i.e. using `$ ssh debian@192.168.x.x`) requires a password, which can become tedious to enter. The following tutorial demonstrates a passwordless approach, which involves generating a secure SSH public key on the device that connects to the beaglebone (the host). This key is then copied onto the beaglebone itself, the host becomes "trusted" and the password is no longer needed in order to gain access. 
+Also: Check out this [Tutorial](#tutorial-passwordless-login) for password-less login below.
 
 #### Generating a public SSH key on the host (i.e. a laptop)
 
@@ -323,7 +365,9 @@ No working leases in persistent database - sleeping.
 
 - NOTE: I remember having some problems getting my dongle to power up, need to go though this again to remember the problem
 
-### Troubleshooting
+--------------------------------------
+
+## Troubleshooting
 
 This section contains a list of common network problems and how to resolve them.
 
@@ -349,7 +393,7 @@ http://www.mathworks.co.uk/help/simulink/ug/getting-the-beagleboard-ip-address.h
 - guide here: http://elinux.org/RPi_Setting_up_a_static_IP_in_Debian
 - and here: http://www.howtogeek.com/howto/ubuntu/change-ubuntu-server-from-dhcp-to-a-static-ip-address/
 
-## Using SSH - Troubleshooting Guide
+#### Using SSH - Troubleshooting Guide
 
 1. "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!"
 
@@ -363,7 +407,9 @@ Original contents retained as `/Users/grahambooth/.ssh/known_hosts.old`
 - now login again and it should work
 
 <<<<<<< HEAD
-Troubleshooting
+
+------------------------
+
 =======
 ###### TUTORIAL: Passwordless login
 
@@ -422,7 +468,7 @@ _SOMETHING MISSING HERE?_
 - log back in again, and no password should be required
 `$ ssh debian@192.168.2.14`
 
-##### Troubleshooting
+##### Troubleshooting this tutorial
 >>>>>>> 95f21aba981964ea7ead293a3f106ba76a5ae866
 
 - Here are a couple of common problems and ways to fix them:

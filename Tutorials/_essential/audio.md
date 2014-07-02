@@ -181,6 +181,13 @@ This section covers (will cover) use of HDMI devices for audio input/output. I n
 * Also [this link](http://www.elinux.org/BeagleBone_Black_Capes) refers to an HDMI audio cape, which could be worth studying.
 * Note that the BBB does not actually support audio out over the mHDMI yet (though it is said to be coming in a near-term release). See [this forum thread](https://groups.google.com/forum/#!category-topic/beagleboard/audio/8Zc9DPd7rxc) for more info.
 
+### Using Bluetooth for Audio
+
+It is possible to use bluetooth wireless adapters and headsets or other bluetooth speakers for audio output.  
+But with this come some bluetooth-related audio constraints which we discuss and tested in more detail in this file: 
+[BluetoothAudiotests](../_nonessential/BluetoothAudiotests.md)
+
+
 #### To sudo or not to sudo?
 
 NOTE: Need a definitive answer on this one (TODO)

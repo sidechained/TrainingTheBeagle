@@ -32,9 +32,10 @@ client = OSCClient()
 client.connect( sendAddress )
 init_sensing_loop() # init call to start the sensing loop
 
-try: 
-     while True: 
-         time.sleep(1) 
+# try block to prevent python from hogging OSC ports, needed when receiving OSC msgs!
+try:
+	while True:
+		time.sleep(1) 
 
 except KeyboardInterrupt:
     print "\nClosing OSCServer."
