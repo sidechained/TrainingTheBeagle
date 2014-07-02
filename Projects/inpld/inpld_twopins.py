@@ -20,7 +20,8 @@ def init_sensing_loop():
 
 def sense_and_send_values():
 	val = ADC.read(anaPin)
-	# analogIn = random.random() * 400 # faking it for now in the range 0 to 400
+	# val = random.random() * 400 # faking it for now in the range 0 to 400
+	val = val/1799 # normalize to 0..1
 	if val!=lastadc0:
 		sendOSC("/adc0", val) #set adress and val to send via OSC
 		lastadc0= val
