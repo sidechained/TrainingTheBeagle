@@ -26,12 +26,12 @@ def sense_and_send_values():
 	# val = val/1799 # normalize to 0..1
 	val = random.random() # faking it for now in the range 0 to 1
 	if val!=lastadc0:
-		sendOSC("/adc0", val) #set adress and val to send via OSC
+		sendOSC("/fromPython/adc0", val) #set adress and val to send via OSC
 		lastadc0= val
 	# val = GPIO.input(digiPin)
 	val = int(round(random.random(),0)) # rand values: 0 or 1
 	if val!=lastdig0:
-		sendOSC("/dig0", val)
+		sendOSC("/fromPython/dig0", val)
 		lastdig0= val
 	init_sensing_loop() # recursive call, keeps timer going
 		
