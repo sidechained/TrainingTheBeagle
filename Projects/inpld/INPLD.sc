@@ -31,14 +31,15 @@ INPLD {
 	initLocalPythonResponder {
 		// receive sensing values locally from Python
 		// open the receive port
+		1.postln;
 		thisProcess.openUDPPort(pythonReceivePort);
 		OSCFunc({arg msg;
 			// - for binary 0 or 1 trigger values
 			var value;
 			value = msg[1];
 			inform("received" ++ msg ++ "from python");
-			node.addrBook.sendAll('\fromNetwork\dig0', value)
-		}, '\fromPython\dig0'
+			node.addrBook.sendAll('/fromNetwork/dig0', value)
+		}, '/fromPython/dig0'
 			//, recvPort: pythonReceivePort
 		);
 		OSCFunc({arg msg;
@@ -46,8 +47,8 @@ INPLD {
 			var value;
 			value = msg[1];
 			inform("received" ++ msg ++ "from python");
-			node.addrBook.sendAll('\fromNetwork\adc0', value)
-		}, '\fromPython\adc0'
+			node.addrBook.sendAll('/fromNetwork/adc0', value)
+		}, '/fromPython/adc0'
 			//, recvPort: pythonReceivePort
 		);
 	}
@@ -62,7 +63,7 @@ INPLD {
 			case
 			{ nodeNameOfSender = 'player1'} { this.changePlayer1TriggerValue(msg[1]) }
 			{ nodeNameOfSender = 'player2'} { this.changePlayer2TriggerValue(msg[1]) };
-		}, '\fromNetwork\dig0', recvPort: node.me.addr.port);
+		}, '/fromNetwork/dig0', recvPort: node.me.addr.port);
 		OSCFunc({arg msg, time, addr, recvPort;
 			var nodeNameOfSender;
 			inform("received" ++ msg ++ "from network");
@@ -70,7 +71,7 @@ INPLD {
 			case
 			{ nodeNameOfSender = 'player1'} { this.changePlayer1ContinuousValue(msg[1]) }
 			{ nodeNameOfSender = 'player2'} { this.changePlayer2ContinuousValue(msg[1]) };
-		}, '\fromNetwork\adc0', recvPort: node.me.addr.port);
+		}, '/fromNetwork/adc0', recvPort: node.me.addr.port);
 	}
 
 	getPlayerNameFromSenderIP {arg senderIP;
