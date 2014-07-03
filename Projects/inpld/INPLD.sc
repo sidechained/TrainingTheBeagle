@@ -2,7 +2,6 @@
 // to run this code, make sure NMLAddressing.sc and OSCDataSpace.sc are in your extensions folder on the Beaglebone
 
 // NOTE: dig0 is the 0 or 1 value, adc0 is the continuous value
-// NOTE: the OSC forwarding only works if the names used match 'player1' or 'player2'
 
 INPLD {
 
@@ -79,10 +78,10 @@ INPLD {
 	}
 
 	getPlayerNameFromSenderIP {arg senderIP;
-		// looks up sender's IP in the address book, and if found
-		var addrBookIPs = node.addrBook.addrs.collect{|netaddr| netaddr.ip};
+		// looks up sender's IP in the address book, and if found; needs conversion to Symbols!
+		var addrBookIPs = node.addrBook.addrs.collect{|netaddr| netaddr.ip.asSymbol};
 		var myPeer = node.addrBook.peers.detect{|peer| peer.addr.ip == senderIP};
-		if (addrBookIPs.includes(senderIP)) {
+		if (addrBookIPs.includes(senderIP.asSymbol)) {
 			var nodeNameOfSender;
 			nodeNameOfSender = myPeer.name;
 			// note that if there is more than one nodeNameOfSender with the same IP this will find the 'first' one
@@ -93,8 +92,6 @@ INPLD {
 		} {
 			if(verbose) {warn("player not known!")}
 		};
-
-		// \player1; // return a fix value for test
 	}
 
 	initDataSpace {
