@@ -30,20 +30,26 @@ INPLD {
 
 	initLocalPythonResponder {
 		// receive sensing values locally from Python
+		// open the receive port
+		thisProcess.openUDPPort(pythonReceivePort);
 		OSCFunc({arg msg;
 			// - for binary 0 or 1 trigger values
 			var value;
 			value = msg[1];
 			inform("received" ++ msg ++ "from python");
 			node.addrBook.sendAll('\fromNetwork\dig0', value)
-		}, '\fromPython\dig0', recvPort: pythonReceivePort);
+		}, '\fromPython\dig0'
+			//, recvPort: pythonReceivePort
+		);
 		OSCFunc({arg msg;
 			// - for continuously streaming values
 			var value;
 			value = msg[1];
 			inform("received" ++ msg ++ "from python");
 			node.addrBook.sendAll('\fromNetwork\adc0', value)
-		}, '\fromPython\adc0', recvPort: pythonReceivePort);
+		}, '\fromPython\adc0'
+			//, recvPort: pythonReceivePort
+		);
 	}
 
 	initSoundParameterResponders {
