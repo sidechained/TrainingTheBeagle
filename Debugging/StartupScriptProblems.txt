@@ -11,9 +11,31 @@ http://new-supercollider-mailing-lists-forums-use-these.2681727.n2.nabble.com/st
 
 "if i remove the & in the script everything works fine."
 
-No solution found yet (May 25th, 2014)
+*****************************
+03rd July 2014: 
+Fredrik solved his problem this way: 
+New: We don't need ampersand with supercollider. the -D (run as Daemon) option is the key! and it must run from root user!
 
-********
+sudo crontab -e #and add…
+	@reboot /bin/bash /home/debian/autostart.sh
+
+
+This is the 'autostart.sh' script
+
+#!/bin/bash
+python /home/debian/BTSync_polly/code/pollyocean-1.py &
+sleep 9
+/usr/local/bin/jackd -P95 -dalsa -dhw:1,0 -p1024 -n3 -s &
+sleep 1
+su root -c "sclang -D /home/debian/polly_start.scd"
+#su root -c "sclang -D /home/debian/polly_start.scd" >> /home/debian/temp.log
+
+
+
+
+
+************************************************
+
 http://stackoverflow.com/questions/23720222/boost-asio-async-reading-established-number-of-chars-from-stdin
 says:
 This is because regular files are not supported for async operations: Strange exception throw - assign: Operation not permitted
