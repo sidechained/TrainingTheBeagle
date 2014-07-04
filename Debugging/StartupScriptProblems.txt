@@ -23,15 +23,20 @@ sudo crontab -e #and add…
 This is the 'autostart.sh' script
 
 #!/bin/bash
-python /home/debian/BTSync_polly/code/pollyocean-1.py &
-sleep 9
+python /home/debian/BTSync_polly/code/mysensorscript.py &
+sleep 1
 /usr/local/bin/jackd -P95 -dalsa -dhw:1,0 -p1024 -n3 -s &
 sleep 1
-su root -c "sclang -D /home/debian/polly_start.scd"
-#su root -c "sclang -D /home/debian/polly_start.scd" >> /home/debian/temp.log
+su root -c "sclang -D /home/debian/mysccode.scd"
+#su root -c "sclang -D /home/debian/mysccode.scd" >> /home/debian/temp.log #optional logging to file
 
+and don't forget...
 
+chmod +x autostart.sh
 
+not sure if the following delay is needed, but if the above does not work consider deferring the s.boot even more with something like this...
+
+{"/home/debian/mymainsccode.scd".load}.defer(1); //optional delay
 
 
 ************************************************
