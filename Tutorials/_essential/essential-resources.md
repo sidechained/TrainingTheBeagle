@@ -12,6 +12,7 @@ This document is a selection of important resources for newcomers to the Beagleb
 * [Official Beaglebone Black Google Group](https://groups.google.com/forum/#!categories/beagleboard/beaglebone-black): Many questions or problems you will encounter will have already been discussed here
 * [Beaglebone Community Wiki](http://elinux.org/BeagleBone_Community): Good collection of info drawn from the user community
 * [Beaglebone Black Pin Reference](http://stuffwemade.net/hwio/beaglebone-pin-reference/): Decent pin reference - beware, some online pin references are wrong (e.g. mixing up of P8 and P9)!
+* [Adafruit BBB forum](http://forums.adafruit.com/viewforum.php?f=49): focus on Adafruit products but also contain more general and basic BBB questions
 
 ### Libraries and Extensions
 
