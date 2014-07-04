@@ -146,32 +146,37 @@ NOTE - if you want to use a base address other than '192.168.1', replace this in
 `$ sudo nano /etc/network/interfaces`
 - replace the following...
 `iface eth0 inet dhcp`
-- with… (example for IP of 192.168.1.3)
+- with… (example for IP of 192.168.2.14)
 ```
->>>>>>> 95f21aba981964ea7ead293a3f106ba76a5ae866
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
 iface eth0 inet static
-       address 192.168.1.x
-       netmask 255.255.255.0
-       network 192.168.1.0
-       broadcast 192.168.1.255
-       gateway 192.168.1.1
-<<<<<<< HEAD
+        address 192.168.2.14
+        gateway 192.168.2.1
+        netmask 255.255.255.0
+        network 192.168.2.0
+        broadcast 192.168.2.255
+```
 
 * restart networking (this saves us from having to reboot)
 `$ sudo /etc/init.d/networking restart`  
 `$ sudo /etc/init.d/networking reload`
 * log out of the beaglebone
 `$ exit`
-* Attempt to log back in using the new address (replacing x with the 
-`$ ssh debian@192.168.1.x`
+* Attempt to log back in using the new address
+`$ ssh debian@192.168.2.14`
 * If log in fails, first try rebooting the board using the onboard reset button
 * If you still have problems logging in, consult the [finding my IP section]() of this document in order to regain access
 =======
 ```
-- restart networking  
+# restart networking  
 `$ sudo /etc/init.d/networking restart` 
 `$ sudo /etc/init.d/networking reload`
->>>>>>> 95f21aba981964ea7ead293a3f106ba76a5ae866
+```
+
 
 #### 2. USB-To-Ethernet
 
